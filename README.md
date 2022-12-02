@@ -12,8 +12,18 @@ There will be options for narrowing the script's alerts to specific collections 
 [ ] Get OpenSea API key
 [ ] 
 
-
+#### Detecting:
 Upon *Initialising*:
 - [ ] Check Value of our wallet
 - [ ] Open database
 - [ ] Connect to OpenSea Stream API
+
+
+#### Buying:
+[ ] Connect wallet to page(?)
+[ ] Execute buy (VIA API?)
+[ ] Sign Transcation
+
+
+#### Selling
+*Possibly in future*
