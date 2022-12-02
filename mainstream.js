@@ -15,3 +15,4 @@ const client = new OpenSeaStreamClient({
 client.onItemListed('*', (event) => {
     console.log(event);
 });
+
