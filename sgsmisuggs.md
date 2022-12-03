@@ -9,7 +9,7 @@
 
     Auto sell to sudoswap pool?
 
-### Initial Testing (Riskless):
+### Initial Testing (Riskless)
     Profitable listing is spotted:
 
         Timestamp when spotted, note price, profits, tax etc
@@ -18,7 +18,26 @@
 
         Could we have bought it in time?
 
+### What's Minting
+    Track high volume mints and send push notifications for 'hyped' collections
+
+    Easy bot activation for that collection, i.e.
+        Turn bot on?
+        Amount of ETH to risk
+        If collection pumps and dies, stop tracking somehow
+
+        Also report bot's ETH/WETH balances 
+
+
+### Regular Profit/Loss Reports
+    Depends on frequency of fatfinger listings
+    Every 4-24 hours send email with total P&L, recent P&L etc
+
 ## Safeguards
+
+### Cut Losses
+    If collection starts dumping and we can't exit at the best WETH offer:
+    Allow for a % loss and exit if collection passes loss margin
 
 ### Offer Validation
     Check offerer's WETH balance
