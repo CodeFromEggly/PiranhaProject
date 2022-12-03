@@ -1,0 +1,28 @@
+{
+  "name": "piranhaproject",
+  "version": "1.0.0",
+  "description": "First attempt at init project piranha",
+  "main": "mainstream.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeFromEggly/PiranhaProject.git"
+  },
+  "keywords": [
+    "node",
+    "npm",
+    "piranha"
+  ],
+  "author": "me, sam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeFromEggly/PiranhaProject/issues"
+  },
+  "homepage": "https://github.com/CodeFromEggly/PiranhaProject#readme",
+  "dependencies": {
+    "@opensea/stream-js": "^0.0.21-rc.1",
+    "ws": "^8.11.0"
+  }
+}

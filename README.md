@@ -8,7 +8,7 @@ There will be options for narrowing the script's alerts to specific collections 
 
 **For the moment this can be our TODO list**
 
-[ ] What is npm init? How do we do it
+[x] What is npm init? How do we do it
 [ ] Get OpenSea API key
 [ ] 
 
