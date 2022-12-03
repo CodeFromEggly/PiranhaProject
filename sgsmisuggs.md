@@ -9,7 +9,7 @@
 
     Auto sell to sudoswap pool?
 
-### Initial testing:
+### Initial Testing (Riskless):
     Profitable listing is spotted:
 
         Timestamp when spotted, note price, profits, tax etc
