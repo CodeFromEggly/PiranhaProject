@@ -45,6 +45,7 @@
 
         Is item flagged as suspicious on OpenSea?
             Yes:
-                Confirm valid offer on x2y2, looksrare etc or viable profit margin (50%+ below floor price for quick flipping, must not be high risk)
+                Confirm valid offer on x2y2, looksrare etc or viable profit margin 
+                (50%+ below floor price for quick flipping, must not be high risk)
             No :
                 Continue as normal
