@@ -2,6 +2,10 @@
 
 ## Features 
 
+### Trait Offers
+    - Return offers for rare traits in collection
+    - If trait with high offer is on floor & profitable, swipe it 
+
 ### Sudoswap Trading
     - Check for sudoswap liquidity pairs
     - Compare marketplace profits to sudoswap pool profits
