@@ -41,6 +41,14 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/conditions", methods=["GET", "POST"])
+def conditions(){
+
+    # New conditions entered. Change .json and redirect to index
+
+
+    # Load conditions .html
+}
 
 
 
