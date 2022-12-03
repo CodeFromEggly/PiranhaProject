@@ -10,7 +10,7 @@
     Auto sell to sudoswap pool?
 
 ### Initial testing:
-    **When profitable listing is spotted:**
+    Profitable listing is spotted:
 
         Timestamp when spotted, note price, profits, tax etc
 
