@@ -16,10 +16,11 @@
 ### What's Minting
     Track high volume mints and send push notifications for 'hyped' collections
 
-    Easy bot activation for that collection, i.e.
+    Easy bot activation for that collection
         - Turn bot on?
         - Amount of ETH to risk
         - If collection pumps and dies, stop tracking somehow
+            - Timer/Price margins perhaps? i.e goes above x and then drops below y 
 
         Also report bot's ETH/WETH balances 
 
