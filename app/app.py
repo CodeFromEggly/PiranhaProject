@@ -30,14 +30,10 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    print("Youre at the INDEX")
+    print("Youre at the INDEX")    
 
-    """Things it could do:"""
-    # Display current/last used parameters
-    # link to form for new parameters (in navbar?)
-    # link see trade history          (in navbar?)
     # renders template index.html
-
+    # Shows current set parameters from json file
     return render_template("index.html")
 
 
@@ -45,8 +41,9 @@ def index():
 def conditions():
     # New conditions entered. Change .json and redirect to index
     if request.method == "POST":
-
-        return redirect('/')
+        print("running conditions() ")
+        return redirect("/")
+    
     # Load conditions .html
     else:
         return render_template("conditions.html")
