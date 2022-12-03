@@ -10,13 +10,13 @@
     Auto sell to sudoswap pool?
 
 ### Initial testing:
-**When profitable listing is spotted:**
+    **When profitable listing is spotted:**
 
-    Timestamp when spotted, note price, profits, tax etc
+        Timestamp when spotted, note price, profits, tax etc
 
-    If/when purchased by someone else, timestamp and report back tx hash, gas used, time taken to purchase
+        If/when purchased by someone else, timestamp and report back tx hash, gas used, time taken to purchase
 
-    Could we have bought it in time?
+        Could we have bought it in time?
 
 ## Safeguards
 
