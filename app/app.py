@@ -58,7 +58,6 @@ def conditions():
         
         print("Conditions:")
         print(conditions)
-        print("redirecting")
         return redirect("/")
     
     # Load conditions .html

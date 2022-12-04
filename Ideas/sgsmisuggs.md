@@ -28,12 +28,24 @@
 
         Also report bot's ETH/WETH balances 
 
+### Homepage 'Recents' Section
+    - Show on homepage NFT tiles of recent listings we've detected.
+    - Show NFTs we've flipped
+        - Timestamps
+        - Potential Profit
+        - Highest WETH offer when found
 
 ### Regular Profit/Loss Reports
     - Depends on frequency of fatfinger listings
     - Every 4-24 hours send email with total P&L, recent P&L etc
 
 ## Safeguards
+
+### Live/Dev Mode
+    - 2 versions of website
+    - Live version allows money to be spent
+    - Should probably default to dev mode for safety
+    - Boolean check for most functions(?) Similar to requirelogin() in cs50 week 9(?)
 
 ### Cut Losses
     - If collection starts dumping and we can't exit at the best WETH offer:
