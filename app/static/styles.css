@@ -5,3 +5,8 @@
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgba(61, 0, 0, 0.829);
 }
+
+.main-form {
+    width: 450px;
+    margin: auto;
+}

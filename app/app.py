@@ -30,7 +30,9 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    print("Youre at the INDEX")    
+    
+    
+    
 
     # renders template index.html
     # Shows current set parameters from json file
@@ -41,7 +43,22 @@ def index():
 def conditions():
     # New conditions entered. Change .json and redirect to index
     if request.method == "POST":
-        print("running conditions() ")
+
+        
+        
+        conditions = {
+            'collections': request.form.get("collection"),
+            'volume': request.form.get("volume"),
+            'minETH': request.form.get("minETH"),
+            'maxETH': request.form.get("maxETH"),
+            'margin': request.form.get("margin"),
+            'numOffers': request.form.get("numOffers"),
+            'sudoswap': request.form.get("sudoswap")
+        }
+        
+        print("Conditions:")
+        print(conditions)
+        print("redirecting")
         return redirect("/")
     
     # Load conditions .html
