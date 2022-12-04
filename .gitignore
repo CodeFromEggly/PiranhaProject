@@ -1,2 +1,4 @@
 node_modules/
 app/node_modules/
+app/__pychache__/
+app/__pycache__/app.cpython-310.pyc
