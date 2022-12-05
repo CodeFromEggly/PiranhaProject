@@ -1,5 +1,6 @@
 import os
 
+import json
 import sqlite3
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
@@ -63,6 +64,8 @@ def conditions():
         
         print("Conditions:")
         print(conditions)
+        with open("search_conditions.json", "w") as file:
+            json.dump(conditions, file)
         return redirect("/")
     
     # Load conditions .html
