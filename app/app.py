@@ -1,6 +1,6 @@
 import os
 
-from cs50 import SQL
+import sqlite3
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
@@ -30,13 +30,18 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    
+    # Displays 5 most recent NFTs nibbled
+
+    #SQLite3 query to detect listings.
+    conn = sqlite3.connect('piranha.db')
+    db = conn.cursor()
+
+    nibbles = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)")
     
     
 
     # renders template index.html
-    # Shows current set parameters from json file
-    return render_template("index.html")
+    return render_template("index.html", nibbles=nibbles)
 
 
 @app.route("/conditions", methods=["GET", "POST"])

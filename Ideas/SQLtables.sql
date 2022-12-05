@@ -1,19 +1,20 @@
 CREATE TABLE collections(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
+    slug TEXT NOT NULL,
     address TEXT NOT NULL,
-    grossfees INT
+    fees INT
 );
 
 
 CREATE TABLE keyData (
     id INTEGER  PRIMARY KEY AUTOINCREMENT,
     name TEXT,
-    address TEXT NOT NULL,
-    collectionAddress TEXT NOT NULL,
+    token TEXT NOT NULL,
+    collection TEXT NOT NULL,
     price INT,
     bestWETH INT,
     gas INT,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(collectionAddress) references collections(address)
+    FOREIGN KEY(collection) references collections(name)
 );
