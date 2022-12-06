@@ -17,11 +17,10 @@ body {
     letter-spacing: -1px;
 }
 
-.card-body {
-    display: flex;
-    flex-direction: column;
-}
 
-button.btn {
-    margin-top: auto;
+.featured-card {
+    position: relative;
+    z-index: 1;
+    border: 2px solid #fdd835;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
