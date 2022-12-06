@@ -6,8 +6,24 @@
 
 {% block main %}
 
-    <!-- 'Selected card' to go at top, can display more values than most cards and change as cards are toggled-->
-    <div class="card mb-3 mx-auto" style="max-width:1000px; max-height:600px; background-color:antiquewhite">
+<div class="container">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script>
+        $(document).ready(function(){
+            $("#featuredCard").css("display", "none");
+
+            $(document).on('change', function() {
+                if($("#deck .featured-card").length > 0) {
+                    $("#featuredCard").css("display", "block");
+                } else {
+                    $("#featuredCard").css("display", "none");
+                }
+            });
+        });
+    </script>
+
+    <!-- 'Featured card' to go at top, can display more values than most cards and change as cards are selected-->
+    <div id="featuredCard" class="card mb-3 mx-auto" style="max-width:1000px; max-height:600px; background-color:antiquewhite;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="/static/theplague843.png" class="img-fluid rounded-start" style="max-height:600px" alt="This should pull collection name and token id">
@@ -15,10 +31,11 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">'Selected' Card</h5>
-                    <p class="card-text">Using javascript, we'll select a card from below, use JS to feed more info on listing to this card</p>
-                    <p class="card-text">Buy price, WETH offers on different marketplaces, potential P&L etc </p>
-                    <p>Global Collection Floor: 0.24Ξ (Blur)| Global Trait Floor: 0.9Ξ (Blur)</p>
-                    <p>Best Collection Offer: 0.2Ξ  (Opensea)|  Best Trait Offer: 0.39Ξ (Looksrare)</p>
+                    <div class="card-text">
+                        <p>Buy price, WETH offers on different marketplaces, potential P&L etc </p>
+                        <p>Global Collection Floor: 0.24Ξ (Blur)| Global Trait Floor: 0.9Ξ (Blur)</p>
+                        <p>Best Collection Offer: 0.2Ξ  (Opensea)|  Best Trait Offer: 0.39Ξ (Looksrare)</p>
+                    </div>
                     <div class="d-flex align-items flex-column mb-auto">
                         <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary"><span style="font-weight: bold;">Opensea</span><p style="font-size:smaller; margin-bottom: 0em;">Seen for 0.239Ξ  |  PNL: 0.1321Ξ (-12.5%)</p></a>
                         <a href="https://looksrare.org/collections/0x8c3FB10693B228E8b976FF33cE88f97Ce2EA9563/843" target="_blank" class="btn btn-secondary"><span style="font-weight: bold;">Next best marketplace:</span> PNL: ...Ξ<p style="font-size:smaller; margin-bottom: 0em">Seen for: ...Ξ | Best Offer: ...Ξ  | PNL: ...Ξ (-....%)</p></a>
@@ -34,99 +51,84 @@
     <div style="text-align:center">
         <h2>Placeholders - Listings Spotted:</h2>
     </div>
-    <div class="card-columns d-flex justify-content-center ">
-        <div class="card" style="width: 18rem;">
+
+    <!-- Should contain all miniCards -->
+    <div id="deck" class="card-columns d-flex justify-content-center">
+        <div class="card miniCard" style="width: 18rem;">
             <img src="/static/sappyseal4691.png" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Sappy Seal #4691</h5>
-                <p class="card-text">Quick info, taxes, sudoswap pool active? etc. Buy button auto coloured red or green depending on profitability (margin included)</p>
                 <div class="d-flex flex-column mb-3">
-                    <a href="https://opensea.io/assets/ethereum/0x364c828ee171616a39897688a831c2499ad972ec/4691" target="_blank" class="btn btn-primary">Best buy on OS for: 0.68Ξ </a>
-                    <a href="https://opensea.io/assets/ethereum/0x364c828ee171616a39897688a831c2499ad972ec/4691" target="_blank" class="btn btn-danger">Best offer: 0.77Ξ  </a>
+                    <a href="https://opensea.io/assets/ethereum/0x364c828ee171616a39897688a831c2499ad972ec/4691" target="_blank" class="btn btn-primary mt-auto mb-2">Best buy on OS for: 0.68Ξ </a>
+                    <a href="https://opensea.io/assets/ethereum/0x364c828ee171616a39897688a831c2499ad972ec/4691" target="_blank" class="btn btn-danger mt-auto">Best offer: 0.77Ξ  </a>
                 </div>
+                <h5 class="card-title" style="font-weight:bold">Sappy Seal #4691</h5>
+                <div class="d-flex flex-column mb-3" id="card-text-container" style="max-height:10rem; overflow:hidden;">
+                    <p class="card-text">Quick info, taxes, sudoswap pool active? etc. Buy button auto coloured red or green depending on profitability (margin included) here is some example text to flesh this out past 18rem and if that doesn't work lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala
+                    </p>
+                </div>
+                <a id="show-more" style="display:none;">Show More</a>
+                <a id="show-less" style="display:none;">Show Less</a>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="static/bayc1971.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">BAYC #1971</h5>
-                <p class="card-text">Button alignment needs fixing</p>
-                <div class="d-flex flex-column mb-3 flex-direction: column">
-                    <a href="https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/1971" target="_blank" class="btn btn-primary p-2">Best buy on OS for: 68.35Ξ </a>
-                    <a href="https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/1971" target="_blank" class="btn btn-danger p-2">Best offer: 70.2Ξ  </a>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="/static/doodle7875.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Doodle #7875</h5>
-                <p class="card-text"></p>
-                <div class="d-flex flex-column mb-3">
-                    <a href="https://opensea.io/assets/ethereum/0x8a90cab2b38dba80c64b7734e58ee1db38b8992e/7875" target="_blank" class="btn btn-primary">Best buy on OS for: 6.7Ξ </a>
-                    <a href="https://opensea.io/assets/ethereum/0x8a90cab2b38dba80c64b7734e58ee1db38b8992e/7875" target="_blank" class="btn btn-danger">Best offer: 6.9Ξ  </a>
-                </div>
-            </div>
-         </div>
-        <div class="card flex-direction:column" style="width: 18rem;">
-            <img src="/static/theplague843.png" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title">The Plague #843</h5>
-                <p class="card-text">Harry if you can get these buttons to align to the bottom I will be most grateful</p>
-                <div class="d-flex flex-column mb-3">
-                    <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="mt-auto btn btn-primary">Best buy on OS for: 0.239Ξ </a>
-                    <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="mt-auto btn btn-success">Best offer: 0.39Ξ  </a>
-                </div>
-            </div>
-        </div>
-        <div class="card-columns d-flex justify-content-center ">
-            <div class="card" style="width: 18rem;">
-                <img src="/static/sappyseal4691.png" class="card-img-top" alt="...">
+        <div class="card-columns d-flex justify-content-center">
+            <div class="card miniCard" style="width: 18rem;">
+                <img src="/static/theplague843.png" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Sappy Seal #4691</h5>
+                    <div class="d-flex flex-column mb-3">
+                        <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary mt-auto mb-2">Best buy on OS for: 0.239Ξ </a>
+                        <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-success mt-auto">Best offer: 0.39Ξ  </a>
+                    </div>
+                    <h5 class="card-title" style="font-weight:bold">Yooooooo</h5>
                     <div class="d-flex flex-column mb-3" id="card-text-container" style="max-height:10rem; overflow:hidden;">
-                        <p class="card-text">Quick info, taxes, sudoswap pool active? etc. Buy button auto coloured red or green depending on profitability (margin included) here is some example text to flesh this out past 18rem and if that doesn't work lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala lalalalalalalalalalalalalalala
+                        <p class="card-text">Click on this card bro (just the white bit)
                         </p>
                     </div>
-                    <a id="show-more" style="display:none;">Show More</a>
-                    <a id="show-less" style="display:none;">Show Less</a>
-                    <div class="d-flex flex-column mb-3">
-                        <a href="https://opensea.io/assets/ethereum/0x364c828ee171616a39897688a831c2499ad972ec/4691" target="_blank" class="btn btn-primary">Best buy on OS for: 0.68Ξ </a>
-                        <a href="https://opensea.io/assets/ethereum/0x364c828ee171616a39897688a831c2499ad972ec/4691" target="_blank" class="btn btn-danger">Best offer: 0.77Ξ  </a>
-                    </div>
+                    <a href="" id="show-more" style="display:none;">Show More</a>
+                    <a href="" id="show-less" style="display:none;">Show Less</a>
                 </div>
             </div>
-        </div>
-    
-        <script>
-            const showMore = document.getElementById('show-more');
-            const showLess = document.getElementById('show-less');
-            const cardTextContainer = document.getElementById('card-text-container');
-            
-            $(document).ready(function(){
-            $(".card").click(function(){
-            if($(this).hasClass("featured-card")) {
-                $(this).removeClass("featured-card");
-                } else {
-                $(this).addClass("featured-card");
+            <script>
+                const showMore = document.getElementById('show-more');
+                const showLess = document.getElementById('show-less');
+                const cardTextContainer = document.getElementById('card-text-container');
+        
+                if (cardTextContainer.scrollHeight > cardTextContainer.clientHeight) {
+                    showMore.style.display = 'block';
                 }
+        
+                showMore.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cardTextContainer.style.maxHeight = 'none';
+                    showMore.style.display = 'none';
+                    showLess.style.display = 'block';
                 });
-            });
 
-            if (cardTextContainer.scrollHeight > cardTextContainer.clientHeight) {
-                showMore.style.display = 'block';
-            }
-    
-            showMore.addEventListener('click', () => {
-                cardTextContainer.style.maxHeight = 'none';
-                showMore.style.display = 'none';
-                showLess.style.display = 'block';
-            });
-    
-            showLess.addEventListener('click', () => {
-                cardTextContainer.style.maxHeight = '10rem';
-                showMore.style.display = 'block';
-                showLess.style.display = 'none';
-            });
-        </script>
+                showLess.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cardTextContainer.style.maxHeight = '10rem';
+                    showMore.style.display = 'block';
+                    showLess.style.display = 'none';
+                });
+
+                $(document).ready(function(){
+                    $(".miniCard").click(function(){
+                        if($(this).hasClass("featured-card")) {
+                            $(this).removeClass("featured-card");
+                            $("#featuredCard").css("display", "none");
+                        } else {
+                            $(".featured-card").removeClass("featured-card");
+                            $(this).addClass("featured-card");
+                            $("#featuredCard").css("display", "block");
+                        }
+                    });
+                    $(document).on('change', function() {
+                        if($("#deck .featured-card").length == 0) {
+                            $("#featuredCard").css("display", "none");
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</div>
 {% endblock %}
