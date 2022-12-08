@@ -12,10 +12,6 @@
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgb(148, 187, 233) 100%);
 }
 
-.disabled {
-    color:aqua;    
-}
-
 body {
     font-family:monospace;
     letter-spacing: -1px;
@@ -67,3 +63,25 @@ a:hover {
     color:#F7C5D2;
 }
 
+.card-columns {
+    /* Other styles for the card deck */
+    padding: 0 20px; /* Add padding to the left and right of the card deck */
+    max-width: 960px; /* Set maximum width of the container */
+    margin: 0 auto; /* Center the container within the screen */
+    overflow-x: scroll; /* Hide content that overflows the container */
+  }
+  
+  /* Style for card deck when screen is not wide enough to display all cards */
+  @media only screen and (max-width: 960px) {
+    .card-columns {
+      /* Styles for the card deck when the screen is not wide enough */
+      overflow-x: scroll;
+    }
+  }  
+  
+
+  .miniCard {
+    min-width: 300px;
+    min-height: 600px;
+    overflow: hidden;
+  }
