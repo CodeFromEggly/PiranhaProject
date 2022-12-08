@@ -1,6 +1,6 @@
 .deepWater{
     color: crimson;
-    background: linear-gradient(0deg, rgba(1,2,82,0.9472163865546218) 0%, rgba(0,124,125,0.7791491596638656) 100%);
+    background: linear-gradient(0deg, rgba(0, 124, 125, 0.78) 0%, rgba(255,219,179,0.9472163865546218) 100%);
 }
 
 .main-form {
@@ -9,18 +9,61 @@
 }
 
 .bgMain {
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgb(148, 187, 233) 100%);
+}
+
+.disabled {
+    color:aqua;    
 }
 
 body {
     font-family:monospace;
     letter-spacing: -1px;
+    color: #1f1f1f;
+} 
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: #006363c7;
+    text-shadow: 0 0 4px #F7C5D2;
 }
 
+.card {
+    background-color: #FFFFFF;
+}
 
 .featured-card {
     position: relative;
     z-index: 1;
-    border: 5px solid #2196f3;
+    border: 5px solid #006363c7;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
+
+form {
+    background-color: #F7C5D2;
+}
+
+#show-more {
+    color:dodgerblue;
+    text-decoration: underline;
+}
+
+#show-more:hover {
+    color:coral;
+    text-decoration: none;
+}
+
+#show-less {
+    color:coral;
+    text-decoration: underline;
+}
+
+#show-less:hover {
+    color:dodgerblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#F7C5D2;
+}
+
