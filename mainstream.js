@@ -22,6 +22,8 @@ client.onItemListed('*', (event) => {
 // We use axios. All the homies hate fetch.
 import axios from 'axios';
 const response = await axios('https://ethgasstation.info/api/ethgasAPI.json?');
+
+// The api seems to return 10xGwei
 let fastestGwei = (response.data["fastest"])/10;
 console.log(fastestGwei)
 
