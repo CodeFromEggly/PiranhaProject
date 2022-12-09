@@ -52,15 +52,7 @@ a:hover {
     color:#F7C5D2;
 }
 
-#deck {
-    /* Other styles for the card deck */
-    padding: 0 20px; /* Add padding to the left and right of the card deck */
-    max-width: 1800px; /* Set maximum width of the container */
-    margin: 0 auto; /* Center the container within the screen */
-    overflow-x: scroll; /* Hide content that overflows the container */
-    width: 1800px; /* Set a width for the container that is larger than the combined width of all the cards */
-    white-space: nowrap; /* Prevent child elements from wrapping onto a new line */
-}
+
 
 .card {
     background-color: #FFFFFF;
@@ -78,7 +70,36 @@ a:hover {
 }
 
 .miniCard {
-min-width: 300px;
-min-height: 600px;
-overflow: hidden;
+    min-width: 300px;
+    min-height: 600px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.carousel-container {
+    min-width: 500px;
+    min-height: 400px;
+  }
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+}
+
+.carousel-chevron {
+    cursor: pointer;
+    align-self: center;
+}
+
+#deck {
+    /* Other styles for the card deck */
+    padding: 0 20px; /* Add padding to the left and right of the card deck */
+    max-width: 600px; /* Set maximum width of the container */
+    margin: 0 auto; /* Center the container within the screen */
+    width: 600px; /* Set a width for the container that is larger than the combined width of all the cards */
+    white-space: nowrap; /* Prevent child elements from wrapping onto a new line */
 }

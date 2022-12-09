@@ -39,13 +39,14 @@ def index():
 
     # Provide key data from 5 most recent detections
     keyData = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)")
-    # Provide the linked moreData
-    
-    
-    
 
+    # Provide the linked moreData
+    # Yes I'm know there are better ways to do this... But it was easy. I'll come back to it later.
+    moreData = db.execute("SELECT * FROM moreData WHERE keyid IN (SELECT id FROM keyData ORDER BY timestamp DESC LIMIT(5)) ORDER BY (keyid) DESC")
+    
+    poopoo = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid")
     # renders template index.html
-    return render_template("index.html", keyData=keyData)
+    return render_template("index.html", keyData=keyData, moreData = moreData, poopoo=poopoo)
 
 
 @app.route("/conditions", methods=["GET", "POST"])
@@ -76,7 +77,25 @@ def conditions():
         return render_template("conditions.html")
 
 
+@app.route("/shit")
+def shit():
+    # Displays 5 most recent NFTs nibbled
 
+    #SQLite3 query to detect listings.
+    conn = sqlite3.connect('piranha.db')
+    db = conn.cursor()
+
+    # Provide key data from 5 most recent detections
+    keyData = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)")
+    poopy = "poopy"
+
+    # Provide the linked moreData
+    # Yes I'm know there are better ways to do this... But it was easy. I'll come back to it later.
+    moreData = db.execute("SELECT * FROM moreData WHERE keyid IN (SELECT id FROM keyData ORDER BY timestamp DESC LIMIT(5)) ORDER BY (keyid) DESC")
+    
+    poopoo = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid")
+    # renders template index.html
+    return render_template("shit.html", keyData=keyData, moreData = moreData, poopoo=poopoo, poopy=poopy)
 
 
 

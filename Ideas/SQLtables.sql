@@ -21,10 +21,10 @@ CREATE TABLE keyData (
 
 
 CREATE TABLE moreData (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     keyid INTEGER,
-    suspicious TEXT,
-    traitFloor INT,
+    suspicious INT,
+    traitFloor INT DEFAULT NULL,
     rarity INT,
     image TEXT,
     sudoswap INT,

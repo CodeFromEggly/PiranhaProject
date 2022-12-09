@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    For Testing
+{% endblock %}
+
+{% block main %}
+<h1>{{poopy}}</h1>
+<h2>{{quickData}}</h2>
+{% for row in quickData %}
+    <div class="card minicard">
+        <p>name: {{row['name']}}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}
