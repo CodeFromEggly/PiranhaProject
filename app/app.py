@@ -77,8 +77,8 @@ def conditions():
         return render_template("conditions.html")
 
 
-@app.route("/shit")
-def shit():
+@app.route("/poop")
+def poop():
     # Displays 5 most recent NFTs nibbled
 
     #SQLite3 query to detect listings.
