@@ -28,4 +28,10 @@ let fastestGwei = (response.data["fastest"])/10;
 console.log(fastestGwei)
 
 
-// Call the Eth Gas Station API
+// On detect listings:
+
+    // Add row to quickData table:
+
+    // Query quickData to find out its ID
+
+    // Add row to moreData using quick's ID as keyID

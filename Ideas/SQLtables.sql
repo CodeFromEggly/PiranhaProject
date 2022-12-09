@@ -28,5 +28,5 @@ CREATE TABLE moreData (
     rarity INT,
     image TEXT,
     sudoswap INT,
-    FOREIGN KEY(keyid) REFERENCES keyData(keyid)
+    FOREIGN KEY(keyid) REFERENCES keyData(id)
 );

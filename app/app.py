@@ -37,12 +37,15 @@ def index():
     conn = sqlite3.connect('piranha.db')
     db = conn.cursor()
 
-    nibbles = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)")
+    # Provide key data from 5 most recent detections
+    keyData = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)")
+    # Provide the linked moreData
+    
     
     
 
     # renders template index.html
-    return render_template("index.html", nibbles=nibbles)
+    return render_template("index.html", keyData=keyData)
 
 
 @app.route("/conditions", methods=["GET", "POST"])
