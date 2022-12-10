@@ -5,12 +5,22 @@
 {% endblock %}
 
 {% block main %}
-<h1>{{poopy}}</h1>
-<h2>{{quickData}}</h2>
-{% for row in quickData %}
-    <div class="card minicard">
-        <p>name: {{row['name']}}</p>
-    </div>
+<h2>{{keyData}}</h2>
+{% for row in keyData %}
+    <di class="row">
+        <div class="col">
+            <p>{{row["name"]}}</p>
+        </div>
+        <div class="col">
+            <p>{{row["2"]}}</p>
+        </div>
+        <div class="col">
+            <p>{{row["3"]}}</p>
+        </div>
+    </di>
+    
+    <p>name: {{row['name']}}</p>
+   
 {% endfor %}
 
 {% endblock %}

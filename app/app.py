@@ -85,17 +85,25 @@ def poop():
     conn = sqlite3.connect('piranha.db')
     db = conn.cursor()
 
+    print("//////////////////")
     # Provide key data from 5 most recent detections
-    keyData = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)")
-    poopy = "poopy"
+    keyData = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)").fetchall()
+    first = keyData[0]
+    #firstname = first["name"]
+    print(first)
+    ##print(firstname)
+    print("//////////////////")
 
     # Provide the linked moreData
     # Yes I'm know there are better ways to do this... But it was easy. I'll come back to it later.
-    moreData = db.execute("SELECT * FROM moreData WHERE keyid IN (SELECT id FROM keyData ORDER BY timestamp DESC LIMIT(5)) ORDER BY (keyid) DESC")
-    
-    poopoo = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid")
+    moreData = db.execute("SELECT * FROM moreData WHERE keyid IN (SELECT id FROM keyData ORDER BY timestamp DESC LIMIT(5)) ORDER BY (keyid) DESC").fetchall()
+    print("MORE DATA:")
+    print(moreData)
+    poopoo = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid").fetchall()
+    print("\n\nPOOPOO:")
+    print(poopoo)
     # renders template index.html
-    return render_template("shit.html", keyData=keyData, moreData = moreData, poopoo=poopoo, poopy=poopy)
+    return render_template("poop.html", keyData=keyData, moreData = moreData, poopoo=poopoo)
 
 
 
