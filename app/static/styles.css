@@ -1,5 +1,4 @@
 .deepWater{
-    color: crimson;
     background: linear-gradient(0deg, rgba(0, 124, 125, 0.78) 0%, rgba(255,219,179,0.9472163865546218) 100%);
 }
 
@@ -62,7 +61,7 @@ a:hover {
     font-weight: bold;
 }
 
-.featured-card {
+.selectedCard {
     position: relative;
     z-index: 1;
     border: 5px solid #006363c7;
@@ -75,11 +74,6 @@ a:hover {
     margin: 10px;
     overflow: hidden;
 }
-
-.carousel-container {
-    min-width: 500px;
-    min-height: 400px;
-  }
 
 .carousel {
     display: flex;
@@ -102,4 +96,8 @@ a:hover {
     margin: 0 auto; /* Center the container within the screen */
     width: 600px; /* Set a width for the container that is larger than the combined width of all the cards */
     white-space: nowrap; /* Prevent child elements from wrapping onto a new line */
+}
+
+.hidden {
+    display: none;
 }
