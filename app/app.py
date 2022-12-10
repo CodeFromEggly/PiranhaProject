@@ -35,18 +35,21 @@ def index():
 
     #SQLite3 query to detect listings.
     conn = sqlite3.connect('piranha.db')
+    conn.row_factory = sqlite3.Row
     db = conn.cursor()
 
     # Provide key data from 5 most recent detections
-    keyData = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)")
+    keyData = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)").fetchall()
+    for row in keyData:
+        row = dict(row)
 
-    # Provide the linked moreData
-    # Yes I'm know there are better ways to do this... But it was easy. I'll come back to it later.
-    moreData = db.execute("SELECT * FROM moreData WHERE keyid IN (SELECT id FROM keyData ORDER BY timestamp DESC LIMIT(5)) ORDER BY (keyid) DESC")
-    
-    poopoo = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid")
+    # Provide the linked moreData    
+    all = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid").fetchall()
+    for row in all:
+        row = dict(row)
+
     # renders template index.html
-    return render_template("index.html", keyData=keyData, moreData = moreData, poopoo=poopoo)
+    return render_template("index.html", keyData=keyData, all=all)
 
 
 @app.route("/conditions", methods=["GET", "POST"])
@@ -83,6 +86,7 @@ def poop():
 
     #SQLite3 query to detect listings.
     conn = sqlite3.connect('piranha.db')
+    conn.row_factory = sqlite3.Row
     db = conn.cursor()
 
     print("//////////////////")
@@ -100,6 +104,9 @@ def poop():
     print("MORE DATA:")
     print(moreData)
     poopoo = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid").fetchall()
+    for row in poopoo:
+        row = dict(row)
+    
     print("\n\nPOOPOO:")
     print(poopoo)
     # renders template index.html
