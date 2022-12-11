@@ -5,22 +5,74 @@
 {% endblock %}
 
 {% block main %}
-<h2>{{keyData}}</h2>
-{% for row in keyData %}
-    <di class="row">
-        <div class="col">
-            <p>{{row["name"]}}</p>
-        </div>
-        <div class="col">
-            <p>{{row["2"]}}</p>
-        </div>
-        <div class="col">
-            <p>{{row["3"]}}</p>
-        </div>
-    </di>
-    
-    <p>name: {{row['name']}}</p>
-   
+
+
+{% for card in all %}
+<h1>{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}</h1>
+
+
 {% endfor %}
 
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/static/last5.png" class="d-block w-50" alt="...">
+      </div>
+      
+      
+    {% for card in all %}
+    <div class="card miniCard" style="width: 300px;" >
+        <img src="" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div class="d-flex flex-column mb-3">
+                <a href="" target="_blank" class="btn btn-primary mt-auto mb-2"></a>
+                <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-success mt-auto"></a>
+            </div>
+            <h5 class="card-title" style="font-weight:bold"></h5>
+            <div class="d-flex flex-column mb-3" id="card-text-container" style="max-height:10rem; overflow:hidden;">
+                <p class="card-text"></p>
+            </div>
+            <a id="show-more" style="display:none;">Show More</a>
+            <a id="show-less" style="display:none;">Show Less</a>
+        </div>
+      </div>
+    
+    {% endfor %}
+      
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
 {% endblock %}
+
+
+
+<!-- Blank Card -->
+<div class="card miniCard" style="width: 300px;" >
+  <img src="" class="card-img-top" alt="...">
+  <div class="card-body">
+      <div class="d-flex flex-column mb-3">
+          <a href="" target="_blank" class="btn btn-primary mt-auto mb-2"></a>
+          <a href="" target="_blank" class="btn btn-success mt-auto"></a>
+      </div>
+      <h5 class="card-title" style="font-weight:bold"></h5>
+      <div class="d-flex flex-column mb-3" id="card-text-container" style="max-height:10rem; overflow:hidden;">
+          <p class="card-text"></p>
+      </div>
+      <a id="show-more" style="display:none;">Show More</a>
+      <a id="show-less" style="display:none;">Show Less</a>
+  </div>
+</div>

@@ -1,6 +1,10 @@
 .deepWater{
     background: linear-gradient(0deg, rgba(0, 124, 125, 0.78) 0%, rgba(255,219,179,0.9472163865546218) 100%);
 }
+/* Forms */
+form {
+    background-color: #F7C5D2;
+}
 
 .main-form {
     width: 450px;
@@ -23,8 +27,55 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 0 4px #F7C5D2;
 }
 
-form {
-    background-color: #F7C5D2;
+
+a:hover {
+    color:#F7C5D2;
+}
+
+/* Card styling */
+
+#deck {
+    /* Other styles for the card deck */
+    padding: 0 20px; /* Add padding to the left and right of the card deck */
+    max-width: 600px; /* Set maximum width of the container */
+    margin: 0 auto; /* Center the container within the screen */
+    width: 600px; /* Set a width for the container that is larger than the combined width of all the cards */
+    white-space: nowrap; /* Prevent child elements from wrapping onto a new line */
+}
+
+.card {
+    background-color: #FFFFFF;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.selectedCard {
+    position: relative;
+    z-index: 1;
+    border: 5px solid #006363c7;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.miniCard {
+    min-width: 300px;
+    min-height: 600px;
+    width: 300px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.card-text-container {
+    white-space: pre-wrap;
+  }
+
+.profitable {
+    border: 3px solid chartreuse;
+}
+
+.notProfitable {
+    border: 3px solid tomato;
 }
 
 #show-more {
@@ -47,33 +98,8 @@ form {
     text-decoration: none;
 }
 
-a:hover {
-    color:#F7C5D2;
-}
 
-
-
-.card {
-    background-color: #FFFFFF;
-}
-
-.card-title {
-    font-weight: bold;
-}
-
-.selectedCard {
-    position: relative;
-    z-index: 1;
-    border: 5px solid #006363c7;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
-
-.miniCard {
-    min-width: 300px;
-    min-height: 600px;
-    margin: 10px;
-    overflow: hidden;
-}
+/* Carousel styling and positioning */ 
 
 .carousel {
     display: flex;
@@ -87,15 +113,6 @@ a:hover {
 .carousel-chevron {
     cursor: pointer;
     align-self: center;
-}
-
-#deck {
-    /* Other styles for the card deck */
-    padding: 0 20px; /* Add padding to the left and right of the card deck */
-    max-width: 600px; /* Set maximum width of the container */
-    margin: 0 auto; /* Center the container within the screen */
-    width: 600px; /* Set a width for the container that is larger than the combined width of all the cards */
-    white-space: nowrap; /* Prevent child elements from wrapping onto a new line */
 }
 
 .hidden {

@@ -44,3 +44,9 @@ INSERT INTO keyData (name, token, collection, price, bestWETH, gas)
 
 INSERT INTO moreData (keyid, suspicious, rarity, image, sudoswap)
     VALUES (5, 0, 1234, 'https://i.seadn.io/gae/q4las4qiXegL3dzl59jOobekevcUfdigmsoH3nzPbCRj-pSEYOk89ND56EfenSC3XW_a-08mBmIzCf32UUiaYUJx1QVNCCpe0amg?auto=format&w=1920', 1);
+
+
+
+UPDATE keyData
+SET bestWETH = 0.215
+WHERE collection = 'Plague';
