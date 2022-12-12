@@ -75,33 +75,36 @@
             }); 
     
             /* Issue here seems to be to do with .card-text-container height. Cant measure scroll height perhaps?
-                Arose after jinja loops */
-            const showMoreLinks = document.querySelectorAll('#show-more');
-            const showLessLinks = document.querySelectorAll('#show-less');
-            const cardTextContainers = document.querySelectorAll('.card-text-container');
+                Arose after jinja loops were added */
+                const parent = document.querySelector('.miniCard'); // select the parent element of the card-text-container elements
 
-            cardTextContainers.forEach((container) => {
-                const showMoreLink = container.previousElementSibling;
-                const showLessLink = container.nextElementSibling;
+                parent.addEventListener('DOMNodeInserted', event => {
+                const container = event.target; // the newly added element
 
-                if (container.scrollHeight > container.clientHeight) {
-                    showMoreLink.style.display = 'block';
+                if (container.classList.contains('miniCard')) {
+                    // the element has the card-text-container class, so attach the event listeners
+                    const showMore = container.nextElementSibling;
+                    const showLess = showMore.nextElementSibling;
+
+                    if (container.scrollHeight > container.clientHeight) {
+                    showMore.style.display = 'inline';
+                    }
+
+                    showMore.addEventListener('click', () => {
+                    container.style.height = 'auto';
+                    showMore.style.display = 'none';
+                    showLess.style.display = 'inline';
+                    });
+
+                    showLess.addEventListener('click', () => {
+                    container.style.height = '200px';
+                    showLess.style.display = 'none';
+                    showMore.style.display = 'inline';
+                    });
                 }
-
-                showMoreLink.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    container.style.maxHeight = 'none';
-                    showMoreLink.style.display = 'none';
-                    showLessLink.style.display = 'block';
                 });
 
-                showLessLink.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    container.style.maxHeight = '200px';
-                    showMoreLink.style.display = 'block';
-                    showLessLink.style.display = 'none';
-            });
-            });
+
 
         
             /*    Gift from our friend Eliza, needs modifying for database, it's too late to be starting that I'm going to bed 

@@ -34,12 +34,17 @@ a:hover {
 
 /* Card styling */
 
+#emptyCard,
+#featuredCard {
+    width:1000px; height:300px;
+}
+
 #deck {
     /* Other styles for the card deck */
     padding: 0 20px; /* Add padding to the left and right of the card deck */
     max-width: 600px; /* Set maximum width of the container */
     margin: 0 auto; /* Center the container within the screen */
-    width: 600px; /* Set a width for the container that is larger than the combined width of all the cards */
+    width: 1000px; /* Set a width for the container that is larger than the combined width of all the cards */
 }
 
 .card {
@@ -53,14 +58,16 @@ a:hover {
 .selectedCard {
     position: relative;
     z-index: 1;
-    border: 5px solid #006363c7;
+    border: 1px solid #eeaeca;
+    background-color: #006363c7;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    color: white;
 }
 
 .miniCard {
-    min-width: 300px;
-    min-height: 600px;
-    width: 300px;
+    min-width: 200px;
+    height: 420px;
+    width: 200px;
     margin: 10px;
     overflow: hidden;
 }
@@ -101,6 +108,8 @@ a:hover {
 .carousel {
     display: flex;
     overflow-x: auto;
+    width:1100px;
+    margin: 0 auto;
 }
 
 .carousel-item {
@@ -110,6 +119,11 @@ a:hover {
 .carousel-chevron {
     cursor: pointer;
     align-self: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    font-weight: bold;
 }
 
 .hidden {
