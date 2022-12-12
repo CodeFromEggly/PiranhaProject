@@ -40,7 +40,6 @@ a:hover {
     max-width: 600px; /* Set maximum width of the container */
     margin: 0 auto; /* Center the container within the screen */
     width: 600px; /* Set a width for the container that is larger than the combined width of all the cards */
-    white-space: nowrap; /* Prevent child elements from wrapping onto a new line */
 }
 
 .card {
@@ -66,9 +65,7 @@ a:hover {
     overflow: hidden;
 }
 
-.card-text-container {
-    white-space: pre-wrap;
-  }
+
 
 .profitable {
     border: 3px solid chartreuse;
