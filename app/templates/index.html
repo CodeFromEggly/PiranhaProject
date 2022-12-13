@@ -15,7 +15,7 @@
     <div id="featuredCard" class="card mb-3 mx-auto" style="background-color:antiquewhite;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="/static/theplague843.png" class="img-fluid rounded-start" style="height: 300px; width: auto" alt="This should pull collection name and token id">
+                <img src="" class="img-fluid rounded-start" style="height: 300px; width: auto" alt="This should pull collection name and token id">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -25,7 +25,7 @@
                         Best Collection Offer: 0.2Ξ  (Opensea)|  Best Trait Offer: 0.39Ξ (Looksrare)
                     </div>
                     <div class="d-flex align-items flex-column mb-auto">
-                        <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary"><span style="font-weight: bold;">Opensea</span><p style="font-size:smaller; margin-bottom: 0em;">Seen for 0.239Ξ  |  PNL: 0.1321Ξ (-12.5%)</p></a>
+                        <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary osLink"><span style="font-weight: bold;">Opensea</span><p style="font-size:smaller; margin-bottom: 0em;">Seen for 0.239Ξ  |  PNL: 0.1321Ξ (-12.5%)</p></a>
                         <a href="https://sudoswap.xyz/#/browse/pools/0x8c3FB10693B228E8b976FF33cE88f97Ce2EA9563" target="_blank" class="btn btn-secondary"><span style="font-weight: bold;">Sudoswap</span> if available, disabled if not: PNL: ...Ξ<p style="font-size:smaller; margin-bottom: 0em;">Top Pool Buys For: 0.204Ξ  | Sells For: 0.248Ξ | Liquidity In Pool: 8.748Ξ : 69 NFTs</p></a>
                         <div class="align-items-end" style="padding-top:20px">
                             <p class="card-text"><small class="text-muted p-2">Last updated 3 mins ago</small></p>
@@ -54,7 +54,7 @@
                         <img src="{{card['image']}}" class="card-img-top" alt="{{card['name']}}">
                         <div class="card-body">
                             <div class="button-group mt-auto d-flex flex-column mb-2">
-                                <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank" class="btn btn-primary">View on Opensea</a>
+                                <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank" class="btn btn-primary osLink">View on Opensea</a>
                                 <!--if card is profitable, make green, if not make red, can also do this with the border
                                     <a href="" target="_blank" class="btn btn-danger"></a> -->
                             </div>
