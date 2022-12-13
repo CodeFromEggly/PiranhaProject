@@ -57,7 +57,6 @@ cardTextContainers.forEach((container, index) => {
 
     showLessLink.addEventListener('click', (e) => {
         e.stopPropagation();
-        // This needs fixing, setting max height to a percentage messes with the 
         container.style.maxHeight = '100px';
         miniCard.style.maxHeight = '90%';
         showMoreLink.style.display = 'block';
