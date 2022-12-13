@@ -1,8 +1,8 @@
 /* Colour Palette */
 :root {
-    --primary-color:    #2A0944;      /* Dark         |  Header text, active highlight  */
+    --primary-color:    #003865;      /* Dark         |  Header text, active highlight  */
     --secondary-color:  #A10035;      /* Medium       |  Body Text                      */
-    --tertiary-color:   #FEC260;      /* Light        |  Icons                          */
+    --tertiary-color:   #3CCF4E;      /* Light        |  Icons                          */
     --accent-color:     #3FA796;      /* Medium       |  Inactive Highlight             */
     --extra-color:      #ECEFF1;      /* Near-White   |  Backgrounds, contrast          */
   }
