@@ -21,30 +21,29 @@ body {
     color: #1f1f1f;
 } 
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
     font-weight: bold;
     color: #006363c7;
     text-shadow: 0 0 4px #F7C5D2;
 }
 
+h4, h5, h6 {
+    font-weight: bold;
+    color: #006363c7;
+}
 
 a:hover {
     color:#F7C5D2;
 }
 
 /* Card styling */
-
-#emptyCard,
-#featuredCard {
-    width:1000px; height:300px;
-}
-
+ 
 #deck {
     /* Other styles for the card deck */
     padding: 0 20px; /* Add padding to the left and right of the card deck */
-    max-width: 600px; /* Set maximum width of the container */
+    max-width: 70%; /* Set maximum width of the container */
     margin: 0 auto; /* Center the container within the screen */
-    width: 1000px; /* Set a width for the container that is larger than the combined width of all the cards */
+    width: 70%; 
 }
 
 .card {
@@ -53,6 +52,11 @@ a:hover {
 
 .card-title {
     font-weight: bold;
+}
+
+#emptyCard,
+#featuredCard {
+    width:1000px; height:300px;
 }
 
 .selectedCard {
@@ -65,10 +69,14 @@ a:hover {
 }
 
 .miniCard {
-    min-width: 200px;
-    height: 420px;
-    width: 200px;
+    min-width: 33%;
+    min-height: 90%;
+    /*  Setting height to a px measurement prevents the show-more function working
+        setting it to a percentage causes the  */
+    height: 90%;
+    width: 33%;
     margin: 10px;
+    overflow: hidden;
 }
 
 .card-body {
@@ -116,7 +124,7 @@ a:hover {
     display: flex;
     overflow-x: auto;
     overflow-y: visible;
-    width:1100px;
+    width:60%;
     margin: 0 auto;
 }
 
@@ -136,4 +144,30 @@ a:hover {
 
 .hidden {
     display: none;
+}
+
+/* Columns */
+
+#left-column {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1%;
+    bottom: auto;
+    width: 10%;
+    height: 60%;
+    background-color: #006363c7;
+    border-radius: 10px;
+}
+
+#right-column {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1%;
+    bottom: 0;
+    width: 10%;
+    height: 60%;
+    background-color: #006363c7;
+    border-radius: 10px;
 }
