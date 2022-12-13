@@ -1,6 +1,7 @@
 .deepWater{
     background: linear-gradient(0deg, rgba(0, 124, 125, 0.78) 0%, rgba(255,219,179,0.9472163865546218) 100%);
 }
+
 /* Forms */
 form {
     background-color: #F7C5D2;
@@ -71,8 +72,6 @@ a:hover {
 .miniCard {
     min-width: 33%;
     min-height: 90%;
-    /*  Setting height to a px measurement prevents the show-more function working
-        setting it to a percentage causes the  */
     height: 90%;
     width: 33%;
     margin: 10px;
