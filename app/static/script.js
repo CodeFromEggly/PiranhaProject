@@ -1,4 +1,25 @@
+// DARK MODE
+var htmlElement = document.querySelector('html');
+var toggleButton = document.querySelector('#toggle-button');
+var darkMode = localStorage.getItem('dark-mode');
 
+if (darkMode === 'true') {
+  htmlElement.classList.add('dark-mode');
+  toggleButton.innerHTML = 'Light Mode';
+}
+
+toggleButton.addEventListener('click', function() {
+  if (htmlElement.classList.contains('dark-mode')) {
+    htmlElement.classList.remove('dark-mode');
+    toggleButton.innerHTML = 'Dark Mode';
+  } else {
+    htmlElement.classList.add('dark-mode');
+    toggleButton.innerHTML = 'Light Mode';
+    localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
+  }
+});
+
+// FEATURED CARD DISPLAY
 $(document).ready(function(){
     $("#featuredCard").css("display", "none");
     $(".miniCard").click(function(){
@@ -9,18 +30,12 @@ $(document).ready(function(){
         } else {
             $(".selectedCard").removeClass("selectedCard");
             $(this).addClass("selectedCard");
-            // Get the image src of the selected card
             var selectedCardImgSrc = $(this).find("img").attr("src");
-            // Get the inner HTML of the .card-title element of the selected card
             var selectedCardTitle = $(this).find(".card-title").html();
-            // Get the Opensea href of the selected card
             var selectedCardOsLink = $(this).find("a.osLink").attr("href");
 
-            // update the src of the featured card
             $("#featuredCard").find("img").attr("src", selectedCardImgSrc);
-            // Update the inner HTML of the #featuredCard element
             $("#featuredCard").find(".card-title").html(selectedCardTitle);
-            // Update the Opensea Link of the #featuredCard element
             $("#featuredCard").find("a.osLink").attr("href", selectedCardOsLink);
             $("#emptyCard").css("display", "none");
             $("#featuredCard").css("display", "block");
@@ -28,10 +43,7 @@ $(document).ready(function(){
     });
 }); 
 
-
-/* Issue has arisen since adding Jinja loop, could have mistakenly removed something important, show-more not auto displaying or modifying container height*/
-
-
+// SHOW MORE/LESS   -- Not applying to inactive slides, possibly the cardTextContainers select statement, indexing and then 'if' statement which only checks once
 const showMoreLinks = document.querySelectorAll('#show-more');
 const showLessLinks = document.querySelectorAll('#show-less');
 const cardTextContainers = document.querySelectorAll('.card-text-container');
@@ -62,6 +74,10 @@ cardTextContainers.forEach((container, index) => {
         showMoreLink.style.display = 'block';
         showLessLink.style.display = 'none';
     });
+
 });
+
+
+
 
 

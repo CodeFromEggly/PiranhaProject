@@ -2,13 +2,18 @@
 :root {
     --primary-color:    #003865;      /* Dark         |  Header text, active highlight  */
     --secondary-color:  #A10035;      /* Medium       |  Body Text                      */
-    --tertiary-color:   #3CCF4E;      /* Light        |  Icons                          */
+    --tertiary-color:   #cfa13c;      /* Light        |  Icons                          */
     --accent-color:     #3FA796;      /* Medium       |  Inactive Highlight             */
     --extra-color:      #ECEFF1;      /* Near-White   |  Backgrounds, contrast          */
   }
 
-
-  
+  .dark-mode {
+    --primary-color:    #3FA796;
+    --secondary-color:  #cfa13c;
+    --tertiary-color:   #ECEFF1;
+    --accent-color:     #A10035;
+    --extra-color:      #003865;
+  }
 
 /*  Basic Formatting 
     backgrounds, font styling etc. */
@@ -97,6 +102,8 @@ a:hover {
     width: 33%;
     margin: 10px;
     overflow: hidden;
+    background-color: var(--secondary-color);
+    color: var(--extra-color)
 }
 
 .card-body {
@@ -206,6 +213,6 @@ form {
 }
 
 .main-form {
-    width: 450px;
+    width: 40%;
     margin: auto;
 }

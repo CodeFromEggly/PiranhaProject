@@ -18,8 +18,10 @@ client.onItemListed('*', (event) => {
 });
 */
 
-// Find EVM gas right now. Uses Eth Gas Station API.
-// We use axios. All the homies hate fetch.
+
+/* Find gas */
+
+// Uses Eth Gas Station API.
 import axios from 'axios';
 const response = await axios('https://ethgasstation.info/api/ethgasAPI.json?');
 
@@ -28,6 +30,19 @@ let fastestGwei = (response.data["fastest"])/10;
 console.log(fastestGwei)
 
 
+
+/* Equation: */
+
+// For speed:
+let gasPrice = fastestGwei;
+
+predictedMargin = sellPrice - (cost + (2 * gasPrice) + marketRoyalties + collectionRoyalties);
+
+
+
+
+
+/* Filing listings */
 // On detect listings:
 
     // Add row to quickData table:
