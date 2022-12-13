@@ -72,7 +72,15 @@ a:hover {
     overflow: hidden;
 }
 
+.card-body {
+    overflow: visible;
+}
 
+.card-text-container {
+    max-height: 100px;
+    overflow: hidden;
+    white-space: pre-wrap;
+}
 
 .profitable {
     border: 3px solid chartreuse;

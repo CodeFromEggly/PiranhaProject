@@ -9,31 +9,27 @@ $(document).ready(function(){
         } else {
             $(".selectedCard").removeClass("selectedCard");
             $(this).addClass("selectedCard");
+            // get the image src of the selected card
+            var selectedCardImgSrc = $(this).find("img").attr("src");
+            // update the src of the featured card
+            $("#featuredCard").find("img").attr("src", selectedCardImgSrc);
             $("#emptyCard").css("display", "none");
             $("#featuredCard").css("display", "block");
-        }
-    });
-    $(document).on('change', function() {
-        if($("#deck .selectedCard").length > 0) {
-            $("#emptyCard").css("display", "none");
-            $("#featuredCard").css("display", "block");
-        } else {
-            $("#emptyCard").css("display", "block");
-            $("#featuredCard").css("display", "none");
         }
     });
 }); 
 
-/* Issue has arisen since adding Jinja loop, could have mistakenly removed something important, show-more not auto displaying or modifying container height
+
+/* Issue has arisen since adding Jinja loop, could have mistakenly removed something important, show-more not auto displaying or modifying container height*/
 
 
 const showMoreLinks = document.querySelectorAll('#show-more');
 const showLessLinks = document.querySelectorAll('#show-less');
 const cardTextContainers = document.querySelectorAll('.card-text-container');
 
-cardTextContainers.forEach((container) => {
-    const showMoreLink = container.previousElementSibling;
-    const showLessLink = container.nextElementSibling;
+cardTextContainers.forEach((container, index) => {
+    const showMoreLink = showMoreLinks[index];
+    const showLessLink = showLessLinks[index];
 
     if (container.scrollHeight > container.clientHeight) {
         showMoreLink.style.display = 'block';
@@ -41,17 +37,17 @@ cardTextContainers.forEach((container) => {
 
     showMoreLink.addEventListener('click', (e) => {
         e.stopPropagation();
-        container.style.maxHeight = 'none';
+        container.style.maxHeight = container.scrollHeight + 'px';
         showMoreLink.style.display = 'none';
         showLessLink.style.display = 'block';
     });
 
     showLessLink.addEventListener('click', (e) => {
         e.stopPropagation();
-        container.style.maxHeight = '200px';
+        container.style.maxHeight = '100px';
         showMoreLink.style.display = 'block';
         showLessLink.style.display = 'none';
-});
+    });
 });
 
-*/ 
+
