@@ -4,85 +4,117 @@
 --secondary-color:  #729DA6;     
 --tertiary-color:   #DE5350;     
 --accent-color:     #A69099;     
---extra-color:      #CED9D5;     
+--background:      #CED9D5;     
 
 --primary-color:    #1C2D29;
 --secondary-color:  #900409;
 --tertiary-color:   #399AB1;
 --accent-color:     #38372F;
---extra-color:      #A8DBCB;
+--background:      #A8DBCB;
 
 --primary-color:    #63373A; 
 --secondary-color:  #6395B0; 
 --tertiary-color:   #B0AF8F; 
 --accent-color:     #5A6971; 
---extra-color:      #A8DBCB; 
+--background:      #A8DBCB; 
+
+
+GREYS DARK -> LIGHT
+--grey-10: #17181A;
+--grey-30: #46484D;
+--grey-50: #747780;
+--grey-70: #A2A7B3;
+--grey-90: #D1D7E6;
 
 */
 
 /* COLOR PALETTES */
 /* Maybe need BG1 BG2 and TEXT1 TEXT2 */
     :root {
-        --primary-color:    #63373A;      /* Dark         |  HEADER TEXT/ACTIVE*/
-        --secondary-color:  #6395B0;      /* Medium       |  BODY TEXT*/
-        --tertiary-color:   #B0AF8F;      /* Light        |  ICONS*/
-        --accent-color:     #5A6971;      /* Medium       |  CONTRASING BG*/
-        --extra-color:      #A8DBCB;      /* Near-White   |  BACKGROUND*/
+
+        --grey-10:              #17181A;
+        --grey-30:              #46484D;
+        --grey-50:              #747780;
+        --grey-70:              #A2A7B3;
+        --grey-90:              #D1D7E6;
+
+        --brand-primary:        #288054;
+        --brand-secondary:      #2734CC;
+        --brand-alt:            #B8AF2C;
+
+
+
+
+        --primary:             var(--brand-primary);       /* BRAND */
+        --secondary:            var(--brand-secondary);     /* ACCENT */
+        --tertiary:             var(--brand-alt);           /**/
+        --background:           var(--grey-90);             /* WHITE/BLACK */
+        --background-subtle:    var(--grey-70);             /* EXTRA LOW CONTRAST */
+        --on-background-high:   var(--grey-10);             /* HIGH CONTRAST */
+        --on-background-med:    var(--grey-30);             /* MEDIUM CONTRAST */
+        --on-background-low:    var(--grey-50);             /* LOW CONTRAST */
+        --surface:              var(--grey-90);             /* EXTRA-EXTRA LOW CONTRAST */
+                 
     }
 
     /* Currently greyscale for contrast testing */
     .dark-mode {
-        --primary-color:    #1A1A1A;
-        --secondary-color:  #404040;
-        --tertiary-color:   #C9C9C9;
-        --accent-color:     #BDBDBD;
-        --extra-color:      #F2F2F2;
+
+        --primary:             var(--brand-primary);       /* BRAND */
+        --secondary:            var(--brand-secondary);     /* ACCENT */
+        --tertiary:             var(--brand-alt);           /**/
+        --background:           var(--grey-10);             /* WHITE/BLACK */
+        --background-subtle:    var(--grey-30);             /* EXTRA LOW CONTRAST */
+        --on-background-high:   var(--grey-90);             /* HIGH CONTRAST */
+        --on-background-med:    var(--grey-70);             /* MEDIUM CONTRAST */
+        --on-background-low:    var(--grey-50);             /* LOW CONTRAST */
+        --surface:              var(--grey-10);             /* EXTRA-EXTRA LOW CONTRAST */
     }
 
 /* NAVIGATION */
 
     .navbar {
-        background-color: var(--accent-color);
+        background-color: var(--on-background-med);
         /* background: linear-gradient(0deg, var(--secondary-color) 0%, var(--tertiary-color) 100%); */
     }
 
     .nav-link {
-        color: var(--primary-color) !important;
+        color: var(--primary-) !important;
     }
 
     .nav-link:hover {
-        color: var(--extra-color) !important;
+        color: var(--background) !important;
     }
 
     .nav-link.disabled {
-        color: var(--secondary-color) !important;
+        color: var(--on-background-low) !important;
     }
 
     a {
-        color: var(--accent-color)
+        color: var(--tertiary)
     }
 
     a:hover {
-        color: var(--primary-color);
+        color: var(--primary);
     }
 
 /*  BASIC FORMATTING */
 
     .bgMain {
-        background-color: var(--extra-color);
-        /* background: radial-gradient(circle, var(--extra-color) 0%, var(--tertiary-color) 100%); */ 
+        background-color: var(--background);
+        /* background: radial-gradient(circle, var(--background) 0%, var(--tertiary-color) 100%); */ 
     }
     
     body {
         font-family:monospace;
         font-size: smaller;
         letter-spacing: -1px;
-        color: var(--secondary-color);
+        color: var(--on-background-high);
     } 
     
     h4, h5, h6 {
         font-weight: bold;
-        color: var(--primary-color);
+        color: var(--secondary);
     }
     
 
@@ -97,7 +129,7 @@
     }
 
     .card {
-        background-color: var(--extra-color);
+        background-color: var(--background);
     }
 
     .card-title {
@@ -108,22 +140,8 @@
     #featuredCard {
         margin-top: 1%;
         width:1000px; height:300px;
-        background-color: var(--tertiary-color);
-        color: var(--primary-color)
-    }
-
-    .selectedCard {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-        border: 2px solid var(--primary-color) !important;
-        background-color: var(--accent-color) !important;
-        color: var(--extra-color) !important;
-        transform: scale(1.02);
-    }
-
-    .selectedCard h6 {
-        color: var(--extra-color) !important;
+        background-color: var(--on-background-med);
+        color: var(--primary)
     }
 
     .miniCard {
@@ -133,14 +151,14 @@
         width: 25%;
         margin: 10px;
         overflow: hidden;
-        background-color: var(--tertiary-color);
-        color: var(--primary-color);
+        background-color: var(--on-background-low);
+        color: var(--on-background-high);
         transition: transform 0.15s linear;
     }
 
     .miniCard:hover {
         transform: scale(1.02);
-        border: solid 1px var(--secondary-color);
+        border: solid 1px var(--secondary);
     }
 
     .card-body {
@@ -153,14 +171,28 @@
         white-space: pre-wrap;
     }
 
+    .selectedCard {
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        border: 2px solid var(--primary) !important;
+        background-color: var(--on-background-med) !important;
+        color: var(--secondary) !important;
+        transform: scale(1.02);
+    }
+
+    .selectedCard h6 {
+        color: var(--primary) !important;
+    }
+
     #show-more,
     #show-less {
-        color: var(--secondary-color);
+        color: var(--secondary);
         text-decoration: none;
     }
     #show-more:hover,
     #show-less:hover {
-        color: var(--extra-color);
+        color: var(--background);
         text-decoration: underline;
     }
 
@@ -190,21 +222,21 @@
     .carousel-chevron {
         cursor: pointer;
         align-self: center;
-        color: var(--primary-color) !important;
+        color: var(--primary) !important;
         
     }
 
     .carousel-control-prev,
     .carousel-control-next {
         font-weight: bold;
-        color: var(--primary-color);
+        color: var(--on-background-high);
         width: 7%;
     }
 
     .carousel-control-prev:hover,
     .carousel-control-next:hover {
         font-weight: bold;
-        color: var(--secondary-color);
+        color: var(--secondary);
     }
 
 /* SIDEBAR COLUMNS */
@@ -218,7 +250,8 @@
         bottom: auto;
         width: 10%;
         height: 60%;
-        background-color: var(--accent-color);
+        background-color: var(--background-subtle);
+        border: solid 2px var(--primary);
         border-radius: 10px;
     }
 
@@ -231,15 +264,16 @@
         bottom: 0;
         width: 10%;
         height: 60%;
-        background-color: var(--accent-color);
-        color: var(--extra-color);
+        color: var(--on-background-high);
+        background-color: var(--background-subtle);
+        border: solid 2px var(--primary);  
         border-radius: 10px;
     }
 
 /* Forms */
 form {
-        background-color: var(--accent-color);
-        color: var(--extra-color);
+        background-color: var(--on-background-med);
+        color: var(--on-background-high);
         padding: 1%;
     }
 
