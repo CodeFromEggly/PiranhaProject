@@ -119,6 +119,7 @@
         border: 2px solid var(--primary-color) !important;
         background-color: var(--accent-color) !important;
         color: var(--extra-color) !important;
+        transform: scale(1.02);
     }
 
     .selectedCard h6 {
@@ -189,12 +190,15 @@
     .carousel-chevron {
         cursor: pointer;
         align-self: center;
+        color: var(--primary-color) !important;
+        
     }
 
     .carousel-control-prev,
     .carousel-control-next {
         font-weight: bold;
         color: var(--primary-color);
+        width: 7%;
     }
 
     .carousel-control-prev:hover,
