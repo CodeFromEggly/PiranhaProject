@@ -44,7 +44,6 @@ GREYS DARK -> LIGHT
 
 
 
-
         --primary:             var(--brand-primary);       /* BRAND */
         --secondary:            var(--brand-secondary);     /* ACCENT */
         --tertiary:             var(--brand-alt);           /**/
@@ -57,7 +56,6 @@ GREYS DARK -> LIGHT
                  
     }
 
-    /* Currently greyscale for contrast testing */
     .dark-mode {
 
         --primary:             var(--brand-primary);       /* BRAND */
@@ -114,7 +112,7 @@ GREYS DARK -> LIGHT
     
     h4, h5, h6 {
         font-weight: bold;
-        color: var(--secondary);
+        color: var(--primary);
     }
     
 
@@ -141,7 +139,7 @@ GREYS DARK -> LIGHT
         margin-top: 1%;
         width:1000px; height:300px;
         background-color: var(--on-background-med);
-        color: var(--primary)
+        color: var(--primary);
     }
 
     .miniCard {
@@ -151,7 +149,7 @@ GREYS DARK -> LIGHT
         width: 25%;
         margin: 10px;
         overflow: hidden;
-        background-color: var(--on-background-low);
+        background-color: var(--background-subtle);
         color: var(--on-background-high);
         transition: transform 0.15s linear;
     }
@@ -177,7 +175,7 @@ GREYS DARK -> LIGHT
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
         border: 2px solid var(--primary) !important;
         background-color: var(--on-background-med) !important;
-        color: var(--secondary) !important;
+        color: var(--surface) !important;
         transform: scale(1.02);
     }
 
@@ -272,9 +270,10 @@ GREYS DARK -> LIGHT
 
 /* Forms */
 form {
-        background-color: var(--on-background-med);
+        background-color: var(--on-background-low);
         color: var(--on-background-high);
         padding: 1%;
+        border-radius: 10px;
     }
 
     .main-form {
