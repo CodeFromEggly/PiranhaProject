@@ -42,7 +42,8 @@ def index():
     # Provide all the data for last 10 entries
     all = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid LEFT JOIN collections ON keyData.collection = collections.name ORDER BY keyData.timestamp DESC LIMIT(10)").fetchall()
     for row in all: row = dict(row)
-    for row in all: print(row)
+    #for row in all: print(row)
+
     # The graph in emptyCard div wants data on the card name, when it was detected, and its price. FUTURE: [basic margin (price - best WETH)] FUTURE: [PROFIT MARGIN]
     graphData = db.execute("SELECT name, timestamp, price FROM keyData ORDER BY timestamp DESC limit(10)").fetchall()
     for row in graphData: row = dict(row)
@@ -93,31 +94,31 @@ def conditions():
 
 @app.route("/poop")
 def poop():
-    # Displays 5 most recent NFTs nibbled
-
+    # Graphs at the moment
     #SQLite3 query to detect listings.
     conn = sqlite3.connect('piranha.db')
     conn.row_factory = sqlite3.Row
     db = conn.cursor()
 
-    
-    # Provide key data from 5 most recent detections
-    keyData = db.execute("SELECT * FROM keyData ORDER BY timestamp DESC LIMIT(5)").fetchall()
-    for row in keyData: row = dict(row)
-    
+    graphData = [40,  75, 110, 85, 90, 111, 50]
+    graphData = db.execute("SELECT name, timestamp, price FROM keyData ORDER BY timestamp DESC limit(10)").fetchall()
+    for row in graphData: row = dict(row)
+    for row in graphData: row = print(row)
+    # The graph wants x, y data arrays and labels for each point. Also converts from being a sqlite3.Row object
+    x = []
+    y = []
+    labels = []
+    for row in graphData:
+        x.append(row['timestamp'])
+        y.append(row['price'])
+        labels.append(row['name'])
 
-    poopoo = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid LEFT JOIN collections ON keyData.collection = collections.name").fetchall()
-    for row in poopoo: row = dict(row)
-    
-    collections = db.execute("SELECT * FROM collections WHERE name IN (SELECT id FROM keyData ORDER BY timestamp DESC LIMIT(5))").fetchall()
-    for row in collections: row = dict(row)
+    # Re-write graphData to contain the arrays that we want to plot
+    graphData = [x, y, labels]
 
-   
+    for row in graphData: print(row)
 
-    print("\n\nPOOPOO:")
-    print(poopoo)
-    # renders template index.html
-    return render_template("poop.html", keyData=keyData, all=poopoo)
+    return render_template("poop.html", graphData=graphData)
 
 
 
