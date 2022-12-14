@@ -42,9 +42,25 @@ def index():
     # Provide all the data for last 10 entries
     all = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid LEFT JOIN collections ON keyData.collection = collections.name ORDER BY keyData.timestamp DESC LIMIT(10)").fetchall()
     for row in all: row = dict(row)
+    for row in all: print(row)
+    # The graph in emptyCard div wants data on the card name, when it was detected, and its price. FUTURE: [basic margin (price - best WETH)] FUTURE: [PROFIT MARGIN]
+    graphData = db.execute("SELECT name, timestamp, price FROM keyData ORDER BY timestamp DESC limit(10)").fetchall()
+    for row in graphData: row = dict(row)
+    # The grpah wants x, y data arrays and labels for each point
+    x = []
+    y = []
+    labels = []
+    for row in graphData:
+        x.append(row['timestamp'])
+        y.append(row['price'])
+        labels.append(row['name'])
+
+    # Re-write graphData to contain the arrays that we want to plot
+    graphData = [x, y, labels]
+
 
     # renders template index.html
-    return render_template("index.html", all=all)
+    return render_template("index.html", all=all, graphData=graphData)
 
 
 @app.route("/conditions", methods=["GET", "POST"])

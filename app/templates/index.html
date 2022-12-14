@@ -1,18 +1,32 @@
 {% extends "layout.html" %}
 
-{% block title %}
-    Piranha Home
-      
+
+
+{% block head %}
+        <title>Piranha Home</title>>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 {% endblock %}
+
 
 {% block main %}
 
 
 <div id="left-column"></div>
     <!-- 'Featured card' to go at top, can display more values than most cards and change as cards are selected-->
-    <div id="emptyCard" class="card mb-3 mx-auto justify-content-center">
-        <h1> 3=============================================D Nyoom ~~</h1>
+    
+    <div id="emptyCard" class="js-plotly-plot mb-3 mx-auto justify-content-center">
     </div>
+    <script>        
+        var xArray = [50,60,70,80,90,100,110,120,130,140,150];
+        var yArray = new Array(xArray.length).fill(1);
+        var data = [{x:xArray, y:yArray, mode:"markers", type:"scatter"}];
+        var layout = {
+        xaxis: {range: [40, 160], title: "Square Meters"},
+        yaxis: {range: [0, 2], title: "Price in Millions"},
+        title: "Example Graph"
+        };
+        Plotly.newPlot("emptyCard", data, layout);
+    </script>
     <div id="featuredCard" class="card mb-3 mx-auto">
         <div class="row g-0">
             <div class="col-md-4">
