@@ -13,10 +13,10 @@
     <div id="emptyCard" class="card mb-3 mx-auto justify-content-center">
         <h1> 3=============================================D Nyoom ~~</h1>
     </div>
-    <div id="featuredCard" class="card mb-3 mx-auto" style="background-color:antiquewhite;">
+    <div id="featuredCard" class="card mb-3 mx-auto">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="" class="img-fluid rounded-start" style="height: 300px; width: auto" alt="This should pull collection name and token id">
+                <img src="" class="img-fluid rounded-start" style="height: 89.8%; width: auto" alt="This should pull collection name and token id">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -42,14 +42,14 @@
 
     <div id="cardCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
         <div class="carousel-inner">
-            {% for i in range(0, all|length, 3) %}
+            {% for i in range(0, all|length, 4) %}
                 {% if loop.first %}
                     <div class="carousel-item active">
                 {% else %}
                     <div class="carousel-item">
                 {% endif %}
                 <div id="deck" class="card-columns d-flex justify-content-center">
-                {% for card in all[i:i+3] %}
+                {% for card in all[i:i+4] %}
                     <!--if card is profitable, add .profitable class? and if not add .notProfitable class for styling -->
                     <div class="card miniCard">
                         <img src="{{card['image']}}" class="card-img-top" alt="{{card['name']}}">

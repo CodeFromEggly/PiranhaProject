@@ -12,6 +12,7 @@ toggleButton.addEventListener('click', function() {
   if (htmlElement.classList.contains('dark-mode')) {
     htmlElement.classList.remove('dark-mode');
     toggleButton.innerHTML = 'Dark Mode';
+    localStorage.removeItem('dark-mode');
   } else {
     htmlElement.classList.add('dark-mode');
     toggleButton.innerHTML = 'Light Mode';
