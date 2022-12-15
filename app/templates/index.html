@@ -11,33 +11,34 @@
 {% block main %}
 
 
-<div id="left-column"></div>
+<div id="left-column" ></div>
     <!-- 'Featured card' to go at top, can display more values than most cards and change as cards are selected-->
-    
-    <!-- a graph of detections/time is shown when a featured card isnt-->
-    <div id="emptyCard" class="js-plotly-plot mb-3 mx-auto justify-content-center">
-    </div>
-    <!-- If i create this variable first thenj graph.js can use it-->
-    <script>var graphData = JSON.parse('{{ graphData | tojson}}');</script>
-    <script src="/static/graph.js"></script>
+    <div id="featuredDiv" class="mx-auto">
+        <!-- a graph of detections/time is shown when a featured card isnt-->
+        <div id="emptyCard" class="js-plotly-plot mb-3 mx-auto justify-content-center">
+        </div>
+        <!-- If i create this variable first thenj graph.js can use it-->
+        <script>var graphData = JSON.parse('{{ graphData | tojson}}');</script>
+        <script src="/static/graph.js"></script>
 
-    <div id="featuredCard" class="card mb-3 mx-auto" style="display: none;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="" class="img-fluid rounded-start" style="height: 89.3%; width: auto" alt="This should pull collection name and token id">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">'Selected' Card</h5>
-                    <div class="card-text" style="white-space: wrap;">Buy price, WETH offers on different marketplaces, potential P&L etc<br>
-                        Global Collection Floor: 0.24Ξ (Blur)| Global Trait Floor: 0.9Ξ (Blur)<br>
-                        Best Collection Offer: 0.2Ξ  (Opensea)|  Best Trait Offer: 0.39Ξ (Looksrare)
-                    </div>
-                    <div class="d-flex align-items flex-column mb-auto">
-                        <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary osLink"><span style="font-weight: bold;">Opensea</span><p style="font-size:smaller; margin-bottom: 0em;">Seen for 0.239Ξ  |  PNL: 0.1321Ξ (-12.5%)</p></a>
-                        <a href="https://sudoswap.xyz/#/browse/pools/0x8c3FB10693B228E8b976FF33cE88f97Ce2EA9563" target="_blank" class="btn btn-secondary disabled"><span style="font-weight: bold;">Sudoswap</span> if available, disabled if not: PNL: ...Ξ<p style="font-size:smaller; margin-bottom: 0em;">Top Pool Buys For: 0.204Ξ  | Sells For: 0.248Ξ | Liquidity In Pool: 8.748Ξ : 69 NFTs</p></a>
-                        <div class="align-items-end" style="padding-top:20px">
-                            <p class="card-text"><small class="text-muted p-2">Last updated 3 mins ago</small></p>
+        <div id="featuredCard" class="card mb-3 mx-auto" style="display: none;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="" class="img-fluid rounded-start" style="height: 89.3%; width: auto" alt="This should pull collection name and token id">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">'Selected' Card</h5>
+                        <div class="card-text" style="white-space: wrap;">Buy price, WETH offers on different marketplaces, potential P&L etc<br>
+                            Global Collection Floor: 0.24Ξ (Blur)| Global Trait Floor: 0.9Ξ (Blur)<br>
+                            Best Collection Offer: 0.2Ξ  (Opensea)|  Best Trait Offer: 0.39Ξ (Looksrare)
+                        </div>
+                        <div class="d-flex align-items flex-column mb-auto">
+                            <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary osLink"><span style="font-weight: bold;">Opensea</span><p style="font-size:smaller; margin-bottom: 0em;">Seen for 0.239Ξ  |  PNL: 0.1321Ξ (-12.5%)</p></a>
+                            <a href="https://sudoswap.xyz/#/browse/pools/0x8c3FB10693B228E8b976FF33cE88f97Ce2EA9563" target="_blank" class="btn btn-secondary disabled"><span style="font-weight: bold;">Sudoswap</span> if available, disabled if not: PNL: ...Ξ<p style="font-size:smaller; margin-bottom: 0em;">Top Pool Buys For: 0.204Ξ  | Sells For: 0.248Ξ | Liquidity In Pool: 8.748Ξ : 69 NFTs</p></a>
+                            <div class="align-items-end" style="padding-top:20px">
+                                <p class="card-text"><small class="text-muted p-2">Last updated 3 mins ago</small></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -80,11 +81,11 @@
     {% endfor %}
             
         </div>
-        <button class="carousel-control-prev carouselCont" href="#cardCarousel" role="button" data-slide="prev">
+        <button class="carousel-control-prev carouselCtrl" href="#cardCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Prev</span>
         </button>
-        <button class="carousel-control-next carouselCont" href="#cardCarousel" role="button" data-slide="next">
+        <button class="carousel-control-next carouselCtrl" href="#cardCarousel" role="button" data-slide="next">
             <span class="sr-only">Next</span>
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>

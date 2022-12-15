@@ -26,19 +26,34 @@ GREYS DARK -> LIGHT
 --grey-70: #A2A7B3;
 --grey-90: #D1D7E6;
 
+
+--grey-mn:              #070708;
+--grey-10:              #17181A;
+--grey-20:              #2D2F33;
+--grey-30:              #46484D;
+--grey-50:              #747780;
+--grey-70:              #A2A7B3;
+--grey-80:              #B4BCCC;
+--grey-90:              #D1D7E6;
+--grey-mx:              #E0EBFF;
 */
 
 /* COLOR PALETTES */
 /* Maybe need BG1 BG2 and TEXT1 TEXT2 */
     :root {
 
-        --grey-10:              #17181A;
-        --grey-20:              #2D2F33;
-        --grey-30:              #46484D;
-        --grey-50:              #747780;
-        --grey-70:              #A2A7B3;
-        --grey-80:              #B4BCCC;
-        --grey-90:              #D1D7E6;
+    
+        --grey-mn:              #0C0D0D;
+        --grey-10:              #19191A;
+        --grey-20:              #313333;
+        --grey-30:              #4A4C4D;
+        --grey-40:              #636566;
+        --grey-50:              #7C7F80;
+        --grey-60:              #949899;
+        --grey-70:              #B0B4B5;
+        --grey-80:              #C8CDCF;
+        --grey-90:              #E1E6E8;
+        --grey-mx:              #F7FDFF;
 
         --brand-primary:        #288054;
         --brand-secondary:      #2734CC;
@@ -54,7 +69,7 @@ GREYS DARK -> LIGHT
         --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
         --background-subtle:    var(--grey-70);             /* EXTRA LOW CONTRAST       */
         --surface:              var(--grey-80);             /* EXTRA-EXTRA LOW CONTRAST */
-        --background:           var(--grey-90);             /* WHITE/BLACK              */
+        --background:           var(--grey-mx);             /* WHITE/BLACK              */
                  
     }
 
@@ -68,14 +83,15 @@ GREYS DARK -> LIGHT
         --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
         --background-subtle:    var(--grey-30);             /* EXTRA LOW CONTRAST       */
         --surface:              var(--grey-20);             /* EXTRA-EXTRA LOW CONTRAST */
-        --background:           var(--grey-10);             /* WHITE/BLACK              */
+        --background:           var(--grey-mn);             /* WHITE/BLACK              */
     }
 
 /* NAVIGATION */
 
     .navbar {
-        background-color: var(--on-background-med);
-        /* background: linear-gradient(0deg, var(--secondary-color) 0%, var(--tertiary-color) 100%); */
+        /*background-color: var(--on-background-low);*/
+        border-bottom: 2px solid var(--secondary);
+        background: linear-gradient(0deg, var(--on-background-low) 0%, var(--background-subtle) 100%);
     }
 
     .nav-link {
@@ -87,7 +103,7 @@ GREYS DARK -> LIGHT
     }
 
     .nav-link.disabled {
-        color: var(--on-background-low) !important;
+        color: var(--on-background-med) !important;
     }
 
     a {
@@ -102,7 +118,7 @@ GREYS DARK -> LIGHT
 
     .bgMain {
         background-color: var(--background);
-        /* background: radial-gradient(circle, var(--background) 0%, var(--tertiary-color) 100%); */ 
+        background: radial-gradient(circle, var(--background) 0%, var(--surface) 100%);
     }
     
     body {
@@ -119,7 +135,22 @@ GREYS DARK -> LIGHT
     
 
 /* CARDS & CARD DECKS */
- 
+
+    #featuredDiv {
+        width:55%;
+        height:40%;
+        background-color: var(--background-subtle);
+    }
+
+    #emptyCard,
+    #featuredCard {
+        margin-top: 1%;
+        width:1000px; height:300px;
+        background: linear-gradient(0deg, var(--background-subtle) 0%, var(--on-background-low) 100%);
+        color: var(--on-background-high);
+        border: 2px solid var(--on-background-high);
+    }
+
     #deck {
         /* Other styles for the card deck */
         padding: 0 20px; 
@@ -135,15 +166,7 @@ GREYS DARK -> LIGHT
     .card-title {
         font-weight: bold;
     }
-
-    #emptyCard,
-    #featuredCard {
-        margin-top: 1%;
-        width:1000px; height:300px;
-        background-color: var(--on-background-med);
-        color: var(--primary);
-    }
-
+    
     .miniCard {
         min-width: 25%;
         min-height: 90%;
@@ -151,7 +174,7 @@ GREYS DARK -> LIGHT
         width: 25%;
         margin: 10px;
         overflow: hidden;
-        background-color: var(--surface);
+        background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
         color: var(--on-background-high);
         transition: transform 0.15s linear;
     }
@@ -174,7 +197,7 @@ GREYS DARK -> LIGHT
         z-index: 1;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
         border: 2px solid var(--primary) !important;
-        background-color: var(--on-background-med) !important;
+        background: linear-gradient(0deg, var(--on-background-low) 0%, var(--on-background-med) 100%) !important;
         color: var(--surface) !important;
         transform: scale(1.02);
     }
@@ -219,22 +242,26 @@ GREYS DARK -> LIGHT
 
     .carousel-chevron {
         cursor: pointer;
-        align-self: center;
+        align-self: center;      
+    }
+
+    .carouselCtrl {
+        color: var(--on-background-med) !important;
+    }
+    .carouselCtrl:hover {
         color: var(--primary) !important;
-        
     }
 
     .carousel-control-prev,
     .carousel-control-next {
         font-weight: bold;
-        color: var(--on-background-high);
+        color: var(--on-background-high) !important;
         width: 7%;
     }
 
     .carousel-control-prev:hover,
     .carousel-control-next:hover {
-        font-weight: bold;
-        color: var(--secondary);
+        color: var(--secondary) !important;
     }
 
 /* SIDEBAR COLUMNS */
@@ -248,8 +275,8 @@ GREYS DARK -> LIGHT
         bottom: auto;
         width: 10%;
         height: 60%;
-        background-color: var(--background-subtle);
-        border: solid 2px var(--primary);
+        background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
+        border: solid 1px var(--secondary);
         border-radius: 10px;
     }
 
@@ -263,8 +290,8 @@ GREYS DARK -> LIGHT
         width: 10%;
         height: 60%;
         color: var(--on-background-high);
-        background-color: var(--background-subtle);
-        border: solid 2px var(--primary);  
+        background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
+        border: solid 1px var(--secondary);  
         border-radius: 10px;
     }
 

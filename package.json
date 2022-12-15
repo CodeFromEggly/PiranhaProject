@@ -25,6 +25,7 @@
   "dependencies": {
     "@opensea/stream-js": "^0.0.21-rc.1",
     "axios": "^1.2.1",
+    "bootstrap-icons": "^1.10.2",
     "express": "^4.18.2",
     "node-fetch": "^3.3.0",
     "nodemailer": "^6.8.0",

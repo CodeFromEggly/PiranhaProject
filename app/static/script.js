@@ -42,6 +42,11 @@ $(document).ready(function(){
             $("#featuredCard").css("display", "block");
         }
     });
+    
+    // Add event.stopPropagation() method call here
+    $(".button-group").click(function(event) {
+      event.stopPropagation();
+  });
 }); 
 
 // SHOW MORE/LESS   -- Not applying to inactive slides, possibly the cardTextContainers select statement, indexing and then 'if' statement which only checks once
