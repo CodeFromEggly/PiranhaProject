@@ -33,9 +33,11 @@ GREYS DARK -> LIGHT
     :root {
 
         --grey-10:              #17181A;
+        --grey-20:              #2D2F33;
         --grey-30:              #46484D;
         --grey-50:              #747780;
         --grey-70:              #A2A7B3;
+        --grey-80:              #B4BCCC;
         --grey-90:              #D1D7E6;
 
         --brand-primary:        #288054;
@@ -44,7 +46,7 @@ GREYS DARK -> LIGHT
 
 
 
-        --primary:             var(--brand-primary);       /* BRAND */
+        --primary:              var(--brand-primary);       /* BRAND */
         --secondary:            var(--brand-secondary);     /* ACCENT */
         --tertiary:             var(--brand-alt);           /**/
         --background:           var(--grey-90);             /* WHITE/BLACK */
@@ -52,13 +54,13 @@ GREYS DARK -> LIGHT
         --on-background-high:   var(--grey-10);             /* HIGH CONTRAST */
         --on-background-med:    var(--grey-30);             /* MEDIUM CONTRAST */
         --on-background-low:    var(--grey-50);             /* LOW CONTRAST */
-        --surface:              var(--grey-90);             /* EXTRA-EXTRA LOW CONTRAST */
+        --surface:              var(--grey-80);             /* EXTRA-EXTRA LOW CONTRAST */
                  
     }
 
     .dark-mode {
 
-        --primary:             var(--brand-primary);       /* BRAND */
+        --primary:              var(--brand-primary);       /* BRAND */
         --secondary:            var(--brand-secondary);     /* ACCENT */
         --tertiary:             var(--brand-alt);           /**/
         --background:           var(--grey-10);             /* WHITE/BLACK */
@@ -66,7 +68,7 @@ GREYS DARK -> LIGHT
         --on-background-high:   var(--grey-90);             /* HIGH CONTRAST */
         --on-background-med:    var(--grey-70);             /* MEDIUM CONTRAST */
         --on-background-low:    var(--grey-50);             /* LOW CONTRAST */
-        --surface:              var(--grey-10);             /* EXTRA-EXTRA LOW CONTRAST */
+        --surface:              var(--grey-20);             /* EXTRA-EXTRA LOW CONTRAST */
     }
 
 /* NAVIGATION */
@@ -119,12 +121,17 @@ GREYS DARK -> LIGHT
 /* CARDS & CARD DECKS */
  
     #deck {
-        /* Other styles for the card deck */
-        padding: 0 20px; 
+        border-radius: 10px;
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: space-evenly;
+        padding: 0 auto; 
         max-width: 70%; 
         margin: 0 auto; 
         width: 70%; 
+        background-color: var(--background-subtle);
     }
+  
 
     .card {
         background-color: var(--background);
@@ -143,16 +150,14 @@ GREYS DARK -> LIGHT
     }
 
     .miniCard {
-        min-width: 25%;
-        min-height: 90%;
-        height: 90%;
-        width: 25%;
-        margin: 10px;
+        flex: 0 0 23%;
         overflow: hidden;
-        background-color: var(--background-subtle);
+        margin: 12px;
+        background-color: var(--surface);
         color: var(--on-background-high);
         transition: transform 0.15s linear;
-    }
+      }
+      
 
     .miniCard:hover {
         transform: scale(1.02);

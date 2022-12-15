@@ -21,7 +21,7 @@
     <script>var graphData = JSON.parse('{{ graphData | tojson}}');</script>
     <script src="/static/graph.js"></script>
 
-    <div id="featuredCard" class="card mb-3 mx-auto">
+    <div id="featuredCard" class="card mb-3 mx-auto" style="display: none;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="" class="img-fluid rounded-start" style="height: 89.3%; width: auto" alt="This should pull collection name and token id">
@@ -44,54 +44,30 @@
             </div>
         </div>
     </div>
+    <hr width="50%" class="mx-auto">
     <div style="text-align:center">
         <h4>Listings Spotted:</h4>
     </div>
 
-    <div id="cardCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-        <div class="carousel-inner">
-            {% for i in range(0, all|length, 4) %}
-                {% if loop.first %}
-                    <div class="carousel-item active">
-                {% else %}
-                    <div class="carousel-item">
-                {% endif %}
-                <div id="deck" class="card-columns d-flex justify-content-center">
-                {% for card in all[i:i+4] %}
-                    <!--if card is profitable, add .profitable class? and if not add .notProfitable class for styling -->
-                    <div class="card miniCard">
-                        <img src="{{card['image']}}" class="card-img-top" alt="{{card['name']}}">
-                        <div class="card-body">
-                            <div class="button-group mt-auto d-flex flex-column mb-2">
-                                <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank" class="btn btn-primary osLink">View on Opensea</a>
-                                <!--if card is profitable, make green, if not make red, can also do this with the border
-                                    <a href="" target="_blank" class="btn btn-danger"></a> -->
-                            </div>
-                            <h6 class="card-title" style="font-weight:bold">{{card['name']}}</h6>
-                            <div class="card-text-container">NFT info, prices etc
-                                {{card['slug']}} {{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}
-                                Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </div>
-                            <a id="show-more" style="display: none;">Show More</a>
-                            <a id="show-less" style="display: none;">Show Less</a>
-                        </div>
-                    </div>
-                {% endfor %}
+    <div id="deck">
+        {% for card in all %}
+          <div class="card miniCard">
+            <img src="{{card['image']}}" class="card-img-top" alt="{{card['name']}}">
+            <div class="card-body">
+              <div class="button-group mt-auto d-flex flex-column mb-2">
+                <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank" class="btn btn-primary osLink">View on Opensea</a>
+              </div>
+              <h6 class="card-title" style="font-weight:bold">{{card['name']}}</h6>
+              <div class="card-text-container">NFT info, prices etc
+                {{card['slug']}} {{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}
+                Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+              <a id="show-more" style="display: none;">Show More</a>
+              <a id="show-less" style="display: none;">Show Less</a>
             </div>
-        </div>
-    {% endfor %}
-            
-        </div>
-        <button class="carousel-control-prev carouselCont" href="#cardCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Prev</span>
-        </button>
-        <button class="carousel-control-next carouselCont" href="#cardCarousel" role="button" data-slide="next">
-            <span class="sr-only">Next</span>
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-        </div>
-    </div>
+          </div>
+        {% endfor %}
+      </div>
 
 <div id="right-column">Basic Sidebar Div</div>
 
