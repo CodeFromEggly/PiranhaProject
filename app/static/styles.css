@@ -121,17 +121,12 @@ GREYS DARK -> LIGHT
 /* CARDS & CARD DECKS */
  
     #deck {
-        border-radius: 10px;
-        display: flex; 
-        flex-wrap: wrap; 
-        justify-content: space-evenly;
-        padding: 0 auto; 
+        /* Other styles for the card deck */
+        padding: 0 20px; 
         max-width: 70%; 
         margin: 0 auto; 
         width: 70%; 
-        background-color: var(--background-subtle);
     }
-  
 
     .card {
         background-color: var(--background);
@@ -150,14 +145,16 @@ GREYS DARK -> LIGHT
     }
 
     .miniCard {
-        flex: 0 0 23%;
+        min-width: 25%;
+        min-height: 90%;
+        height: 90%;
+        width: 25%;
+        margin: 10px;
         overflow: hidden;
-        margin: 12px;
         background-color: var(--surface);
         color: var(--on-background-high);
         transition: transform 0.15s linear;
-      }
-      
+    }
 
     .miniCard:hover {
         transform: scale(1.02);
