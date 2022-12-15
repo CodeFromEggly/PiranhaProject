@@ -45,6 +45,9 @@ $(document).ready(function(){
 }); 
 
 // SHOW MORE/LESS   -- Not applying to inactive slides, possibly the cardTextContainers select statement, indexing and then 'if' statement which only checks once
+// Disabled until useful 
+
+/*
 const showMoreLinks = document.querySelectorAll('#show-more');
 const showLessLinks = document.querySelectorAll('#show-less');
 const cardTextContainers = document.querySelectorAll('.card-text-container');
@@ -78,7 +81,9 @@ cardTextContainers.forEach((container, index) => {
 
 });
 
+Container max height must match showLessLink
+HTML NEEDED:
 
-
-
-
+<a id="show-more" style="display: none;">Show More</a>
+<a id="show-less" style="display: none;">Show Less</a>
+*/
