@@ -55,15 +55,15 @@ GREYS DARK -> LIGHT
         --grey-90:              #E1E6E8;
         --grey-mx:              #F7FDFF;
 
-        --brand-primary:        #288054;
-        --brand-secondary:      #2734CC;
-        --brand-alt:            #B8AF2C;
+        --brand-primary:        #EB455F;                  /* Striking brand colour    */
+        --brand-secondary:      #2B3467;                  /* Dark brand colour        */
+        --brand-alt:            #BAD7E9;                  /* Light brand colour       */
 
 
 
         --primary:              var(--brand-primary);       /* BRAND                    */
-        --secondary:            var(--brand-secondary);     /* ACCENT                   */
-        --tertiary:             var(--brand-alt);           /* ALT                      */
+        --secondary:            var(--brand-alt);           /* ACCENT                   */
+        --tertiary:             var(--brand-secondary);     /* ALT                      */
         --on-background-high:   var(--grey-10);             /* HIGH CONTRAST            */
         --on-background-med:    var(--grey-30);             /* MEDIUM CONTRAST          */
         --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
@@ -90,16 +90,16 @@ GREYS DARK -> LIGHT
 
     .navbar {
         /*background-color: var(--on-background-low);*/
-        border-bottom: 2px solid var(--secondary);
+        border-bottom: 1px solid var(--primary);
         background: linear-gradient(0deg, var(--on-background-low) 0%, var(--background-subtle) 100%);
     }
 
     .nav-link {
-        color: var(--primary-) !important;
+        color: var(--on-background-high) !important;
     }
 
     .nav-link:hover {
-        color: var(--background) !important;
+        color: var(--primary) !important;
     }
 
     .nav-link.disabled {
@@ -130,7 +130,7 @@ GREYS DARK -> LIGHT
     
     h4, h5, h6 {
         font-weight: bold;
-        color: var(--primary);
+        color: var(--tertiary);
     }
     
 
@@ -181,7 +181,7 @@ GREYS DARK -> LIGHT
 
     .miniCard:hover {
         transform: scale(1.02);
-        border: solid 1px var(--secondary);
+        border: solid 1px var(--tertiary);
     }
 
     .card-body {
@@ -196,14 +196,14 @@ GREYS DARK -> LIGHT
         position: relative;
         z-index: 1;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-        border: 2px solid var(--primary) !important;
+        border: 2px solid var(--secondary) !important;
         background: linear-gradient(0deg, var(--on-background-low) 0%, var(--on-background-med) 100%) !important;
         color: var(--surface) !important;
         transform: scale(1.02);
     }
 
     .selectedCard h6 {
-        color: var(--primary) !important;
+        color: var(--secondary) !important;
     }
 
     #show-more,
@@ -276,7 +276,7 @@ GREYS DARK -> LIGHT
         width: 10%;
         height: 60%;
         background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
-        border: solid 1px var(--secondary);
+        border: solid 1px var(--tertiary);
         border-radius: 10px;
     }
 
@@ -291,7 +291,7 @@ GREYS DARK -> LIGHT
         height: 60%;
         color: var(--on-background-high);
         background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
-        border: solid 1px var(--secondary);  
+        border: solid 1px var(--tertiary);  
         border-radius: 10px;
     }
 
