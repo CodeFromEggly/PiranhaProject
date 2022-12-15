@@ -46,29 +46,29 @@ GREYS DARK -> LIGHT
 
 
 
-        --primary:              var(--brand-primary);       /* BRAND */
-        --secondary:            var(--brand-secondary);     /* ACCENT */
-        --tertiary:             var(--brand-alt);           /**/
-        --background:           var(--grey-90);             /* WHITE/BLACK */
-        --background-subtle:    var(--grey-70);             /* EXTRA LOW CONTRAST */
-        --on-background-high:   var(--grey-10);             /* HIGH CONTRAST */
-        --on-background-med:    var(--grey-30);             /* MEDIUM CONTRAST */
-        --on-background-low:    var(--grey-50);             /* LOW CONTRAST */
+        --primary:              var(--brand-primary);       /* BRAND                    */
+        --secondary:            var(--brand-secondary);     /* ACCENT                   */
+        --tertiary:             var(--brand-alt);           /* ALT                      */
+        --on-background-high:   var(--grey-10);             /* HIGH CONTRAST            */
+        --on-background-med:    var(--grey-30);             /* MEDIUM CONTRAST          */
+        --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
+        --background-subtle:    var(--grey-70);             /* EXTRA LOW CONTRAST       */
         --surface:              var(--grey-80);             /* EXTRA-EXTRA LOW CONTRAST */
+        --background:           var(--grey-90);             /* WHITE/BLACK              */
                  
     }
 
     .dark-mode {
 
-        --primary:              var(--brand-primary);       /* BRAND */
-        --secondary:            var(--brand-secondary);     /* ACCENT */
-        --tertiary:             var(--brand-alt);           /**/
-        --background:           var(--grey-10);             /* WHITE/BLACK */
-        --background-subtle:    var(--grey-30);             /* EXTRA LOW CONTRAST */
-        --on-background-high:   var(--grey-90);             /* HIGH CONTRAST */
-        --on-background-med:    var(--grey-70);             /* MEDIUM CONTRAST */
-        --on-background-low:    var(--grey-50);             /* LOW CONTRAST */
+        --primary:              var(--brand-primary);       /* BRAND                    */
+        --secondary:            var(--brand-secondary);     /* ACCENT                   */
+        --tertiary:             var(--brand-alt);           /* ALT                      */
+        --on-background-high:   var(--grey-90);             /* HIGH CONTRAST            */
+        --on-background-med:    var(--grey-70);             /* MEDIUM CONTRAST          */
+        --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
+        --background-subtle:    var(--grey-30);             /* EXTRA LOW CONTRAST       */
         --surface:              var(--grey-20);             /* EXTRA-EXTRA LOW CONTRAST */
+        --background:           var(--grey-10);             /* WHITE/BLACK              */
     }
 
 /* NAVIGATION */
