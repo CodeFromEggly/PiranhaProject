@@ -142,7 +142,7 @@ def activity():
 
     # Provide all the data for last 10 entries
     all = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid LEFT JOIN collections ON keyData.collection = collections.name ORDER BY keyData.timestamp DESC LIMIT(10)").fetchall()
-    for row in all: row = dict(row)
+    all = [dict(row) for row in all]
     #for row in all: print(row)
 
     return render_template("activity.html", all=all)

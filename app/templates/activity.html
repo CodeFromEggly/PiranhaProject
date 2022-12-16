@@ -17,7 +17,6 @@
       <div class="item">
         <img src="{{item.image}}">
         <h6>{{ item.name }}</h6>
-        <p>{{ item.slug }}</p>
       </div>
     {% endfor %}
   </div>
@@ -33,14 +32,8 @@
 </template>
   
 
-<script>
-    var all = JSON.parse('{{ all }}');
-</script>
-  
+<script> const all = '{{ all|tojson }}'; </script>
 <script src="/static/activityScript.js"></script>
-
-
-
 {% endblock %}
 
 

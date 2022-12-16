@@ -21,7 +21,10 @@ toggleButton.addEventListener('click', function() {
     localStorage.removeItem('dark-mode');
   } else {
     htmlElement.classList.add('dark-mode');
-    carousel.classList.add("carousel-dark");
+    if(carousel)
+    {
+      carousel.classList.add("carousel-dark");
+    }
     toggleButton.innerHTML = 'Light Mode';
     localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
   }

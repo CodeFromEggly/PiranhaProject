@@ -40,16 +40,18 @@
     width: 100%;
   }
   
-  .small-card .item {
+  .small-card .card {
     /* small size for card items */
     font-size: 14px;
-    flex: 0 0 25%; /* occupy half of the available width */
+    flex: 0 0 20%;
+    height: 300px;
   }
   
-  .large-card .item {
+  .large-card .card {
     /* large size for card items */
     font-size: 18px;
-    flex: 0 0 33%; /* occupy half of the available width */
+    flex: 0 0 33%;
+    height: 350px;
   }
 
     button {

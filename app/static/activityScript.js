@@ -1,5 +1,15 @@
 const buttons = document.querySelectorAll("#size-buttons button");
 const itemList = document.querySelector("#item-list");
+// parse the 'all' string into an object
+const allData = JSON.parse(all);
+
+// get the stored size from local storage
+const storedSize = localStorage.getItem('size');
+
+// apply the stored size to the item list
+if (storedSize) {
+  itemList.classList.add(storedSize);
+}
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
@@ -15,26 +25,53 @@ buttons.forEach(button => {
     // add the mx-auto class back to the item list
     itemList.classList.add("mx-auto");
 
-   /* 
-    Cannot pull 'all' as a list of dictionaries, need a JSON conversion
-        // check if the clicked button is .small-card or .large-card
+    // store the size in local storage
+    localStorage.setItem('size', className);
+
+    // check if the clicked button is .small-card or .large-card
     if (className === "small-card" || className === "large-card") {
       // clear the item list
       itemList.innerHTML = "";
+
+      // get the card template element
+      const cardTemplate = document.querySelector("#card-template");
+
+      // create a fragment to hold the cloned elements
+      const fragment = document.createDocumentFragment();
+
       // insert the card template for each item
-      all.forEach(item => {
-        const cardHTML = `
-          <div class="card" style="width: 18rem;">
-            <img src="${item.image}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">${item.name}</h5>
-              <p class="card-text">${item.slug}</p>
-            </div>
-          </div>
-        `;
-        itemList.innerHTML += cardHTML;
+      allData.forEach(item => {
+        // clone the card template element
+        const cardElement = cardTemplate.content.cloneNode(true);
+
+        // update the template with the item data
+        cardElement.querySelector(".card-img-top").src = item.image;
+        cardElement.querySelector(".card-title").textContent = item.name;
+        cardElement.querySelector(".card-text").textContent = item.slug;
+      
+          // add the cloned element to the fragment
+          fragment.appendChild(cardElement);
       });
-    }*/
+
+      // append the fragment to the item list
+      itemList.appendChild(fragment);
+  }
+  
+    if (className === "small-list" || className === "large-list") {
+        // clear the item list
+        itemList.innerHTML = "";
+
+        // insert the item template for each item
+        allData.forEach(item => {
+            const itemHTML = `
+                <div class="item">
+                    <img src="${item.image}" alt="item image">
+                    <h6>${item.name}</h6>
+                </div>
+            `;
+            itemList.innerHTML += itemHTML;
+        });
+    }
   });
 });
 
