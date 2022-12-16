@@ -6,8 +6,11 @@ var carousel = document.querySelector('#cardCarousel');
 
 if (darkMode === 'true') {
   htmlElement.classList.add('dark-mode');
-  carousel.classList.remove("carousel-dark");
   toggleButton.innerHTML = 'Light Mode';
+  if(carousel)
+    {
+      carousel.classList.remove("carousel-dark");
+    }
 }
 
 toggleButton.addEventListener('click', function() {

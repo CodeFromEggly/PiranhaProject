@@ -1,0 +1,65 @@
+#item-list {
+    border: solid 1px var(--on-background-med);
+    width: 85%;
+    height: auto;
+    min-height: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    /* default size for list items */
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    height: 50px;
+    width: 100%;
+    border: solid 1px var(--on-background-med);
+  }
+
+  .item img {
+    height:100%;
+    object-fit: contain;
+    object-position: center;
+    padding-right: 1%
+  }  
+  
+  .small-list .item {
+    /* small size for list items */
+    font-size: 12px;
+    height: 40px;
+    width: 100%;
+  }
+  
+  .large-list .item {
+    /* large size for list items */
+    font-size: 16px;
+    height: 60px;
+    width: 100%;
+  }
+  
+  .small-card .item {
+    /* small size for card items */
+    font-size: 14px;
+    flex: 0 0 25%; /* occupy half of the available width */
+  }
+  
+  .large-card .item {
+    /* large size for card items */
+    font-size: 18px;
+    flex: 0 0 33%; /* occupy half of the available width */
+  }
+
+    button {
+    margin-left:  1%;
+    margin-right: 1%;
+  }
+
+
+  @media (max-width: 500px) {
+    .item {
+      flex: 0 0 100%; /* occupy the full width of the container */
+    }
+  }

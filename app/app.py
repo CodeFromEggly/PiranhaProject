@@ -130,6 +130,22 @@ def poop():
 
     return render_template("poop.html", graphData=graphData)
 
+@app.route("/activity")
+def activity():
+    # Displays 5 most recent NFTs nibbled
+
+    #SQLite3 query to detect listings.
+    conn = sqlite3.connect('piranha.db')
+    conn.row_factory = sqlite3.Row
+    db = conn.cursor()
+
+
+    # Provide all the data for last 10 entries
+    all = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid LEFT JOIN collections ON keyData.collection = collections.name ORDER BY keyData.timestamp DESC LIMIT(10)").fetchall()
+    for row in all: row = dict(row)
+    #for row in all: print(row)
+
+    return render_template("activity.html", all=all)
 
 
 if __name__ == "__main__":
