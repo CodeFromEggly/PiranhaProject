@@ -13,4 +13,8 @@
 <script>var graphData = JSON.parse('{{ graphData | tojson}}');</script>
 <script src="/static/graph.js"></script>
 
+<form action="/ping" method="post">
+    <button type="submit">Run Python File</button>
+</form>
+
 {% endblock %}

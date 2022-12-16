@@ -42,7 +42,7 @@ GREYS DARK -> LIGHT
 /* Maybe need BG1 BG2 and TEXT1 TEXT2 */
     :root {
 
-    
+
         --grey-mn:              #0C0D0D;
         --grey-10:              #19191A;
         --grey-20:              #313333;
@@ -120,32 +120,26 @@ GREYS DARK -> LIGHT
         background-color: var(--background);
         background: radial-gradient(circle, var(--background) 0%, var(--surface) 100%);
     }
-    
+
     body {
         font-family:monospace;
         font-size: smaller;
         letter-spacing: -1px;
         color: var(--on-background-high);
     } 
-    
+
     h4, h5, h6 {
         font-weight: bold;
         color: var(--tertiary);
     }
-    
+
 
 /* CARDS & CARD DECKS */
-
-    #featuredDiv {
-        width:55%;
-        height:40%;
-        background-color: var(--background-subtle);
-    }
 
     #emptyCard,
     #featuredCard {
         margin-top: 1%;
-        width:75%; height:40%;
+        width:50%; height:80%;
         background: linear-gradient(0deg, var(--background-subtle) 0%, var(--on-background-low) 100%);
         color: var(--on-background-high);
     }
@@ -169,7 +163,7 @@ GREYS DARK -> LIGHT
         min-height: 90%;
         height: 90%;
         width: 25%;
-        margin: 10px;
+        margin: 1%;
         overflow: hidden;
         background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
         color: var(--on-background-high);
@@ -298,4 +292,24 @@ form {
     .main-form {
         width: 40%;
         margin: auto;
+    }
+
+/* MOBILE DISPLAY STYLING */
+    @media (max-width: 768px) {
+        .miniCard {
+            min-width: 50%;
+            width: 50%;
+        }
+
+        #cardCarousel {
+            width: 90%;
+            flex-wrap: wrap;
+        }
+
+        #left-column,
+        #right-column {
+            top: 40%;
+            height: 40%;
+            width: 20%;
+        }
     }

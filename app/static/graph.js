@@ -7,6 +7,7 @@ var data = [{x:xArray, y:yArray, mode:"markers", type:"scatter"}];
 var layout = {
 xaxis: {title: "Timestamp"},
 yaxis: {range: [0, 2], title: "Price [ETH]"},
-title: "Example Graph"
+title: "Example Graph",
+autosize: true
 };
 Plotly.newPlot("emptyCard", data, layout);

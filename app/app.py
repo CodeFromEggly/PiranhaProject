@@ -92,6 +92,16 @@ def conditions():
         return render_template("conditions.html")
 
 
+@app.route("/ping", methods=["GET", "POST"])
+def ping():
+    if request.method == "POST":
+        # It's time to ping the user.
+        import subprocess
+        subprocess.run(['python', 'ping.py'])
+        return redirect(request.referrer)
+
+
+
 @app.route("/poop")
 def poop():
     # Graphs at the moment
