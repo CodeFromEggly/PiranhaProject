@@ -145,15 +145,12 @@ GREYS DARK -> LIGHT
     #emptyCard,
     #featuredCard {
         margin-top: 1%;
-        width:1000px; height:300px;
+        width:75%; height:40%;
         background: linear-gradient(0deg, var(--background-subtle) 0%, var(--on-background-low) 100%);
         color: var(--on-background-high);
-        border: 2px solid var(--on-background-high);
     }
 
     #deck {
-        /* Other styles for the card deck */
-        padding: 0 20px; 
         max-width: 70%; 
         margin: 0 auto; 
         width: 70%; 
@@ -233,7 +230,9 @@ GREYS DARK -> LIGHT
         overflow-x: auto;
         overflow-y: visible;
         width:65%;
+        height: 50%;
         margin: 0 auto;
+        background-color: var(--background-subtle);
     }
 
     .carousel-item {
@@ -245,13 +244,6 @@ GREYS DARK -> LIGHT
         align-self: center;      
     }
 
-    .carouselCtrl {
-        color: var(--on-background-med) !important;
-    }
-    .carouselCtrl:hover {
-        color: var(--primary) !important;
-    }
-
     .carousel-control-prev,
     .carousel-control-next {
         font-weight: bold;
@@ -261,7 +253,7 @@ GREYS DARK -> LIGHT
 
     .carousel-control-prev:hover,
     .carousel-control-next:hover {
-        color: var(--secondary) !important;
+        color: var(--tertiary) !important;
     }
 
 /* SIDEBAR COLUMNS */

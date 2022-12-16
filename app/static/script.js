@@ -2,19 +2,23 @@
 var htmlElement = document.querySelector('html');
 var toggleButton = document.querySelector('#toggle-button');
 var darkMode = localStorage.getItem('dark-mode');
+var carousel = document.querySelector('#cardCarousel');
 
 if (darkMode === 'true') {
   htmlElement.classList.add('dark-mode');
+  carousel.classList.remove("carousel-dark");
   toggleButton.innerHTML = 'Light Mode';
 }
 
 toggleButton.addEventListener('click', function() {
   if (htmlElement.classList.contains('dark-mode')) {
     htmlElement.classList.remove('dark-mode');
+    carousel.classList.add("carousel-dark");
     toggleButton.innerHTML = 'Dark Mode';
     localStorage.removeItem('dark-mode');
   } else {
     htmlElement.classList.add('dark-mode');
+    carousel.classList.add("carousel-dark");
     toggleButton.innerHTML = 'Light Mode';
     localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
   }

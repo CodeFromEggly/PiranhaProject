@@ -11,7 +11,8 @@
 {% block main %}
 
 
-<div id="left-column" ></div>
+    <div id="left-column" >
+    </div>
     <!-- 'Featured card' to go at top, can display more values than most cards and change as cards are selected-->
     <div id="featuredDiv" class="mx-auto">
         <!-- a graph of detections/time is shown when a featured card isnt-->
@@ -24,7 +25,7 @@
         <div id="featuredCard" class="card mb-3 mx-auto" style="display: none;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="" class="img-fluid rounded-start" style="height: 89.3%; width: auto" alt="This should pull collection name and token id">
+                    <img src="" class="img-fluid rounded-start" style="height: 100%; width: auto" alt="This should pull collection name and token id">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -33,11 +34,11 @@
                             Global Collection Floor: 0.24Ξ (Blur)| Global Trait Floor: 0.9Ξ (Blur)<br>
                             Best Collection Offer: 0.2Ξ  (Opensea)|  Best Trait Offer: 0.39Ξ (Looksrare)
                         </div>
-                        <div class="d-flex align-items flex-column mb-auto">
+                        <div class="d-flex flex-column mb-auto">
                             <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary osLink"><span style="font-weight: bold;">Opensea</span><p style="font-size:smaller; margin-bottom: 0em;">Seen for 0.239Ξ  |  PNL: 0.1321Ξ (-12.5%)</p></a>
-                            <a href="https://sudoswap.xyz/#/browse/pools/0x8c3FB10693B228E8b976FF33cE88f97Ce2EA9563" target="_blank" class="btn btn-secondary disabled"><span style="font-weight: bold;">Sudoswap</span> if available, disabled if not: PNL: ...Ξ<p style="font-size:smaller; margin-bottom: 0em;">Top Pool Buys For: 0.204Ξ  | Sells For: 0.248Ξ | Liquidity In Pool: 8.748Ξ : 69 NFTs</p></a>
+                            <a href="https://sudoswap.xyz/#/browse/pools/0x8c3FB10693B228E8b976FF33cE88f97Ce2EA9563" target="_blank" class="btn btn-secondary disabled"><span style="font-weight: bold;">Sudoswap</span> if available<p style="font-size:smaller; margin-bottom: 0em;">Pool Buys For: 0.204Ξ  | Sells For: 0.248Ξ | Liquidity: 8.748Ξ : 69 NFTs</p></a>
                             <div class="align-items-end" style="padding-top:20px">
-                                <p class="card-text"><small class="text-muted p-2">Last updated 3 mins ago</small></p>
+                                <p class="card-text"><small class="p-2">Last updated 3 mins ago</small></p>
                             </div>
                         </div>
                     </div>
@@ -46,11 +47,17 @@
         </div>
     </div>
     <hr width="50%" class="mx-auto">
-    <div style="text-align:center">
-        <h4>Listings Spotted:</h4>
-    </div>
 
-    <div id="cardCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+    <div id="cardCarousel" class="carousel carousel-dark slide" data-ride="carousel" data-interval="0">
+        <div class="carousel-indicators">
+            {% for i in range(0, all|length, 4) %}
+                {% if loop.first %}
+                    <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                {% else %}
+                    <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="{{ i/4 }}" aria-label="Slide {{ (i/4) + 1 }}"></button>
+                {% endif %}
+            {% endfor %}
+        </div>
         <div class="carousel-inner">
             {% for i in range(0, all|length, 4) %}
                 {% if loop.first %}
@@ -58,41 +65,41 @@
                 {% else %}
                     <div class="carousel-item">
                 {% endif %}
-                <div id="deck" class="card-columns d-flex justify-content-center">
-                {% for card in all[i:i+4] %}
-                    <!--if card is profitable, add .profitable class? and if not add .notProfitable class for styling -->
-                    <div class="card miniCard">
-                        <img src="{{card['image']}}" class="card-img-top" alt="{{card['name']}}">
-                        <div class="card-body">
-                            <div class="button-group mt-auto d-flex flex-column mb-2">
-                                <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank" class="btn btn-primary osLink">View on Opensea</a>
-                                <!--if card is profitable, make green, if not make red, can also do this with the border
-                                    <a href="" target="_blank" class="btn btn-danger"></a> -->
+                    <div id="deck" class="card-columns d-flex justify-content-center">
+                        {% for card in all[i:i+4] %}
+                            <!--if card is profitable, add .profitable class? and if not add .notProfitable class for styling -->
+                            <div class="card miniCard">
+                                <img src="{{card['image']}}" class="card-img-top" alt="{{card['name']}}">
+                                <div class="card-body">
+                                    <div class="button-group mt-auto d-flex flex-column mb-2">
+                                        <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank" class="btn btn-primary osLink">View on Opensea</a>
+                                        <!--if card is profitable, make green, if not make red, can also do this with the border
+                                            <a href="" target="_blank" class="btn btn-danger"></a> -->
+                                    </div>
+                                    <h6 class="card-title" style="font-weight:bold">{{card['name']}}</h6>
+                                    <div class="card-text-container">NFT info, prices etc
+                                        {{card['slug']}} {{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}
+                                    </div>
+                                </div>
                             </div>
-                            <h6 class="card-title" style="font-weight:bold">{{card['name']}}</h6>
-                            <div class="card-text-container">NFT info, prices etc
-                                {{card['slug']}} {{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-    {% endfor %}
-            
-        </div>
-        <button class="carousel-control-prev carouselCtrl" href="#cardCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Prev</span>
-        </button>
-        <button class="carousel-control-next carouselCtrl" href="#cardCarousel" role="button" data-slide="next">
-            <span class="sr-only">Next</span>
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+                </div>
+            {% endfor %}
+            <button class="carousel-control-prev carouselCtrl" href="#cardCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Prev</span>
+            </button>
+            <button class="carousel-control-next carouselCtrl" href="#cardCarousel" role="button" data-slide="next">
+                <span class="sr-only">Next</span>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
         </div>
     </div>
 
-<div id="right-column">Basic Sidebar Div</div>
+    <div id="right-column">
+        Basic Sidebar Div
+    </div>
 
 
 {% endblock %}
