@@ -16,17 +16,20 @@ if (darkMode === 'true') {
 toggleButton.addEventListener('click', function() {
   if (htmlElement.classList.contains('dark-mode')) {
     htmlElement.classList.remove('dark-mode');
-    carousel.classList.add("carousel-dark");
+    if(carousel)
+    {
+      carousel.classList.remove("carousel-dark");
+    }
     toggleButton.innerHTML = 'Dark Mode';
     localStorage.removeItem('dark-mode');
   } else {
     htmlElement.classList.add('dark-mode');
+    toggleButton.innerHTML = 'Light Mode';
+    localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
     if(carousel)
     {
       carousel.classList.add("carousel-dark");
     }
-    toggleButton.innerHTML = 'Light Mode';
-    localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
   }
 });
 
