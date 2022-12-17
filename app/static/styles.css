@@ -282,8 +282,8 @@ GREYS DARK -> LIGHT
     }
 
 /* Forms */
-form {
-        background-color: var(--on-background-low);
+    form {
+        background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
         color: var(--on-background-high);
         padding: 1%;
         border-radius: 10px;
@@ -292,7 +292,67 @@ form {
     .main-form {
         width: 40%;
         margin: auto;
+        font-size: larger;
     }
+
+    .main-form button {
+        background-color: var(--surface);
+        color: var(--on-background-high);
+        border: solid 1px var(--tertiary)
+    }
+
+    .main-form button:hover {
+        background-color: var(--secondary);
+        border: solid 1px var(--tertiary);
+    }
+
+    select option,
+    input[type="text"],
+    input[type="number"] {
+        background-color: var(--background-subtle); 
+        color: var(--on-background-high); 
+        caret-color: var(--on-background-high);
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="password"]:focus {
+        background-color: var(--background-subtle); 
+        color: var(--tertiary);
+        caret-color: var(--tertiary); 
+    }
+      
+    input[type="checkbox"]:not(:checked) {
+        background-color: var(--background-subtle);
+    }
+
+    input[type="checkbox"]:checked {
+        background-color: var(--primary);
+    }
+
+    select option:checked {
+        background-color: var(--tertiary);
+        color: var(--background);
+        border-radius: 5px;
+    }
+
+    #collection {
+        background-color: var(--background-subtle);
+    }
+
+    ion-icon {
+        transition: transform 0.15s linear;
+        font-size: 32px;
+        margin: 1%;
+        border-radius: 3px;
+      }
+    
+    ion-icon:hover {
+        transform: scale(1.1) !important;
+    }
+      
+      
+    
 
 /* MOBILE DISPLAY STYLING */
     @media (max-width: 768px) {

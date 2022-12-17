@@ -13,7 +13,7 @@
 
                 <div class="form-group">
                     <label for="collection">Collection</label>
-                <select multiple name="collection" id="collection"  class="form-control">
+                <select multiple name="collection" id="collection" class="form-control">
                     <!--- This will soon be a list that app.py passes it --->
                     <option value="*">All</option>
                     <option value="Plague">Plague</option>
@@ -28,7 +28,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="minETH">Min NFT price (ETH)</label>
-                                <input name="minETH" type="number" id="minETH" class="form-control">
+                                <input type="number" name="minETH" id="minETH" class="form-control">
                             </div>
                             <div class="col">
                                 <label for="maxETH">Max NFT price (ETH)</label>
@@ -43,15 +43,16 @@
                 </div>
                 
                 
-                <div class="form-check">
+                <div class="form-check" style="margin-top: 1%">
                     <label class="form-check-label" for="flexCheckChecked">
                         Only if Sudoswap
                     </label>
-                    <input class="form-check-input" type="checkbox" name="sudoswap" value=1 id="flexCheckChecked" checked>
+                    <input class="form-check-input custom-control-input" type="checkbox" name="sudoswap" value=1 id="flexCheckChecked" checked>
                 </div>
-
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Feed Piranha</button>
+                <div class="d-flex flex-column justify-content-end align-items-end">    
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Feed Piranha</button>
+                    </div>
                 </div>
 
             </form>

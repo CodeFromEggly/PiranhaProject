@@ -1,16 +1,20 @@
-const buttons = document.querySelectorAll("#size-buttons button");
+const icons = document.querySelectorAll('[data-class]');
 const itemList = document.querySelector("#item-list");
 // parse the 'all' string into an object
 const allData = JSON.parse(all);
+
+if(localStorage.getItem('size') === null) {
+    localStorage.setItem('size', 'small-card')
+}
 
 // get the stored size from local storage
 const storedSize = localStorage.getItem('size');
 
 // apply the stored size to the item list
 if (storedSize) {
-    const selectedButton = document.querySelector(`button[data-class="${storedSize}"]`);
-    // add the selected class to the selected button
-    selectedButton.classList.add("selected");
+    const selectedIcon = document.querySelector(`ion-icon[data-class="${storedSize}"]`);
+    // add the selected class to the selected icon
+    selectedIcon.classList.add("selected");
     itemList.classList.add(storedSize);
     if (storedSize === "small-card" || storedSize === "large-card") {
         // clear the item list
@@ -41,16 +45,16 @@ if (storedSize) {
     }
 }
 
-buttons.forEach(button => {
-    button.addEventListener("click", () => {
-        // remove the selected class from all buttons
-        buttons.forEach(button => button.classList.remove("selected"));
-        // add the selected class to the clicked button
-        button.classList.add("selected");
+icons.forEach(icon => {
+    icon.addEventListener("click", () => {
+        // remove the selected class from all icons
+        icons.forEach(icon => icon.classList.remove("selected"));
+        // add the selected class to the clicked icon
+        icon.classList.add("selected");
         // remove all size classes from the item list
         itemList.className = "";
-        // add the class corresponding to the clicked button to the item list
-        const className = button.dataset.class;
+        // add the class corresponding to the clicked icon to the item list
+        const className = icon.dataset.class;
         itemList.classList.add(className);
         // add the mx-auto class back to the item list
         itemList.classList.add("mx-auto");
@@ -58,7 +62,7 @@ buttons.forEach(button => {
         // store the size in local storage
         localStorage.setItem('size', className);
 
-        // check if the clicked button is .small-card or .large-card
+        // check if the clicked icon is .small-card or .large-card
         if (className === "small-card" || className === "large-card") {
             // clear the item list
             itemList.innerHTML = "";

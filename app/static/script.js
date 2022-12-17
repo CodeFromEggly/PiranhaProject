@@ -1,30 +1,30 @@
 // DARK MODE
 var htmlElement = document.querySelector('html');
-var toggleButton = document.querySelector('#toggle-button');
+var brightnessButton = document.querySelector('#brightness-button');
 var darkMode = localStorage.getItem('dark-mode');
 var carousel = document.querySelector('#cardCarousel');
 
 if (darkMode === 'true') {
   htmlElement.classList.add('dark-mode');
-  toggleButton.innerHTML = 'Light Mode';
+  brightnessButton.setAttribute('name', 'moon');
   if(carousel)
     {
       carousel.classList.remove("carousel-dark");
     }
 }
 
-toggleButton.addEventListener('click', function() {
+brightnessButton.addEventListener('click', function() {
   if (htmlElement.classList.contains('dark-mode')) {
     htmlElement.classList.remove('dark-mode');
     if(carousel)
     {
       carousel.classList.remove("carousel-dark");
     }
-    toggleButton.innerHTML = 'Dark Mode';
+    brightnessButton.setAttribute('name', 'sunny');
     localStorage.removeItem('dark-mode');
   } else {
     htmlElement.classList.add('dark-mode');
-    toggleButton.innerHTML = 'Light Mode';
+    brightnessButton.setAttribute('name', 'moon');
     localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
     if(carousel)
     {
