@@ -303,6 +303,7 @@ GREYS DARK -> LIGHT
 
     .main-form button:hover {
         background-color: var(--secondary);
+        color: var(--background)
         border: solid 1px var(--tertiary);
     }
 
@@ -327,7 +328,7 @@ GREYS DARK -> LIGHT
     }
 
     input[type="checkbox"]:checked {
-        background-color: var(--primary);
+        background-color: var(--secondary);
     }
 
     select option:checked {
@@ -342,7 +343,7 @@ GREYS DARK -> LIGHT
 
     ion-icon {
         transition: transform 0.15s linear;
-        font-size: 32px;
+        font-size: 28px;
         margin: 1%;
         border-radius: 3px;
       }
