@@ -12,7 +12,7 @@ const storedSize = localStorage.getItem('size');
 
 // apply the stored size to the item list
 if (storedSize) {
-    const selectedIcon = document.querySelector(`ion-icon[data-class="${storedSize}"]`);
+    const selectedIcon = document.querySelector(`i[data-class="${storedSize}"]`);
     // add the selected class to the selected icon
     selectedIcon.classList.add("selected");
     itemList.classList.add(storedSize);

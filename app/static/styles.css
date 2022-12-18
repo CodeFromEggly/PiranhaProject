@@ -341,14 +341,14 @@ GREYS DARK -> LIGHT
         background-color: var(--background-subtle);
     }
 
-    ion-icon {
+    i {
         transition: transform 0.15s linear;
-        font-size: 28px;
+        font-size: 24px;
         margin: 1%;
         border-radius: 3px;
       }
     
-    ion-icon:hover {
+    i:hover {
         transform: scale(1.1) !important;
     }
       
@@ -357,9 +357,14 @@ GREYS DARK -> LIGHT
 
 /* MOBILE DISPLAY STYLING */
     @media (max-width: 768px) {
+
+        #deck {
+            flex-wrap: wrap;
+        }
+
         .miniCard {
-            min-width: 50%;
-            width: 50%;
+            min-width: 45%;
+            width: 45%;
         }
 
         #cardCarousel {
@@ -372,5 +377,9 @@ GREYS DARK -> LIGHT
             top: 40%;
             height: 40%;
             width: 20%;
+        }
+
+        .main-form {
+            width: 85%;
         }
     }

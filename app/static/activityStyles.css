@@ -87,8 +87,28 @@ button {
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
     .item {
         flex: 0 0 100%; /* occupy the full width of the container */
+    }
+
+    .small-card .card {
+        /* small size for card items */
+        font-size: 14px;
+        flex: 0 0 24%;
+        margin-left: 0.3%;
+        margin-right: 0.3%;
+        margin-bottom: 0.3%;
+        height: auto;
+    }
+      
+    .large-card .card {
+        /* large size for card items */
+        font-size: 18px;
+        flex: 0 0 48%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+        margin-bottom: 0.5%;
+        height: auto;
     }
 }

@@ -17,7 +17,7 @@
     <!-- a graph of detections/time is shown when a featured card isnt-->
     <div id="emptyCard" class="js-plotly-plot mb-3 mx-auto justify-content-center">
     </div>
-    <!-- If i create this variable first thenj graph.js can use it-->
+    <!-- If i create this variable first then graph.js can use it-->
     <script>var graphData = JSON.parse('{{ graphData | tojson}}');</script>
     <script src="/static/graph.js"></script>
 
