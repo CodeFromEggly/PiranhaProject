@@ -303,7 +303,7 @@ GREYS DARK -> LIGHT
 
     .main-form button:hover {
         background-color: var(--secondary);
-        color: var(--background)
+        color: var(--background);
         border: solid 1px var(--tertiary);
     }
 
