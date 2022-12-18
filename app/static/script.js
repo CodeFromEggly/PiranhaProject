@@ -6,7 +6,7 @@ var carousel = document.querySelector('#cardCarousel');
 
 if (darkMode === 'true') {
   htmlElement.classList.add('dark-mode');
-  brightnessButton.setAttribute('name', 'moon');
+  brightnessButton.setAttribute('class', 'bi bi-moon-fill');
   if(carousel)
     {
       carousel.classList.remove("carousel-dark");
@@ -20,11 +20,11 @@ brightnessButton.addEventListener('click', function() {
     {
       carousel.classList.remove("carousel-dark");
     }
-    brightnessButton.setAttribute('name', 'sunny');
+    brightnessButton.setAttribute('class', 'bi bi-brightness-high');
     localStorage.removeItem('dark-mode');
   } else {
     htmlElement.classList.add('dark-mode');
-    brightnessButton.setAttribute('name', 'moon');
+    brightnessButton.setAttribute('class', 'bi bi-moon-fill');
     localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
     if(carousel)
     {

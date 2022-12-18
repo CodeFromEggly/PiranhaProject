@@ -139,7 +139,7 @@ GREYS DARK -> LIGHT
     #emptyCard,
     #featuredCard {
         margin-top: 1%;
-        width:50%; height:80%;
+        width:60%; height:40%;
         background: linear-gradient(0deg, var(--background-subtle) 0%, var(--on-background-low) 100%);
         color: var(--on-background-high);
     }
@@ -358,6 +358,9 @@ GREYS DARK -> LIGHT
 /* MOBILE DISPLAY STYLING */
     @media (max-width: 768px) {
 
+        body {
+            font-size: xx-small !important;
+        }
         #deck {
             flex-wrap: wrap;
         }
