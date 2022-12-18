@@ -133,6 +133,10 @@ GREYS DARK -> LIGHT
         color: var(--tertiary);
     }
 
+    img {
+        object-fit: contain;
+    }
+
 
 /* CARDS & CARD DECKS */
 
