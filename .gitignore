@@ -3,3 +3,4 @@ app/node_modules/
 app/__pychache__/
 app/__pycache__/app.cpython-310.pyc
 *.pyc
+app/tokens.py
