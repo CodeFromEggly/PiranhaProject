@@ -16,7 +16,6 @@
     </div>
     <!-- 'Featured card' to go at top, can display more values than most cards and change as cards are selected-->
     <!-- a graph of detections/time is shown when a featured card isnt-->
-    <hr width="50%" class="mx-auto">
 
     <div id="cardCarousel" class="carousel carousel-dark slide" data-ride="carousel" data-interval="0">
         <div class="carousel-indicators">
@@ -42,7 +41,7 @@
                                 <img src="{{card['image']}}" class="card-img-top" alt="{{card['name']}}">
                                 <div class="card-body">
                                     <div class="button-group mt-auto d-flex flex-column mb-2">
-                                        <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank" class="btn btn-primary osLink">View on Opensea</a>
+                                        <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank" class="btn osLink">View on Opensea</a>
                                         <!--if card is profitable, make green, if not make red, can also do this with the border
                                             <a href="" target="_blank" class="btn btn-danger"></a> -->
                                     </div>
@@ -66,6 +65,8 @@
             </button>
         </div>
     </div>
+
+    <hr width="50%" class="mx-auto">
 
     <div id="emptyCard" class="js-plotly-plot mb-3 mx-auto justify-content-center">
     </div>

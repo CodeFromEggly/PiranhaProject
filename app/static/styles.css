@@ -58,11 +58,22 @@ GREYS DARK -> LIGHT
         --grey-80:              #ebeeeb;
         --grey-90:              #f8faf9;
 
-        --brand-primary:        #2f9a75;                  /* Striking brand colour    */
+        --brand-primary:        #39b389;                  /* Striking brand colour    */
         --brand-secondary:      #164736;                  /* Dark brand colour        */
-        --brand-alt:            #ddf2eb;                  /* Light brand colour       */
+        --brand-alt:            #a9decc;                  /* Light brand colour       */
 
+        /*    Ideally implement like this 
 
+            --brand-primary:        #36B24A;
+
+            --brand-light:          #a9decc;
+            --brand-bright:         #39b389;
+            --brand-med:            #65c4a3;
+            --brand-dark:           #164736;
+
+            Use https://toolness.github.io/accessible-color-matrix/ to determine contrast/accessibility 
+        
+        */
 
         --primary:              var(--brand-primary);       /* BRAND                    */
         --secondary:            var(--brand-alt);           /* ACCENT                   */
@@ -317,12 +328,13 @@ GREYS DARK -> LIGHT
         font-size: larger;
     }
 
+    .btn,
     .main-form button {
         background-color: var(--surface);
         color: var(--on-background-high);
         border: solid 1px var(--tertiary)
     }
-
+    .btn:hover,
     .main-form button:hover {
         background-color: var(--secondary);
         color: var(--tertiary);
