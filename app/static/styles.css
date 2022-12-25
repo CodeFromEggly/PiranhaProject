@@ -18,6 +18,9 @@
 --accent-color:     #5A6971; 
 --background:      #A8DBCB; 
 
+--brand-primary:        #EB455F;
+--brand-secondary:      #2B3467;
+--brand-alt:            #BAD7E9;
 
 GREYS DARK -> LIGHT
 --grey-10: #17181A;
@@ -42,34 +45,34 @@ GREYS DARK -> LIGHT
 /* Maybe need BG1 BG2 and TEXT1 TEXT2 */
     :root {
 
+        /*   BASE COLOR: #36B24A      https://palx.jxnblk.com/   */
 
-        --grey-mn:              #0C0D0D;
-        --grey-10:              #19191A;
-        --grey-20:              #313333;
-        --grey-30:              #4A4C4D;
-        --grey-40:              #636566;
-        --grey-50:              #7C7F80;
-        --grey-60:              #949899;
-        --grey-70:              #B0B4B5;
-        --grey-80:              #C8CDCF;
-        --grey-90:              #E1E6E8;
-        --grey-mx:              #F7FDFF;
+        --grey-00:              #344336;
+        --grey-10:              #59725c;
+        --grey-20:              #759079;
+        --grey-30:              #90a593;
+        --grey-40:              #a7b7a9;
+        --grey-50:              #bac7bc;
+        --grey-60:              #ccd5cd;
+        --grey-70:              #dce2dd;
+        --grey-80:              #ebeeeb;
+        --grey-90:              #f8faf9;
 
-        --brand-primary:        #EB455F;                  /* Striking brand colour    */
-        --brand-secondary:      #2B3467;                  /* Dark brand colour        */
-        --brand-alt:            #BAD7E9;                  /* Light brand colour       */
+        --brand-primary:        #2f9a75;                  /* Striking brand colour    */
+        --brand-secondary:      #164736;                  /* Dark brand colour        */
+        --brand-alt:            #ddf2eb;                  /* Light brand colour       */
 
 
 
         --primary:              var(--brand-primary);       /* BRAND                    */
         --secondary:            var(--brand-alt);           /* ACCENT                   */
         --tertiary:             var(--brand-secondary);     /* ALT                      */
-        --on-background-high:   var(--grey-10);             /* HIGH CONTRAST            */
-        --on-background-med:    var(--grey-30);             /* MEDIUM CONTRAST          */
-        --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
-        --background-subtle:    var(--grey-70);             /* EXTRA LOW CONTRAST       */
+        --on-background-high:   var(--grey-00);             /* HIGH CONTRAST            */
+        --on-background-med:    var(--grey-20);             /* MEDIUM CONTRAST          */
+        --on-background-low:    var(--grey-40);             /* LOW CONTRAST             */
+        --background-subtle:    var(--grey-60);             /* EXTRA LOW CONTRAST       */
         --surface:              var(--grey-80);             /* EXTRA-EXTRA LOW CONTRAST */
-        --background:           var(--grey-mx);             /* WHITE/BLACK              */
+        --background:           var(--grey-90);             /* WHITE/BLACK              */
                  
     }
 
@@ -82,28 +85,44 @@ GREYS DARK -> LIGHT
         --on-background-med:    var(--grey-70);             /* MEDIUM CONTRAST          */
         --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
         --background-subtle:    var(--grey-30);             /* EXTRA LOW CONTRAST       */
-        --surface:              var(--grey-20);             /* EXTRA-EXTRA LOW CONTRAST */
-        --background:           var(--grey-mn);             /* WHITE/BLACK              */
+        --surface:              var(--grey-10);             /* EXTRA-EXTRA LOW CONTRAST */
+        --background:           var(--grey-00);             /* WHITE/BLACK              */
     }
 
 /* NAVIGATION */
 
-    .navbar {
+    nav {
         /*background-color: var(--on-background-low);*/
-        border-bottom: 1px solid var(--primary);
-        background: linear-gradient(0deg, var(--on-background-low) 0%, var(--background-subtle) 100%);
+        /* background: linear-gradient(0deg, var(--on-background-low) 0%, var(--background-subtle) 100%); */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.5%;
+        padding-left: 10%;
+        padding-right: 10%;
     }
 
-    .nav-link {
+    .pNavLink {
         color: var(--on-background-high) !important;
     }
 
-    .nav-link:hover {
+    .pNavLink:hover {
         color: var(--primary) !important;
     }
 
-    .nav-link.disabled {
+    .pNavLink.disabled {
         color: var(--on-background-med) !important;
+    }
+
+    nav ul li {
+        list-style-type: none;
+        display: inline-block;
+        padding: 5px 20px;
+        text-align: center;
+    }
+
+    nav a {
+        text-decoration: none;
     }
 
     a {
@@ -144,7 +163,7 @@ GREYS DARK -> LIGHT
     #featuredCard {
         margin-top: 1%;
         width:60%; height:40%;
-        background: linear-gradient(0deg, var(--background-subtle) 0%, var(--on-background-low) 100%);
+        background: linear-gradient(0deg, var(--on-background-low) 0%, var(--background-subtle) 100%);
         color: var(--on-background-high);
     }
 
@@ -230,7 +249,6 @@ GREYS DARK -> LIGHT
         width:65%;
         height: 50%;
         margin: 0 auto;
-        background-color: var(--background-subtle);
     }
 
     .carousel-item {
@@ -307,7 +325,7 @@ GREYS DARK -> LIGHT
 
     .main-form button:hover {
         background-color: var(--secondary);
-        color: var(--background);
+        color: var(--tertiary);
         border: solid 1px var(--tertiary);
     }
 
@@ -354,6 +372,8 @@ GREYS DARK -> LIGHT
     
     i:hover {
         transform: scale(1.1) !important;
+        color: var(--primary);
+        cursor: pointer;
     }
       
       
@@ -374,7 +394,7 @@ GREYS DARK -> LIGHT
             width: 45%;
         }
 
-        #cardCarousel {
+        .carousel {
             width: 90%;
             flex-wrap: wrap;
         }

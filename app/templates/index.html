@@ -4,6 +4,7 @@
 
 {% block head %}
         <title>Piranha Home</title>
+        <link rel="icon" href="/static/icon/house-fill.svg" type="image/icon type">
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 {% endblock %}
 
@@ -15,33 +16,6 @@
     </div>
     <!-- 'Featured card' to go at top, can display more values than most cards and change as cards are selected-->
     <!-- a graph of detections/time is shown when a featured card isnt-->
-    <div id="emptyCard" class="js-plotly-plot mb-3 mx-auto justify-content-center">
-    </div>
-    <!-- If i create this variable first then graph.js can use it-->
-    <script>var graphData = JSON.parse('{{ graphData | tojson}}');</script>
-    <script src="/static/graph.js"></script>
-
-    <div id="featuredCard" class="card mb-3 mx-auto" style="display: none;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="" class="img-fluid rounded-start" style="height: 100%; width: auto" alt="This should pull collection name and token id">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">'Selected' Card</h5>
-                    <div class="card-text" style="white-space: pre-wrap;">Buy price, WETH offers on different marketplaces, potential P&L etc<br>Global Collection Floor: 0.24Ξ (Blur)| Global Trait Floor: 0.9Ξ (Blur)<br>Best Collection Offer: 0.2Ξ  (Opensea)|  Best Trait Offer: 0.39Ξ (Looksrare)
-                    </div>
-                    <div class="d-flex flex-column align-self-end">
-                        <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary osLink"><span style="font-weight: bold;">Opensea</span><p style="font-size:smaller; margin-bottom: 0em;">Seen for 0.239Ξ  |  PNL: 0.1321Ξ (-12.5%)</p></a>
-                        <a href="https://sudoswap.xyz/#/browse/pools/0x8c3FB10693B228E8b976FF33cE88f97Ce2EA9563" target="_blank" class="btn btn-secondary disabled"><span style="font-weight: bold;">Sudoswap</span> if available<p style="font-size:smaller; margin-bottom: 0em;">Pool Buys For: 0.204Ξ  | Sells For: 0.248Ξ | Liquidity: 8.748Ξ : 69 NFTs</p></a>
-                        <div style="padding-top:1%">
-                            <p class="card-text"><small class="p-2">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <hr width="50%" class="mx-auto">
 
     <div id="cardCarousel" class="carousel carousel-dark slide" data-ride="carousel" data-interval="0">
@@ -90,6 +64,34 @@
                 <span class="sr-only">Next</span>
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </button>
+        </div>
+    </div>
+
+    <div id="emptyCard" class="js-plotly-plot mb-3 mx-auto justify-content-center">
+    </div>
+    <!-- If i create this variable first then graph.js can use it-->
+    <script>var graphData = JSON.parse('{{ graphData | tojson}}');</script>
+    <script src="/static/graph.js"></script>
+
+    <div id="featuredCard" class="card mb-3 mx-auto" style="display: none;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="" class="img-fluid rounded-start" style="height: 100%; width: auto" alt="This should pull collection name and token id">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">'Selected' Card</h5>
+                    <div class="card-text" style="white-space: pre-wrap;">Buy price, WETH offers on different marketplaces, potential P&L etc<br>Global Collection Floor: 0.24Ξ (Blur)| Global Trait Floor: 0.9Ξ (Blur)<br>Best Collection Offer: 0.2Ξ  (Opensea)|  Best Trait Offer: 0.39Ξ (Looksrare)
+                    </div>
+                    <div class="d-flex flex-column align-self-end">
+                        <a href="https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563/843" target="_blank" class="btn btn-primary osLink"><span style="font-weight: bold;">Opensea</span><p style="font-size:smaller; margin-bottom: 0em;">Seen for 0.239Ξ  |  PNL: 0.1321Ξ (-12.5%)</p></a>
+                        <a href="https://sudoswap.xyz/#/browse/pools/0x8c3FB10693B228E8b976FF33cE88f97Ce2EA9563" target="_blank" class="btn btn-secondary disabled"><span style="font-weight: bold;">Sudoswap</span> if available<p style="font-size:smaller; margin-bottom: 0em;">Pool Buys For: 0.204Ξ  | Sells For: 0.248Ξ | Liquidity: 8.748Ξ : 69 NFTs</p></a>
+                        <div style="padding-top:1%">
+                            <p class="card-text"><small class="p-2">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

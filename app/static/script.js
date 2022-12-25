@@ -2,35 +2,34 @@
 var htmlElement = document.querySelector('html');
 var brightnessButton = document.querySelector('#brightness-button');
 var darkMode = localStorage.getItem('dark-mode');
-var carousel = document.querySelector('#cardCarousel');
+var carousel = document.querySelector('.carousel');
 
 if (darkMode === 'true') {
-  htmlElement.classList.add('dark-mode');
-  brightnessButton.setAttribute('class', 'bi bi-moon-fill');
-  if(carousel)
-    {
-      carousel.classList.remove("carousel-dark");
+    htmlElement.classList.add('dark-mode');
+    brightnessButton.setAttribute('class', 'bi bi-moon-fill');
+    if(carousel) {
+        carousel.classList.remove("carousel-dark");
     }
 }
 
 brightnessButton.addEventListener('click', function() {
-  if (htmlElement.classList.contains('dark-mode')) {
-    htmlElement.classList.remove('dark-mode');
-    if(carousel)
-    {
-      carousel.classList.remove("carousel-dark");
+    if (htmlElement.classList.contains('dark-mode')) {
+        htmlElement.classList.remove('dark-mode');
+        if(carousel)
+        {
+            carousel.classList.add("carousel-dark");
+        }
+        brightnessButton.setAttribute('class', 'bi bi-brightness-high');
+        localStorage.removeItem('dark-mode');
+    } else {
+        htmlElement.classList.add('dark-mode');
+        brightnessButton.setAttribute('class', 'bi bi-moon-fill');
+        localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
+        if(carousel)
+        {
+            carousel.classList.remove("carousel-dark");
+        }
     }
-    brightnessButton.setAttribute('class', 'bi bi-brightness-high');
-    localStorage.removeItem('dark-mode');
-  } else {
-    htmlElement.classList.add('dark-mode');
-    brightnessButton.setAttribute('class', 'bi bi-moon-fill');
-    localStorage.setItem('dark-mode', htmlElement.classList.contains('dark-mode'));
-    if(carousel)
-    {
-      carousel.classList.add("carousel-dark");
-    }
-  }
 });
 
 // FEATURED CARD DISPLAY
@@ -58,8 +57,8 @@ $(document).ready(function(){
     
     // Add event.stopPropagation() method call here
     $(".button-group").click(function(event) {
-      event.stopPropagation();
-  });
+        event.stopPropagation();
+    });
 }); 
 
 // SHOW MORE/LESS   -- Not applying to inactive slides, possibly the cardTextContainers select statement, indexing and then 'if' statement which only checks once
