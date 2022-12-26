@@ -60,19 +60,12 @@ GREYS DARK -> LIGHT
         --grey-90:              #f8faf9;
 
 
-        --brand-main:          #c47365;                   /* MAIN BRAND COLOUR        */
-        --brand-bright:        #39b389;                   /* BRIGHT BRAND COLOUR      */
-        --brand-light:         #f4fbf9;                   /* LIGHT BRAND COLOUR       */
-        --brand-med:           #a9decc;                   /* MED BRAND COLOUR         */
-        --brand-dark:          #164736;                   /* DARK BRAND COLOUR        */
+        --brand-main:           #c47365;                   /* MAIN BRAND COLOUR        */
+        --brand-bright:         #39b389;                   /* BRIGHT BRAND COLOUR      */
+        --brand-light:          #f4fbf9;                   /* LIGHT BRAND COLOUR       */
+        --brand-med:            #a9decc;                   /* MED BRAND COLOUR         */
+        --brand-dark:           #164736;                   /* DARK BRAND COLOUR        */
         
-        
-
-        /*
-
-            
-        
-        */
 
         --brand:                var(--brand-main);          /* BRAND                    */
         --bright:               var(--brand-bright);        /* SECONDARY BRIGHT         */
