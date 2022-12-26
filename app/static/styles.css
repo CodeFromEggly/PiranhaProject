@@ -84,7 +84,7 @@ GREYS DARK -> LIGHT
         --background-subtle:    var(--grey-60);             /* EXTRA LOW CONTRAST       */
         --surface:              var(--grey-80);             /* EXTRA-EXTRA LOW CONTRAST */
         --background:           var(--grey-90);             /* WHITE/BLACK              */
-                 
+        
     }
 
     .dark-mode {
@@ -114,26 +114,59 @@ GREYS DARK -> LIGHT
     }
 
     .pNavLink {
-        color: var(--on-background-high) !important;
+        color: var(--on-background-high);
+        transition: 0.2s;
     }
 
     .pNavLink:hover {
-        color: var(--primary) !important;
+        color: var(--primary);
     }
 
     .pNavLink.disabled {
-        color: var(--on-background-med) !important;
+        color: var(--on-background-med);
     }
 
     nav ul li {
         list-style-type: none;
         display: inline-block;
-        padding: 5px 20px;
+        padding: 5px 40px;
         text-align: center;
     }
 
-    nav a {
+    nav ul li a {
+        position: relative;
         text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        transition: 0.2s;
+        
+    }
+
+    nav ul li a .text {
+        position: absolute;
+        opacity: 0;        
+        transition: 0.2s;
+    }
+
+    nav ul li:hover a .text {
+        opacity: 1;
+        transform: translateY(15px);
+    }
+
+    nav ul li a i {
+        position: relative;
+    }
+
+    nav ul li:hover a i {
+        transform: translateY(-15px);
+    }
+
+    nav ul li .active {
+        color: var(--primary) !important;
     }
 
     a {
@@ -201,7 +234,7 @@ GREYS DARK -> LIGHT
         overflow: hidden;
         background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
         color: var(--on-background-high);
-        transition: transform 0.15s linear;
+        transition: transform 0.2s linear;
     }
 
     .miniCard:hover {
@@ -376,7 +409,7 @@ GREYS DARK -> LIGHT
     }
 
     i {
-        transition: transform 0.15s linear;
+        transition: transform 0.2s linear;
         font-size: 24px;
         margin: 1%;
         border-radius: 3px;

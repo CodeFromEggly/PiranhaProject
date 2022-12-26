@@ -32,6 +32,26 @@ brightnessButton.addEventListener('click', function() {
     }
 });
 
+// ACTIVE NAVBAR SELECTOR
+var activePage = localStorage.getItem('active-page');
+
+if (!activePage) {
+    localStorage.setItem('active-page', 'Home');
+}
+
+const list = document.querySelectorAll('.pNavItem');
+function activeItem() {
+    list.forEach((item) =>
+    item.classList.remove('active'));
+    this.classList.add('active');
+    localStorage.setItem('active-page', this.firstElementChild.id);
+}
+
+document.getElementById(activePage).classList.add('active');
+list.forEach((item) =>
+item.addEventListener('click', activeItem));
+
+
 // FEATURED CARD DISPLAY
 $(document).ready(function(){
     $("#featuredCard").css("display", "none");
