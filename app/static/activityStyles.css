@@ -71,7 +71,7 @@
 .item:hover,
 .card:hover {
     transform: scale(1.02);
-    border: solid 1px var(--tertiary);
+    border: solid 1px var(--light);
 }
 
 button {
@@ -81,8 +81,8 @@ button {
 }
 
 .selected {
-    background-color: var(--tertiary);
-    color: var(--surface);
+    background-color: var(--light);
+    color: var(--brand);
     transform: scale(1.1);
 }
 

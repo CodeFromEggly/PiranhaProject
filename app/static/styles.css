@@ -1,26 +1,26 @@
 /* Working Palettes:
 
---primary-color:    #146070;     
---secondary-color:  #729DA6;     
---tertiary-color:   #DE5350;     
+--bright-color:    #146070;     
+--med-color:  #729DA6;     
+--dark-color:   #DE5350;     
 --accent-color:     #A69099;     
 --background:      #CED9D5;     
 
---primary-color:    #1C2D29;
---secondary-color:  #900409;
---tertiary-color:   #399AB1;
+--bright-color:    #1C2D29;
+--med-color:  #900409;
+--dark-color:   #399AB1;
 --accent-color:     #38372F;
 --background:      #A8DBCB;
 
---primary-color:    #63373A; 
---secondary-color:  #6395B0; 
---tertiary-color:   #B0AF8F; 
+--bright-color:    #63373A; 
+--med-color:  #6395B0; 
+--dark-color:   #B0AF8F; 
 --accent-color:     #5A6971; 
 --background:      #A8DBCB; 
 
---brand-primary:        #EB455F;
---brand-secondary:      #2B3467;
---brand-alt:            #BAD7E9;
+--brand-bright:        #EB455F;
+--brand-dark:      #2B3467;
+--brand-med:            #BAD7E9;
 
 GREYS DARK -> LIGHT
 --grey-10: #17181A;
@@ -45,7 +45,8 @@ GREYS DARK -> LIGHT
 /* Maybe need BG1 BG2 and TEXT1 TEXT2 */
     :root {
 
-        /*   BASE COLOR: #36B24A      https://palx.jxnblk.com/   */
+        /*   BASE COLOR: #36B24A      https://palx.jxnblk.com/  
+        https://toolness.github.io/accessible-color-matrix/ to determine contrast/accessibility  */
 
         --grey-00:              #344336;
         --grey-10:              #59725c;
@@ -58,26 +59,26 @@ GREYS DARK -> LIGHT
         --grey-80:              #ebeeeb;
         --grey-90:              #f8faf9;
 
-        --brand-primary:        #39b389;                  /* Striking brand colour    */
-        --brand-secondary:      #164736;                  /* Dark brand colour        */
-        --brand-alt:            #a9decc;                  /* Light brand colour       */
 
-        /*    Ideally implement like this 
+        --brand-main:          #c47365;                   /* MAIN BRAND COLOUR        */
+        --brand-bright:        #39b389;                   /* BRIGHT BRAND COLOUR      */
+        --brand-light:         #f4fbf9;                   /* LIGHT BRAND COLOUR       */
+        --brand-med:           #a9decc;                   /* MED BRAND COLOUR         */
+        --brand-dark:          #164736;                   /* DARK BRAND COLOUR        */
+        
+        
 
-            --brand-primary:        #36B24A;
+        /*
 
-            --brand-light:          #a9decc;
-            --brand-bright:         #39b389;
-            --brand-med:            #65c4a3;
-            --brand-dark:           #164736;
-
-            Use https://toolness.github.io/accessible-color-matrix/ to determine contrast/accessibility 
+            
         
         */
 
-        --primary:              var(--brand-primary);       /* BRAND                    */
-        --secondary:            var(--brand-alt);           /* ACCENT                   */
-        --tertiary:             var(--brand-secondary);     /* ALT                      */
+        --brand:                var(--brand-main);          /* BRAND                    */
+        --bright:               var(--brand-bright);        /* SECONDARY BRIGHT         */
+        --light:                var(--brand-light);         /* SECONDARY LIGHT          */
+        --med:                  var(--brand-med);           /* SECONDARY MED            */
+        --dark:                 var(--brand-dark);          /* SECONDARY DARK           */
         --on-background-high:   var(--grey-00);             /* HIGH CONTRAST            */
         --on-background-med:    var(--grey-20);             /* MEDIUM CONTRAST          */
         --on-background-low:    var(--grey-40);             /* LOW CONTRAST             */
@@ -88,10 +89,11 @@ GREYS DARK -> LIGHT
     }
 
     .dark-mode {
-
-        --primary:              var(--brand-primary);       /* BRAND                    */
-        --secondary:            var(--brand-secondary);     /* ACCENT                   */
-        --tertiary:             var(--brand-alt);           /* ALT                      */
+        --brand:                var(--brand-main);          /* BRAND                    */
+        --bright:               var(--brand-bright);        /* SECONDARY BRIGHT         */        
+        --light:                var(--brand-light);         /* SECONDARY LIGHT          */
+        --med:                  var(--brand-dark);          /* SECONDARY DARK           */
+        --dark:                 var(--brand-med);           /* SECONDARY MED            */
         --on-background-high:   var(--grey-90);             /* HIGH CONTRAST            */
         --on-background-med:    var(--grey-70);             /* MEDIUM CONTRAST          */
         --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
@@ -101,6 +103,10 @@ GREYS DARK -> LIGHT
     }
 
 /* NAVIGATION */
+
+    #logoImg {
+        position: absolute;
+    }
 
     nav {
         /*background-color: var(--on-background-low);*/
@@ -119,7 +125,7 @@ GREYS DARK -> LIGHT
     }
 
     .pNavLink:hover {
-        color: var(--primary);
+        color: var(--bright);
     }
 
     .pNavLink.disabled {
@@ -166,15 +172,15 @@ GREYS DARK -> LIGHT
     }
 
     nav ul li .active {
-        color: var(--primary) !important;
+        color: var(--brand) !important;
     }
 
     a {
-        color: var(--tertiary)
+        color: var(--dark)
     }
 
     a:hover {
-        color: var(--primary);
+        color: var(--bright);
     }
 
 /*  BASIC FORMATTING */
@@ -193,7 +199,7 @@ GREYS DARK -> LIGHT
 
     h4, h5, h6 {
         font-weight: bold;
-        color: var(--tertiary);
+        color: var(--dark);
     }
 
     img {
@@ -207,7 +213,7 @@ GREYS DARK -> LIGHT
     #featuredCard {
         margin-top: 1%;
         width:60%; height:40%;
-        background: linear-gradient(0deg, var(--on-background-low) 0%, var(--background-subtle) 100%);
+        background: linear-gradient(0deg, var(--background-subtle) 0%, var(--surface) 100%);
         color: var(--on-background-high);
     }
 
@@ -239,7 +245,7 @@ GREYS DARK -> LIGHT
 
     .miniCard:hover {
         transform: scale(1.02);
-        border: solid 1px var(--tertiary);
+        border: solid 1px var(--dark);
     }
 
     .card-body {
@@ -254,33 +260,25 @@ GREYS DARK -> LIGHT
         position: relative;
         z-index: 1;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-        border: 2px solid var(--secondary) !important;
+        border: 2px solid var(--med) !important;
         background: linear-gradient(0deg, var(--on-background-low) 0%, var(--on-background-med) 100%) !important;
         color: var(--surface) !important;
         transform: scale(1.02);
     }
 
     .selectedCard h6 {
-        color: var(--secondary) !important;
+        color: var(--med) !important;
     }
 
     #show-more,
     #show-less {
-        color: var(--secondary);
+        color: var(--med);
         text-decoration: none;
     }
     #show-more:hover,
     #show-less:hover {
         color: var(--background);
         text-decoration: underline;
-    }
-
-    .profitable {
-        border: 3px solid chartreuse;
-    }
-
-    .notProfitable {
-        border: 3px solid tomato;
     }
 
 
@@ -313,7 +311,7 @@ GREYS DARK -> LIGHT
 
     .carousel-control-prev:hover,
     .carousel-control-next:hover {
-        color: var(--tertiary) !important;
+        color: var(--dark) !important;
     }
 
 /* SIDEBAR COLUMNS */
@@ -328,7 +326,7 @@ GREYS DARK -> LIGHT
         width: 10%;
         height: 60%;
         background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
-        border: solid 1px var(--tertiary);
+        border: solid 1px var(--dark);
         border-radius: 10px;
     }
 
@@ -343,7 +341,7 @@ GREYS DARK -> LIGHT
         height: 60%;
         color: var(--on-background-high);
         background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
-        border: solid 1px var(--tertiary);  
+        border: solid 1px var(--dark);  
         border-radius: 10px;
     }
 
@@ -365,13 +363,13 @@ GREYS DARK -> LIGHT
     .main-form button {
         background-color: var(--surface);
         color: var(--on-background-high);
-        border: solid 1px var(--tertiary)
+        border: solid 1px var(--dark)
     }
     .btn:hover,
     .main-form button:hover {
-        background-color: var(--secondary);
-        color: var(--tertiary);
-        border: solid 1px var(--tertiary);
+        background-color: var(--med);
+        color: var(--dark);
+        border: solid 1px var(--dark);
     }
 
     select option,
@@ -386,8 +384,8 @@ GREYS DARK -> LIGHT
     input[type="number"]:focus,
     input[type="password"]:focus {
         background-color: var(--background-subtle); 
-        color: var(--tertiary);
-        caret-color: var(--tertiary); 
+        color: var(--dark);
+        caret-color: var(--dark); 
     }
       
     input[type="checkbox"]:not(:checked) {
@@ -395,11 +393,11 @@ GREYS DARK -> LIGHT
     }
 
     input[type="checkbox"]:checked {
-        background-color: var(--secondary);
+        background-color: var(--dark);
     }
 
     select option:checked {
-        background-color: var(--tertiary);
+        background-color: var(--dark);
         color: var(--background);
         border-radius: 5px;
     }
@@ -417,7 +415,7 @@ GREYS DARK -> LIGHT
     
     i:hover {
         transform: scale(1.1) !important;
-        color: var(--primary);
+        color: var(--bright);
         cursor: pointer;
     }
       
