@@ -434,11 +434,11 @@ GREYS DARK -> LIGHT
     }
 
     input[type="checkbox"]:checked {
-        background-color: var(--dark);
+        background-color: var(--bright);
     }
 
     select option:checked {
-        background-color: var(--dark);
+        background-color: var(--bright);
         color: var(--background);
         border-radius: 5px;
     }
