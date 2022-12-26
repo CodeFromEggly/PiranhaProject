@@ -32,10 +32,10 @@ brightnessButton.addEventListener('click', function() {
     }
 });
 
-// ACTIVE NAVBAR SELECTOR
+// ACTIVE NAV SELECTOR
 var activePage = localStorage.getItem('active-page');
 
-if (!activePage) {
+if (activePage === null) {
     localStorage.setItem('active-page', 'Home');
 }
 

@@ -44,8 +44,7 @@ GREYS DARK -> LIGHT
 /* COLOR PALETTES */
 /* Maybe need BG1 BG2 and TEXT1 TEXT2 */
     :root {
-
-        /*   BASE COLOR: #36B24A      https://palx.jxnblk.com/  
+                /*   BASE COLOR: #36B24A      https://palx.jxnblk.com/  
         https://toolness.github.io/accessible-color-matrix/ to determine contrast/accessibility  */
 
         --grey-00:              #344336;
@@ -62,7 +61,7 @@ GREYS DARK -> LIGHT
 
         --brand-main:           #c47365;                   /* MAIN BRAND COLOUR        */
         --brand-bright:         #39b389;                   /* BRIGHT BRAND COLOUR      */
-        --brand-light:          #f4fbf9;                   /* LIGHT BRAND COLOUR       */
+        --brand-light:          #ddf2eb;                   /* LIGHT BRAND COLOUR       */
         --brand-med:            #a9decc;                   /* MED BRAND COLOUR         */
         --brand-dark:           #164736;                   /* DARK BRAND COLOUR        */
         
@@ -77,16 +76,15 @@ GREYS DARK -> LIGHT
         --on-background-low:    var(--grey-40);             /* LOW CONTRAST             */
         --background-subtle:    var(--grey-60);             /* EXTRA LOW CONTRAST       */
         --surface:              var(--grey-80);             /* EXTRA-EXTRA LOW CONTRAST */
-        --background:           var(--grey-90);             /* WHITE/BLACK              */
-        
+        --background:           var(--grey-90);             /* WHITE/BLACK              */  
     }
 
     .dark-mode {
         --brand:                var(--brand-main);          /* BRAND                    */
         --bright:               var(--brand-bright);        /* SECONDARY BRIGHT         */        
-        --light:                var(--brand-light);         /* SECONDARY LIGHT          */
-        --med:                  var(--brand-dark);          /* SECONDARY DARK           */
-        --dark:                 var(--brand-med);           /* SECONDARY MED            */
+        --light:                var(--brand-dark);          /* SECONDARY LIGHT          */
+        --med:                  var(--brand-med);           /* SECONDARY DARK           */
+        --dark:                 var(--brand-light);         /* SECONDARY MED            */
         --on-background-high:   var(--grey-90);             /* HIGH CONTRAST            */
         --on-background-med:    var(--grey-70);             /* MEDIUM CONTRAST          */
         --on-background-low:    var(--grey-50);             /* LOW CONTRAST             */
@@ -316,9 +314,9 @@ GREYS DARK -> LIGHT
         transform: translateY(-50%);
         left: 1%;
         bottom: auto;
-        width: 10%;
+        width: 15%;
         height: 60%;
-        background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
+        background: linear-gradient(0deg, var(--background) 0%, var(--surface) 100%);
         border: solid 1px var(--dark);
         border-radius: 10px;
     }
@@ -330,12 +328,62 @@ GREYS DARK -> LIGHT
         transform: translateY(-50%);
         right: 1%;
         bottom: 0;
-        width: 10%;
+        width: 15%;
         height: 60%;
         color: var(--on-background-high);
-        background: linear-gradient(0deg, var(--surface) 0%, var(--background-subtle) 100%);
+        background: linear-gradient(0deg, var(--background) 0%, var(--surface) 100%);
         border: solid 1px var(--dark);  
         border-radius: 10px;
+    }
+
+    .pColumn > details {
+        display: inline-block;
+        min-height: 8%;
+        max-height: 30%;
+        width: 95%;
+        overflow-y: hidden;
+    }
+    
+    .pColumn > details[open] {
+        overflow-y: scroll;
+    }
+
+    .pColumn details[open] summary {
+        background-color: var(--light);
+        border-radius: 10px;
+    }
+
+    .pColumn > details > summary {
+        position: sticky;
+        top: 0;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .pColumn i {
+        font-size: 14px;
+    }
+    
+    .pColumn details summary:hover {
+        color: var(--bright);
+    }
+
+    .pColumn > details > ul {
+        max-height: 18%;
+    }
+
+    .pColumn details ul li {
+        list-style-type: none !important;
+        border: solid 1px var(--dark);
+        border-radius: 5px;
+        color: var(--on-background-high);
+        padding: 2% 5%;
+        margin: 1% 0%;
+    }
+
+    .pColumn details ul li:hover {
+        background-color: var(--light);
+        cursor: pointer;
     }
 
 /* Forms */
