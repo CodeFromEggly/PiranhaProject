@@ -18,8 +18,6 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# Configure to use SQLite database
-#db = SQL("sqlite:///database.db")
 
 @app.after_request
 def after_request(response):

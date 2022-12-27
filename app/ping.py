@@ -4,7 +4,7 @@ I don't want it to run all the time (for the moment, atleast)
 """
 import discord
 import sqlite3
-from tokens import disBot
+import tokens
 
 intents = discord.Intents.default()
 client = discord.Client(command_prefix='!', intents=intents)
@@ -39,7 +39,7 @@ async def on_ready():
     await client.close()
 
 
-client.run(disBot)
+client.run(tokens.discord)
 
 
 
