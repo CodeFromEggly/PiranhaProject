@@ -100,7 +100,7 @@
                                     </div>
                                     <h6 class="card-title" style="font-weight:bold">{{card['name']}}</h6>
                                     <div class="card-text-container">NFT info, prices etc
-                                        {{card['slug']}} {{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}
+                                        <a href="{{card['slug']}} {{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}">{{card['slug']}} {{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}</a>
                                     </div>
                                 </div>
                             </div>
