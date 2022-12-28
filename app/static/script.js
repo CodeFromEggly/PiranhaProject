@@ -1,4 +1,5 @@
 // DARK MODE
+
 var htmlElement = document.querySelector('html');
 var brightnessButton = document.querySelector('#brightness-button');
 var darkMode = localStorage.getItem('dark-mode');
@@ -30,9 +31,12 @@ brightnessButton.addEventListener('click', function() {
             carousel.classList.remove("carousel-dark");
         }
     }
+    location.assign(location.href);
 });
 
+
 // ACTIVE NAV SELECTOR
+
 var activePage = localStorage.getItem('active-page');
 
 if (activePage === null) {
@@ -53,6 +57,7 @@ item.addEventListener('click', activeItem));
 
 
 // FEATURED CARD DISPLAY
+
 $(document).ready(function(){
     $("#featuredCard").css("display", "none");
     $(".miniCard").click(function(){
@@ -81,46 +86,41 @@ $(document).ready(function(){
     });
 }); 
 
-// SHOW MORE/LESS   -- Not applying to inactive slides, possibly the cardTextContainers select statement, indexing and then 'if' statement which only checks once
-// Disabled until useful 
 
-/*
-const showMoreLinks = document.querySelectorAll('#show-more');
-const showLessLinks = document.querySelectorAll('#show-less');
-const cardTextContainers = document.querySelectorAll('.card-text-container');
+// SLIDERS
 
-cardTextContainers.forEach((container, index) => {
+const profitMarginMinInput = document.getElementById('profitMarginMin');
+const profitMarginMaxInput = document.getElementById('profitMarginMax');
+const profitMarginMinValue = document.getElementById('profitMarginMinValue');
+const profitMarginMaxValue = document.getElementById('profitMarginMaxValue');
 
-    const miniCard = container.closest('.miniCard');
-
-    const showMoreLink = showMoreLinks[index];
-    const showLessLink = showLessLinks[index];
-
-    if (container.scrollHeight > container.clientHeight) {
-        showMoreLink.style.display = 'block';
-    }
-
-    showMoreLink.addEventListener('click', (e) => {
-        e.stopPropagation();
-        container.style.maxHeight = container.scrollHeight + 'px';
-        miniCard.style.maxHeight = miniCard.scrollHeight + 'px';
-        showMoreLink.style.display = 'none';
-        showLessLink.style.display = 'block';
-    });
-
-    showLessLink.addEventListener('click', (e) => {
-        e.stopPropagation();
-        container.style.maxHeight = '100px';
-        miniCard.style.maxHeight = '90%';
-        showMoreLink.style.display = 'block';
-        showLessLink.style.display = 'none';
-    });
-
+profitMarginMinInput.addEventListener('input', () => {
+  profitMarginMaxInput.min = profitMarginMinInput.value;
+  profitMarginMinValue.textContent = profitMarginMinInput.value;
 });
 
-Container max height must match showLessLink
-HTML NEEDED:
+profitMarginMaxInput.addEventListener('input', () => {
+    profitMarginMinInput.max = profitMarginMaxInput.value;
+    profitMarginMaxValue.textContent = profitMarginMaxInput.value;
+});
 
-<a id="show-more" style="display: none;">Show More</a>
-<a id="show-less" style="display: none;">Show Less</a>
-*/
+profitMarginMinValue.textContent = profitMarginMinInput.value;
+profitMarginMaxValue.textContent = profitMarginMaxInput.value;
+
+const priceRangeMinInput = document.getElementById('priceRangeMin');
+const priceRangeMaxInput = document.getElementById('priceRangeMax');
+const priceRangeMinValue = document.getElementById('priceRangeMinValue');
+const priceRangeMaxValue = document.getElementById('priceRangeMaxValue');
+
+priceRangeMinInput.addEventListener('input', () => {
+    priceRangeMaxInput.min = priceRangeMinInput.value;
+    priceRangeMinValue.textContent = priceRangeMinInput.value;
+});
+  
+priceRangeMaxInput.addEventListener('input', () => {
+      priceRangeMinInput.max = priceRangeMaxInput.value;
+      priceRangeMaxValue.textContent = priceRangeMaxInput.value;
+});
+
+priceRangeMinValue.textContent = priceRangeMinInput.value;
+priceRangeMaxValue.textContent = priceRangeMaxInput.value;

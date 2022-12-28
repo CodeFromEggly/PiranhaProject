@@ -13,6 +13,17 @@
 
     <div id="left-column" class="pColumn">
         <details>
+            <summary><i class="bi bi-clock-fill"></i> Quick Actions</summary>
+            <ul>
+                <li>Stop Piranha</li>
+                <li>Feed Piranha with currently filtered collections</li>
+                <li>Convert WETH to ETH</li>
+                <li>Convert ETH to WETH</li>
+                <li>Withdraw profits</li>
+                <li>Use another wallet</li>
+            </ul>
+        </details>
+        <details>
             <summary><i class="bi bi-eye-fill"></i> Watched Collections</summary>
             <ul>
                 <li>The Plague</li>
@@ -47,29 +58,36 @@
                     <li>Blocktones</li>
                 </ul>
             </details>
-            <details>
-                <summary>Price Range</summary>
-                <ul>
-                    <li>Slider Needed Here</li>
-                </ul>
-            </details>
-            <details>
-                <summary>Profit Margin</summary>
-                <ul>
-                    <li>Slider Needed Here</li>
-                </ul>
-            </details>
-        </details>
-        <details>
-            <summary><i class="bi bi-clock-fill"></i> Quick Actions</summary>
-            <ul>
-                <li>Stop Piranha</li>
-                <li>Feed Piranha with currently filtered collections</li>
-                <li>Convert WETH to ETH</li>
-                <li>Convert ETH to WETH</li>
-                <li>Withdraw profits</li>
-                <li>Use another wallet</li>
-            </ul>
+            <form style="font-size: larger">
+                <div class="form-group">
+                    <label for="priceRange"><h6>Price Range: (No use yet)</h6></label>
+                    <div class="row" style="text-align: center;">
+                        <div class="col">MIN</div>
+                        <div class="col">MAX</div>
+                    </div>
+                    <input type="range" class="form-control-range" id="priceRangeMin" min="0" max="100" value="0">
+                    <input type="range" class="form-control-range" id="priceRangeMax" min="0" max="100" value="100">
+                </div>
+                <div class="row" style="text-align: center;">
+                    <div class="col" id="priceRangeMinValue"></div>
+                    <div class="col" id="priceRangeMaxValue"></div>
+                </div>
+            </form>
+            <form style="font-size: larger">
+                <div class="form-group">
+                    <label for="profitMargin"><h6>Profit Margin: (No use yet)</h6></label>
+                    <div class="row" style="text-align: center;">
+                        <div class="col">MIN</div>
+                        <div class="col">MAX</div>
+                    </div>
+                    <input type="range" class="form-control-range" id="profitMarginMin" min="0" max="100" value="0">
+                    <input type="range" class="form-control-range" id="profitMarginMax" min="0" max="100" value="100">
+                    <div class="row" style="text-align: center;">
+                        <div class="col" id="profitMarginMinValue"></div>
+                        <div class="col" id="profitMarginMaxValue"></div>
+                    </div>
+                </div>
+            </form>
         </details>
     </div>
 
