@@ -83,11 +83,17 @@ def conditions():
         print(conditions)
         with open("search_conditions.json", "w") as file:
             json.dump(conditions, file)
-        return redirect("/")
+        return redirect("/conditions")
     
     # Load conditions .html
     else:
-        return render_template("conditions.html")
+        # Current conditions:
+    
+
+        with open('search_conditions.json', 'r') as f:
+            conditions = json.load(f)
+
+        return render_template("conditions.html", conditions=conditions)
 
 
 @app.route("/ping", methods=["GET", "POST"])

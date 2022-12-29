@@ -58,4 +58,13 @@
 
             </form>
     </div>
+
+    <!-- Show current saved conditions:-->
+    <h3>Saved conditions:</h3>
+
+    <ul>
+        {% for key, value in conditions.items() %}
+          <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+      </ul>
 {% endblock %}
