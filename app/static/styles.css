@@ -1,51 +1,6 @@
-/* Working Palettes:
-
---bright-color:    #146070;     
---med-color:  #729DA6;     
---dark-color:   #DE5350;     
---accent-color:     #A69099;     
---background:      #CED9D5;     
-
---bright-color:    #1C2D29;
---med-color:  #900409;
---dark-color:   #399AB1;
---accent-color:     #38372F;
---background:      #A8DBCB;
-
---bright-color:    #63373A; 
---med-color:  #6395B0; 
---dark-color:   #B0AF8F; 
---accent-color:     #5A6971; 
---background:      #A8DBCB; 
-
---brand-bright:        #EB455F;
---brand-dark:      #2B3467;
---brand-med:            #BAD7E9;
-
-GREYS DARK -> LIGHT
---grey-10: #17181A;
---grey-30: #46484D;
---grey-50: #747780;
---grey-70: #A2A7B3;
---grey-90: #D1D7E6;
-
-
---grey-mn:              #070708;
---grey-10:              #17181A;
---grey-20:              #2D2F33;
---grey-30:              #46484D;
---grey-50:              #747780;
---grey-70:              #A2A7B3;
---grey-80:              #B4BCCC;
---grey-90:              #D1D7E6;
---grey-mx:              #E0EBFF;
-*/
-
 /* COLOR PALETTES */
-/* Maybe need BG1 BG2 and TEXT1 TEXT2 */
     :root {
-                /*   BASE COLOR: #36B24A      https://palx.jxnblk.com/  
-        https://toolness.github.io/accessible-color-matrix/ to determine contrast/accessibility  */
+                /*    BASE COLOR: #36B24A    */
 
         --grey-00:              #344336;
         --grey-10:              #59725c;
@@ -174,6 +129,39 @@ GREYS DARK -> LIGHT
         color: var(--bright);
     }
 
+    #connect-div {
+        display: none; 
+        position: fixed;
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        background-color: var(--background); 
+        padding: 20px; 
+        border: 1px solid var(--brand-bright); 
+        z-index: 2;
+    }
+
+    #connect-exit {
+        position: absolute; 
+        top: 0; 
+        right: 0; 
+        padding: 5px 10px; 
+        border: none; 
+        background-color: transparent; 
+        cursor: pointer;
+    }
+
+    #overlay {
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: 1;
+    }
+
 /*  BASIC FORMATTING */
 
     .bgMain {
@@ -279,7 +267,7 @@ GREYS DARK -> LIGHT
         display: flex;
         overflow-x: auto;
         overflow-y: visible;
-        width:65%;
+        width:60%;
         height: 50%;
         margin: 0 auto;
     }
