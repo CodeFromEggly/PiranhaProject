@@ -11,8 +11,9 @@ app.py renders a front-page, '/' route, which displays featured listings. The pa
 
 #### ROUTES
 
-##### '/'
+##### '/' (index)
 
+https://github.com/CodeFromEggly/PiranhaProject#-index
 ##### '/conditions'
 Its '/conditions' route allows selecting of the script's search terms which are saved in a json file. Currently the conditions form allows selection of:
   - Collection
