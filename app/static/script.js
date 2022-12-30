@@ -61,8 +61,6 @@
         }
 
         document.getElementById(activePage).classList.add('active');
-        list.forEach((item) =>
-        item.addEventListener('click', activeItem));
 
 
     // WALLET CONNECT BUTTON
