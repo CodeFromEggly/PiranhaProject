@@ -18,6 +18,8 @@ Three tables exist in the database: collections, containing information about NF
 Data on SQL implementation is available in /SQL/.
 
 #### ROUTES
+TODO: Why different routes are followed in app.py
+        Talk about /ping
 
 ##### Index()
 TODO: The '/' route
@@ -35,6 +37,7 @@ These conditions, or search filters, are saved as search_conditons.JSON so as to
 ##### Activity()
 TODO: '/activity'
 
+
 #### TEMPLATES
 
 ##### layout.html
@@ -46,11 +49,13 @@ Contains <head> and <body> tags, as well as the [Nav](https://github.com/CodeFro
 ###### CAROUSEL
 Bootstrap carousel which is fed 'all' dict from the ['/' route](https://github.com/CodeFromEggly/PiranhaProject#index)'. This dict is used to populate the carousel with bootstrap cards, separating the data into segements of 4 for each slide.
 
-TODO: Why different routes are followed in app.py
-        Talk about /ping
+TODO: featured/empty cards
 
 ##### activity.html
-
+TODO: 
+- activityStyles.css
+- activityScript.css
+- card-size local storage variable & activity table
 
 ### UI
 
@@ -62,14 +67,32 @@ Whilst Bootstrap has been very useful in the design of this UI, most of its comp
 
 ##### COLOUR SCHEME
 
-For consistency in the UI, the colour scheme is implemented with custom variables defining brand colours and greys of different hues. 
+For consistency in the UI, the colour scheme is implemented with custom CSS variables defining brand colours and greys of different hues:
+
+--grey-00:         #344336;
+--grey-10:         #59725c;
+--grey-20:         #759079;
+--grey-30:         #90a593;
+--grey-40:         #a7b7a9;
+--grey-50:         #bac7bc;
+--grey-60:         #ccd5cd;
+--grey-70:         #dce2dd;
+--grey-80:         #ebeeeb;
+--grey-90:         #f8faf9;
+
+--brand-main:      #c47365;
+--brand-bright:    #39b389;
+--brand-light:     #f4fbf9;
+--brand-med:       #a9decc;
+--brand-dark:      #164736;
+
 The following free resources were useful for achieving this:
 
 https://palx.jxnblk.com/ - 'Automatic UI Colour Palette Generator' with a base colour of #36B24A 
 https://color.adobe.com/create/color-wheel - Adobe's colour wheel, used for selecting complimentary brand colours
 https://toolness.github.io/accessible-color-matrix/ - 'Accessible Colour Palette Builder' for ensuring text readability
 
-This method of adding a colour scheme allows for easy modifications to the website design, as well as simple implementation of light/dark mode using javascript.
+This method of adding a colour scheme allows for easy modifications to the website design, as well as simple implementation of [light/dark](https://github.com/CodeFromEggly/PiranhaProject#lightdark-mode) mode using javascript.
 
 ##### LIGHT/DARK MODE
 
@@ -87,6 +110,8 @@ When #brightness-button is clicked to [activate / deactivate] Dark Mode, the fol
 #### NAV
 
 The initial design featured a bootstrap navbar however this was too bulky and did not fit with the overall theme. Instead, the nav components have been designed without a framework to match the minimalism throughout the site.
+
+Several :hover CSS functions have been added to the navigational icons improve the overall UX, including colour, pointer and positional changes.
 
 ##### ACTIVE NAV (JavaScript)
 
