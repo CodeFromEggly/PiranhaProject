@@ -9,12 +9,20 @@ There will be options for narrowing the script's alerts to specific collections 
 ### app.py and templates
 app.py renders a front-page, '/' route, which displays featured listings. The page displays a graphical timeline of NFT 'detections' - OpenSea listings which fell within the filters specified by saved conditions.
 
+#### mainstream.js
+mainstream.js will interact with stream-api and filter listings based upon the conditions passed to it. 
+Currently this file serves no pupose as we were unable to aqcuire an API key for the OpenSea marketplace.
+
+#### piranha.db
+Three tables exist in the database: collections, containing information about NFT collections; keyData, containing data unique to each NFT which needs to be quickly accessed; moreData, containing information which doesn't need to be so readily available. All three tables are linked, using keyData's key and collections' (contract) address. The decision to split NFT information into two tables was so that smaller queries can be made in app.py, and more-succinct Jinja code can be used in buildinh website features such as graph.js.
+Data on SQL implementation is available in /SQL/.
+
 #### ROUTES
 
-##### '/' (index)
+##### Index()
+TODO: The '/' route
 
-https://github.com/CodeFromEggly/PiranhaProject#-index
-##### '/conditions'
+##### Conditions()
 Its '/conditions' route allows selecting of the script's search terms which are saved in a json file. Currently the conditions form allows selection of:
   - Collection
   - Trading Volume
@@ -23,6 +31,9 @@ Its '/conditions' route allows selecting of the script's search terms which are 
   - Number of WETH offers
   - Availability of Sudoswap pool for listing's contract.
 These conditions, or search filters, are saved as search_conditons.JSON so as to be accessed by other files (such as mainstream.js) and be saved for use next time the app is run.
+
+##### Activity()
+TODO: '/activity'
 
 #### TEMPLATES
 
@@ -33,22 +44,12 @@ Contains <head> and <body> tags, as well as the [Nav](https://github.com/CodeFro
 ##### index.html
 
 ###### CAROUSEL
-Bootstrap carousel which is fed data from [app.py](https://github.com/CodeFromEggly/PiranhaProject#apppy-and-templates) 
+Bootstrap carousel which is fed 'all' dict from the ['/' route](https://github.com/CodeFromEggly/PiranhaProject#index)'. This dict is used to populate the carousel with bootstrap cards, separating the data into segements of 4 for each slide.
 
 TODO: Why different routes are followed in app.py
         Talk about /ping
-  
 
-#### mainstream.js
-mainstream.js will interact with stream-api and filter listings based upon the conditions passed to it. 
-Currently this file serves no pupose as we were unable to aqcuire an API key for the OpenSea marketplace.
-
-
-
-#### piranha.db
-Three tables exist in the database: collections, containing information about NFT collections; keyData, containing data unique to each NFT which needs to be quickly accessed; moreData, containing information which doesn't need to be so readily available. All three tables are linked, using keyData's key and collections' (contract) address. The decision to split NFT information into two tables was so that smaller queries can be made in app.py, and more-succinct Jinja code can be used in buildinh website features such as graph.js.
-Data on SQL implementation is available in /SQL/.
-
+##### activity.html
 
 
 ### UI
@@ -56,6 +57,8 @@ Data on SQL implementation is available in /SQL/.
 #### STYLING
 
 The PIRANHA UI is styled almost entirely through .css files. Much of the displayed data is taken from an ever expanding database, so scalability of styling is important.
+
+Whilst Bootstrap has been very useful in the design of this UI, most of its components have been heavily modified using CSS.
 
 ##### COLOUR SCHEME
 
