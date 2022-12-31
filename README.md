@@ -1,8 +1,8 @@
 # Piranha
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://youtu.be/54hG0uDrskk
 #### Description:
 
-The above video and following description describe the purpose and creation of CodeWithEggly and sgsmi's CS50 final project, the Piranha.
+The above video and following description describe the purpose and creation of CodeFromEggly and sgsmi's CS50 final project, the Piranha.
 Piranha will be a script that will notify us, via email or otherwise, of new listings on OpenSea. It will do this by utilisting OpenSea's Stream API. 
 There will be options for narrowing the script's alerts to specific collections and to within a specific price range.
 
@@ -55,7 +55,7 @@ Homepage, shows generalised data to the user as a result of parameters selected 
 ###### CAROUSEL
 Bootstrap carousel which is fed 'all' dict from the ['/' route](https://github.com/CodeFromEggly/PiranhaProject#index)'. This dict is used to populate the carousel with bootstrap cards, separating the data into segements of 4 for each slide.
 
-##### SELECTED CARD/DETECTION HISTORY
+###### SELECTED CARD/DETECTION HISTORY
 Using a JavaScript event listener, clicking a card from the [carousel](https://github.com/CodeFromEggly/PiranhaProject#carousel) replaces the Detection History graph (which is fed data from [Index()](https://github.com/CodeFromEggly/PiranhaProject#index)) with more detailed information about the chosen NFT.  
 
 ##### activity.html
@@ -85,22 +85,22 @@ Whilst Bootstrap has been very useful in the design of this UI, most of its comp
 ##### COLOUR SCHEME
 For consistency in the UI, the colour scheme is implemented with custom CSS variables defining brand colours and greys of different hues:
 
---grey-00:         #344336;
---grey-10:         #59725c;
---grey-20:         #759079;
---grey-30:         #90a593;
---grey-40:         #a7b7a9;
---grey-50:         #bac7bc;
---grey-60:         #ccd5cd;
---grey-70:         #dce2dd;
---grey-80:         #ebeeeb;
---grey-90:         #f8faf9;
+- --grey-00:         #344336;
+- --grey-10:         #59725c;
+- --grey-20:         #759079;
+- --grey-30:         #90a593;
+- --grey-40:         #a7b7a9;
+- --grey-50:         #bac7bc;
+- --grey-60:         #ccd5cd;
+- --grey-70:         #dce2dd;
+- --grey-80:         #ebeeeb;
+- --grey-90:         #f8faf9;
 
---brand-main:      #c47365;
---brand-bright:    #39b389;
---brand-light:     #f4fbf9;
---brand-med:       #a9decc;
---brand-dark:      #164736;
+- --brand-main:      #c47365;
+- --brand-bright:    #39b389;
+- --brand-light:     #f4fbf9;
+- --brand-med:       #a9decc;
+- --brand-dark:      #164736;
 
 The following free resources were useful for achieving this:
 

@@ -148,12 +148,13 @@
 
         priceRangeMinValue.textContent = priceRangeMinInput.value;
         priceRangeMaxValue.textContent = priceRangeMaxInput.value;
-        
     }
 
 // ACTIVITY SCRIPTS
 
     if (activePage === 'activity') {
+
+        // CARD RESIZING
 
         const icons = document.querySelectorAll('[data-class]');
         const itemList = document.querySelector("#item-list");
@@ -243,27 +244,27 @@
                     
                     // add the cloned element to the fragment
                     fragment.appendChild(cardElement);
-                });
+                    });
                 
-                // append the fragment to the item list
-                itemList.appendChild(fragment);
-                    }
+                    // append the fragment to the item list
+                    itemList.appendChild(fragment);
+                }
                 
-                    if (className === "small-list" || className === "large-list") {
-                        // clear the item list
-                        itemList.innerHTML = "";
-                
-                        // insert the item template for each item
-                        allData.forEach(item => {
-                            const itemHTML = `
-                                <div class="item">
-                                    <img src="${item.image}" alt="item image">
-                                    <h6>${item.name}</h6>
-                                </div>
-                            `;
-                            itemList.innerHTML += itemHTML;
-                        });
-                    }
+                if (className === "small-list" || className === "large-list") {
+                    // clear the item list
+                    itemList.innerHTML = "";
+            
+                    // insert the item template for each item
+                    allData.forEach(item => {
+                        const itemHTML = `
+                            <div class="item">
+                                <img src="${item.image}" alt="item image">
+                                <h6>${item.name}</h6>
+                            </div>
+                        `;
+                        itemList.innerHTML += itemHTML;
+                    });
+                }
             });
         });
     }
