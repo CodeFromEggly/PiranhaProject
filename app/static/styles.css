@@ -13,14 +13,13 @@
         --grey-80:              #ebeeeb;
         --grey-90:              #f8faf9;
 
-
         --brand-main:           #c47365;                   /* MAIN BRAND COLOUR        */
         --brand-bright:         #39b389;                   /* BRIGHT BRAND COLOUR      */
         --brand-light:          #f4fbf9;                   /* LIGHT BRAND COLOUR       */
         --brand-med:            #a9decc;                   /* MED BRAND COLOUR         */
         --brand-dark:           #164736;                   /* DARK BRAND COLOUR        */
-        
 
+        /* Light Mode  */
         --brand:                var(--brand-main);          /* BRAND                    */
         --bright:               var(--brand-bright);        /* SECONDARY BRIGHT         */
         --light:                var(--brand-light);         /* SECONDARY LIGHT          */
@@ -31,12 +30,12 @@
         --on-background-low:    var(--grey-40);             /* LOW CONTRAST             */
         --background-subtle:    var(--grey-60);             /* EXTRA LOW CONTRAST       */
         --surface:              var(--grey-80);             /* EXTRA-EXTRA LOW CONTRAST */
-        --background:           var(--grey-90);             /* WHITE/BLACK              */  
+        --background:           var(--grey-90);             /* WHITE/BLACK              */
     }
 
     .dark-mode {
         --brand:                var(--brand-main);          /* BRAND                    */
-        --bright:               var(--brand-bright);        /* SECONDARY BRIGHT         */        
+        --bright:               var(--brand-bright);        /* SECONDARY BRIGHT         */
         --light:                var(--brand-dark);          /* SECONDARY LIGHT          */
         --med:                  var(--brand-med);           /* SECONDARY DARK           */
         --dark:                 var(--brand-light);         /* SECONDARY MED            */
@@ -240,8 +239,8 @@
         z-index: 1;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
         border: 2px solid var(--bright) !important;
-        background: linear-gradient(0deg, var(--on-background-low) 0%, var(--on-background-med) 100%) !important;
-        color: var(--surface) !important;
+        background: linear-gradient(0deg, var(--background) 0%, var(--surface) 100%) !important;
+        color: var(--bright) !important;
         transform: scale(1.02);
     }
 
@@ -405,7 +404,7 @@
     .btn:hover,
     .main-form button:hover {
         background-color: var(--med);
-        color: var(--dark);
+        color: var(--light);
         border: solid 1px var(--dark);
     }
 
