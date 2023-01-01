@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+
+{% block head %}  
+    <title>Tracker</title>
+    <link rel="icon" href="/static/icon/activity.svg" type="image/icon type">
+{% endblock %}
+
+{% block main %}
+<body>
+  
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Tracker: WIP</h1>
+        
+        <!-- Form for adding a new holding -->
+        <form class="mb-4" action="/add-holding" method="post">
+            <form class="mb-4" action="/add-holding" method="post">
+                <div class="form-group">
+                    <label for="owner">Owner</label>
+                    <input type="text" class="form-control" id="owner" name="owner" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="collection">Collection</label>
+                    <select class="form-control" id="collection" name="collection" required>
+                        <!-- Add options for each possible collection here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="token-id">Token ID</label>
+                    <input type="text" class="form-control" id="token-id" name="token-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="purchase-price">Purchase Price</label>
+                    <input type="number" min="0" step="0.01" class="form-control" id="purchase-price" name="purchase-price" required>
+                </div>
+                <div class="form-group">
+                    <label for="current-price">Current Price</label>
+                    <input type="number" min="0" step="0.01" class="form-control" id="current-price" name="current-price" required>
+                </div>
+                <div class="form-group">
+                    <label for="os-link">OS Link</label>
+                    <input type="url" class="form-control" id="os-link" name="os-link" required>
+                </div>
+                <div class="form-group">
+                    <label for="bought-time">Bought Time</label>
+                    <input type="datetime-local" class="form-control" id="bought-time" name="bought-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="sold-time">Sold Time</label>
+                    <input type="datetime-local" class="form-control" id="sold-time" name="sold-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="hold-time">Hold Time</label>
+                    <input type="number" min="0" class="form-control" id="hold-time" name="hold-time" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Holding</button>
+            </form>
+        </form>
+  
+        <!-- Filter Controls -->
+        <div class="mb-4">
+            <!-- Dropdown menus for filtering by owner, collection, and token ID -->
+            <form class="form-inline mb-4">
+                <label class="mr-2" for="filter-owner">Owner</label>
+                <select class="form-control mr-2" id="filter-owner" name="filter-owner">
+                    <option value="">All</option>
+                    <!-- Add options for each distinct owner in the holdings table -->
+                </select>
+                <label class="mr-2" for="filter-collection">Collection</label>
+                <select class="form-control mr-2" id="filter-collection" name="filter-collection">
+                    <option value="">All</option>
+                    <!-- Add options for each distinct collection in the holdings table -->
+                </select>
+                <label class="mr-2" for="filter-token-id">Token ID</label>
+                <input type="text" class="form-control mr-2" id="filter-token-id" name="filter-token-id">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+  
+            <!-- Text fields for filtering by purchase price and current price -->
+            <form class="form-inline mb-4">
+                <label class="mr-2" for="filter-purchase-price-min">Purchase Price</label>
+                <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-purchase-price-min" name="filter-purchase-price-min" placeholder="Min">
+                <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-purchase-price-max" name="filter-purchase-price-max" placeholder="Max">
+                <label class="mr-2" for="filter-current-price-min">Current Price</label>
+                <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-current-price-min" name="filter-current-price-min" placeholder="Min">
+                <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-current-price-max" name="filter-current-price-max" placeholder="Max">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        
+            <!-- Checkboxes for filtering by PNL, bought time, and sold time -->
+            <form class="form-inline mb-4">
+                <label class="mr-2" for="filter-pnl-positive">PNL</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="filter-pnl-positive" name="filter-pnl-positive" value="positive">
+                    <label class="form-check-label" for="filter-pnl-positive">Positive</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="filter-pnl-negative" name="filter-pnl-negative" value="negative">
+                    <label class="form-check-label" for="filter-pnl-negative">Negative</label>
+                </div>
+                <label class="mr-2" for="filter-bought-time">Bought Time</label>
+                <input type="datetime-local" class="form-control mr-2" id="filter-bought-time-min" name="filter-bought-time-min" placeholder="Min">
+                <input type="datetime-local" class="form-control mr-2" id="filter-bought-time-max" name="filter-bought-time-max" placeholder="Max">
+                <label class="mr-2" for="filter-sold-time">Sold Time</label>
+                <input type="datetime-local" class="form-control mr-2" id="filter-sold-time-min" name="filter-sold-time-min" placeholder="Min">
+                <input type="datetime-local" class="form-control mr-2" id="filter-sold-time-max" name="filter-sold-time-max" placeholder="Max">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+  
+        <!-- Holdings Table -->
+        <style>
+        /* Limit the height of the image to the height of the table cell */
+        td img {
+            height: 50px;
+            width: 50px;
+        }
+        </style>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Collection</th>
+                    <th scope="col">Token ID</th>
+                    <th scope="col">Purchase Price</th>
+                    <th scope="col">Current Price</th>
+                    <th scope="col">PNL</th>
+                    <th scope="col">OS Link</th>
+                    <th scope="col">Bought Time</th>
+                    <th scope="col">Sold Time</th>
+                    <th scope="col">Hold Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for holding in holdings %}
+                    <tr>
+                        <td>{{ holding.owner }}</td>
+                        <td>
+                            <img src="{{ holding.image }}" alt="{{ holding.name }}" class="zoomable">
+                            <!-- Add a button to toggle the size of the image -->
+                            <button class="btn btn-secondary btn-sm" onclick="zoomImage(this)">+/-</button>
+                            <!-- Add a button to return the size of the image to its original size -->
+                            <button class="btn btn-secondary btn-sm" onclick="resetImage(this)">~</button>
+                        </td>
+                        <td>{{ holding.name }}</td>
+                        <td>{{ holding.collection }}</td>
+                        <td>{{ holding.token_id }}</td>
+                        <td>{{ holding.purchase_price }}</td>
+                        <td>{{ holding.current_price }}</td>
+                        <td>{{ holding.pnl }}</td>
+                        <td><a href="{{ holding.os_link }}">Link</a></td>
+                        <td>{{ holding.bought_time }}</td>
+                        <td>{{ holding.sold_time }}</td>
+                        <td>{{ holding.hold_time }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <script>
+            function zoomImage(button) {
+                // Get the image and the current width of the image
+                var img = button.previousElementSibling;
+                var width = img.offsetWidth;
+
+                // Toggle the width of the image between its original size and 200% of its original size
+                if (width == img.naturalWidth) {
+                img.style.width = (width * 2) + 'px';
+                } else {
+                img.style.width = img.naturalWidth + 'px';
+                }
+            }
+
+            function resetImage(button) {
+                // Get the image and set its width and height to their original sizes
+                var img = button.previousElementSibling.previousElementSibling;
+                img.style.width = img.naturalWidth + 'px';
+                img.style.height = img.naturalHeight + 'px';
+            }
+        </script>
+  
+        <!-- Collection Sidebar (optional) -->
+        <div class="sidebar">
+            <h3 class="text-center mb-4">Filter by Collection</h3>
+            <!-- Add a button for each distinct collection in the holdings table -->
+            {% for collection in collections %}
+               <button class="btn btn-secondary mb-2" data-collection="{{ collection }}">{{ collection }}</button>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+  
+{% endblock %}

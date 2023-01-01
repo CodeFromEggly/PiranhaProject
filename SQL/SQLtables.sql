@@ -30,3 +30,21 @@ CREATE TABLE moreData (
     sudoswap INT,
     FOREIGN KEY(keyid) REFERENCES keyData(id)
 );
+
+
+/* For Tracker, WIP */
+CREATE TABLE holdings (
+    id INTEGER PRIMARY KEY,
+    owner TEXT NOT NULL,
+    image TEXT NOT NULL,
+    name TEXT NOT NULL,
+    collection TEXT NOT NULL,
+    token_id TEXT NOT NULL,
+    purchase_price REAL NOT NULL,
+    current_price REAL NOT NULL,
+    pnl REAL NOT NULL,
+    os_link TEXT NOT NULL,
+    bought_time DATETIME NOT NULL,
+    sold_time DATETIME,
+    hold_time INTEGER NOT NULL
+);

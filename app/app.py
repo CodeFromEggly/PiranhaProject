@@ -151,5 +151,21 @@ def activity():
     return render_template("activity.html", all=all)
 
 
+@app.route("/tracker")
+def tracker():
+
+    #SQLite3 query to detect listings.
+    conn = sqlite3.connect('piranha.db')
+    conn.row_factory = sqlite3.Row
+    db = conn.cursor()
+
+
+    # Provide all the data for last 10 entries
+    holdings = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid LEFT JOIN collections ON keyData.collection = collections.name ORDER BY keyData.timestamp DESC").fetchall()
+    holdings = [dict(row) for row in holdings]
+    #for row in all: print(row)
+
+    return render_template("tracker.html", holdings=holdings)
+
 if __name__ == "__main__":
     app.run()
