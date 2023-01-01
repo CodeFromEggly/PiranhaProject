@@ -154,7 +154,7 @@
                         <td>{{ holding.purchase_price }}</td>
                         <td>{{ holding.current_price }}</td>
                         <td>{{ holding.pnl }}</td>
-                        <td><a href="{{ holding.os_link }}">Link</a></td>
+                        <td><a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (holding['address'], holding['token'])}}">Link</a></td>
                         <td>{{ holding.bought_time }}</td>
                         <td>{{ holding.sold_time }}</td>
                         <td>{{ holding.hold_time }}</td>
