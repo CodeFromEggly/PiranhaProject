@@ -268,3 +268,39 @@
             });
         });
     }
+
+    // TRACKER SCRIPTS:
+
+    if(activePage === 'tracker'){
+        const addWalletCheckbox = document.querySelector('#add-wallet');
+        const removeWalletCheckbox = document.querySelector('#remove-wallet');
+        const walletInput = document.querySelector('#wallet');
+        const textInputTemplate = document.querySelector('#add-wallet-template').content;
+        const selectInputTemplate = document.querySelector('#remove-wallet-template').content;
+
+        addWalletCheckbox.checked = true;
+        walletInput.innerHTML = '';
+        walletInput.appendChild(textInputTemplate.cloneNode(true));
+
+        addWalletCheckbox.addEventListener('change', () => {
+            if (addWalletCheckbox.checked) {
+                removeWalletCheckbox.checked = false;
+                walletInput.innerHTML = '';
+                walletInput.appendChild(textInputTemplate.cloneNode(true));
+            } else {
+                walletInput.innerHTML = '';
+                walletInput.appendChild(selectInputTemplate.cloneNode(true));
+            }
+        });
+          
+        removeWalletCheckbox.addEventListener('change', () => {
+            if (removeWalletCheckbox.checked) {
+                addWalletCheckbox.checked = false;
+                walletInput.innerHTML = '';
+                walletInput.appendChild(selectInputTemplate.cloneNode(true));
+            } else {
+                walletInput.innerHTML = '';
+                walletInput.appendChild(textInputTemplate.cloneNode(true));
+            }
+        });
+    }
