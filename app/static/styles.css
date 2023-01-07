@@ -486,12 +486,13 @@
         padding: 5%;
         height: 500px;
         border-top: solid 1px var(--brand);
-        background: linear-gradient(0deg, var(--on-background-low) 0%, var(--background-subtle) 100%);
-        color: var(--light) !important;
+        /*background: linear-gradient(0deg, var(--on-background-low) 0%, var(--background-subtle) 100%);*/
+        background-image: url('/static/muddy-water-5.png');
+        color: var(--brand-dark) !important;
     }
 
     #footer h6 {
-        color: var(--light) !important;
+        color: var(--brand-dark) !important;
     }
 
     #footer .button-group img {
