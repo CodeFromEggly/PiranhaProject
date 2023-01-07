@@ -1,3 +1,6 @@
+// ITEM LISTED (from Stream-API)
+
+// Example listing:
 let listed = {
     "event":"item_listed",
     "sent_at":"2022-12-01T16:54:24.212517+00:00",
@@ -95,6 +98,35 @@ let listed = {
     }
  }
 
+ // IS IT RELEVANT?
+
+ // TODO Are we searching by collection? Volume, etc..
+
+ // TODO Within price range?
+
+
+ // TODO PROFITABILITY CALCULATIONS:
+
+ // Factors:
+
+ // - Price
+   var price = parseInt(listed['payload']['payload']['payment_token']['eth_price']);
+ // - Gas
+   // Uses Eth Gas Station API.
+   import axios from 'axios';
+   const response = await axios('https://ethgasstation.info/api/ethgasAPI.json?');
+
+   // The api seems to return 10xGwei
+   let fastestGwei = (response.data["fastest"])/10;
+   console.log(fastestGwei)
+   var fastestETH = fastestGwei / 1000000000;
+   
+ // - Collection fees etc..
+ // + Floor price or Sudoswap
+
+
+
+
  console.log("Collection:")
  console.log(listed['payload']['payload']['collection']['slug'])
 
@@ -103,3 +135,6 @@ let listed = {
 
  console.log("Price:")
  console.log(listed['payload']['payload']['payment_token']['eth_price'] + "ETH    |    " + "$" +  listed['payload']['payload']['payment_token']['usd_price'])
+
+ console.log(`Cost to buy with fastest gas:`)
+ console.log(`${fastestETH + price} ETH`)
