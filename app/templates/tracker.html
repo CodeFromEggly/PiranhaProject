@@ -8,7 +8,7 @@
 {% block main %}
 <body>
   
-    <div class="container mt-5">
+    <div class="container mt-5" style="width: 69%">
         <h1 class="text-center mb-4">Tracker: WIP</h1>
         
         <!-- Form for adding a new holding -->
@@ -19,97 +19,22 @@
                     <input type="text" class="form-control" id="owner" name="owner" required>
                 </div>
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="form-group">
                     <label for="collection">Collection</label>
                     <select class="form-control" id="collection" name="collection" required>
                         <!-- Add options for each possible collection here -->
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="token-id">Token ID</label>
+                    <label for="token-id">Collection Address</label>
                     <input type="text" class="form-control" id="token-id" name="token-id" required>
                 </div>
                 <div class="form-group">
-                    <label for="purchase-price">Purchase Price</label>
-                    <input type="number" min="0" step="0.01" class="form-control" id="purchase-price" name="purchase-price" required>
+                    <label for="token-id">Token ID</label>
+                    <input type="text" class="form-control" id="token-id" name="token-id" required>
                 </div>
-                <div class="form-group">
-                    <label for="current-price">Current Price</label>
-                    <input type="number" min="0" step="0.01" class="form-control" id="current-price" name="current-price" required>
-                </div>
-                <div class="form-group">
-                    <label for="os-link">OS Link</label>
-                    <input type="url" class="form-control" id="os-link" name="os-link" required>
-                </div>
-                <div class="form-group">
-                    <label for="bought-time">Bought Time</label>
-                    <input type="datetime-local" class="form-control" id="bought-time" name="bought-time" required>
-                </div>
-                <div class="form-group">
-                    <label for="sold-time">Sold Time</label>
-                    <input type="datetime-local" class="form-control" id="sold-time" name="sold-time" required>
-                </div>
-                <div class="form-group">
-                    <label for="hold-time">Hold Time</label>
-                    <input type="number" min="0" class="form-control" id="hold-time" name="hold-time" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Holding</button>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Add Holding</button>
             </form>
         </form>
-  
-        <!-- Filter Controls -->
-        <div class="mb-4">
-            <!-- Dropdown menus for filtering by owner, collection, and token ID -->
-            <form class="form-inline mb-4">
-                <label class="mr-2" for="filter-owner">Owner</label>
-                <select class="form-control mr-2" id="filter-owner" name="filter-owner">
-                    <option value="">All</option>
-                    <!-- Add options for each distinct owner in the holdings table -->
-                </select>
-                <label class="mr-2" for="filter-collection">Collection</label>
-                <select class="form-control mr-2" id="filter-collection" name="filter-collection">
-                    <option value="">All</option>
-                    <!-- Add options for each distinct collection in the holdings table -->
-                </select>
-                <label class="mr-2" for="filter-token-id">Token ID</label>
-                <input type="text" class="form-control mr-2" id="filter-token-id" name="filter-token-id">
-                <button type="submit" class="btn btn-primary">Filter</button>
-            </form>
-  
-            <!-- Text fields for filtering by purchase price and current price -->
-            <form class="form-inline mb-4">
-                <label class="mr-2" for="filter-purchase-price-min">Purchase Price</label>
-                <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-purchase-price-min" name="filter-purchase-price-min" placeholder="Min">
-                <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-purchase-price-max" name="filter-purchase-price-max" placeholder="Max">
-                <label class="mr-2" for="filter-current-price-min">Current Price</label>
-                <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-current-price-min" name="filter-current-price-min" placeholder="Min">
-                <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-current-price-max" name="filter-current-price-max" placeholder="Max">
-                <button type="submit" class="btn btn-primary">Filter</button>
-            </form>
-        
-            <!-- Checkboxes for filtering by PNL, bought time, and sold time -->
-            <form class="form-inline mb-4">
-                <label class="mr-2" for="filter-pnl-positive">PNL</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="filter-pnl-positive" name="filter-pnl-positive" value="positive">
-                    <label class="form-check-label" for="filter-pnl-positive">Positive</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="filter-pnl-negative" name="filter-pnl-negative" value="negative">
-                    <label class="form-check-label" for="filter-pnl-negative">Negative</label>
-                </div>
-                <label class="mr-2" for="filter-bought-time">Bought Time</label>
-                <input type="datetime-local" class="form-control mr-2" id="filter-bought-time-min" name="filter-bought-time-min" placeholder="Min">
-                <input type="datetime-local" class="form-control mr-2" id="filter-bought-time-max" name="filter-bought-time-max" placeholder="Max">
-                <label class="mr-2" for="filter-sold-time">Sold Time</label>
-                <input type="datetime-local" class="form-control mr-2" id="filter-sold-time-min" name="filter-sold-time-min" placeholder="Min">
-                <input type="datetime-local" class="form-control mr-2" id="filter-sold-time-max" name="filter-sold-time-max" placeholder="Max">
-                <button type="submit" class="btn btn-primary">Filter</button>
-            </form>
-        </div>
   
         <!-- Holdings Table -->
         <style>
@@ -120,9 +45,9 @@
         }
         </style>
 
-        <table class="table">
+        <table class="table" style="text-align: center; font-size: large;">
             <thead>
-                <tr>
+                <tr height="10px">
                     <th scope="col">Owner</th>
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>
@@ -131,9 +56,8 @@
                     <th scope="col">Purchase Price</th>
                     <th scope="col">Current Price</th>
                     <th scope="col">PNL</th>
-                    <th scope="col">OS Link</th>
+                    <th scope="col">Links</th>
                     <th scope="col">Bought Time</th>
-                    <th scope="col">Sold Time</th>
                     <th scope="col">Hold Time</th>
                 </tr>
             </thead>
@@ -154,7 +78,12 @@
                         <td>{{ holding.purchase_price }}</td>
                         <td>{{ holding.current_price }}</td>
                         <td>{{ holding.pnl }}</td>
-                        <td><a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (holding['address'], holding['token'])}}">Link</a></td>
+                        <td>
+                            <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (holding['address'], holding['token'])}}" target="_blank"><img class="pSvg" src="/static/icon/Opensea-Logo-Transparent.svg" alt="Opensea" style="background-color: var(--brand);"></a>
+                            <img class="pSvg" src="/static/icon/blur-logo.png">
+                            <img class="pSvg" src="/static/icon/looksrare-logo.svg">
+                            <img class="pSvg" src="/static/icon/Sudoswap-Logo.svg">                   
+                        </td>
                         <td>{{ holding.bought_time }}</td>
                         <td>{{ holding.sold_time }}</td>
                         <td>{{ holding.hold_time }}</td>
@@ -188,13 +117,68 @@
             }
         </script>
   
-        <!-- Collection Sidebar (optional) -->
-        <div class="sidebar">
-            <h3 class="text-center mb-4">Filter by Collection</h3>
+        <!-- Right Sidebar -->
+        <div id="right-column" class="pColumn">
+            <h5 class="text-center mb-4">Filters</h5
+>
             <!-- Add a button for each distinct collection in the holdings table -->
-            {% for collection in collections %}
-               <button class="btn btn-secondary mb-2" data-collection="{{ collection }}">{{ collection }}</button>
+            <!-- TODO: Make filter options functional -->
+            {% for holding in holdings|groupby('collection') %}
+               <button class="btn btn-secondary mb-2" data-collection="{{ holding.groouper }}">{{ holding.grouper }}</button>
+               <br>
             {% endfor %}
+
+            <!-- Filter Controls -->
+            <div class="mb-4">
+                <!-- Dropdown menus for filtering by owner, collection, and token ID -->
+                <form class="form-inline mb-4">
+                    <label class="mr-2" for="filter-owner">Owner</label>
+                    <select class="form-control mr-2" id="filter-owner" name="filter-owner">
+                        <option value="">All</option>
+                        <!-- Add options for each distinct owner in the holdings table -->
+                    </select>
+                    <label class="mr-2" for="filter-collection">Collection</label>
+                    <select class="form-control mr-2" id="filter-collection" name="filter-collection">
+                        <option value="">All</option>
+                        <!-- Add options for each distinct collection in the holdings table -->
+                        {% for holding in holdings|groupby('collection') %}
+                            <option value="">{{ holding.grouper }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </form>
+    
+                <!-- Text fields for filtering by purchase price and current price -->
+                <form class="form-inline mb-4">
+                    <label class="mr-2" for="filter-purchase-price-min">Purchase Price</label>
+                    <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-purchase-price-min" name="filter-purchase-price-min" placeholder="Min">
+                    <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-purchase-price-max" name="filter-purchase-price-max" placeholder="Max">
+                    <label class="mr-2" for="filter-current-price-min">Current Price</label>
+                    <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-current-price-min" name="filter-current-price-min" placeholder="Min">
+                    <input type="number" min="0" step="0.01" class="form-control mr-2" id="filter-current-price-max" name="filter-current-price-max" placeholder="Max">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </form>
+            
+                <!-- Checkboxes for filtering by PNL, bought time, and sold time -->
+                <form class="form-inline mb-4">
+                    <label class="mr-2" for="filter-pnl-positive">PNL</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="filter-pnl-positive" name="filter-pnl-positive" value="positive">
+                        <label class="form-check-label" for="filter-pnl-positive">Positive</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="filter-pnl-negative" name="filter-pnl-negative" value="negative">
+                        <label class="form-check-label" for="filter-pnl-negative">Negative</label>
+                    </div>
+                    <label class="mr-2" for="filter-bought-time">Bought Time</label>
+                    <input type="datetime-local" class="form-control mr-2" id="filter-bought-time-min" name="filter-bought-time-min" placeholder="Min">
+                    <input type="datetime-local" class="form-control mr-2" id="filter-bought-time-max" name="filter-bought-time-max" placeholder="Max">
+                    <label class="mr-2" for="filter-sold-time">Sold Time</label>
+                    <input type="datetime-local" class="form-control mr-2" id="filter-sold-time-min" name="filter-sold-time-min" placeholder="Min">
+                    <input type="datetime-local" class="form-control mr-2" id="filter-sold-time-max" name="filter-sold-time-max" placeholder="Max">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>
