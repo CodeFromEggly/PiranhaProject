@@ -5,4 +5,3 @@ app/__pycache__/app.cpython-310.pyc
 *.pyc
 app/tokens.py
 app/__pycache__/app.cpython-310.pyc
-app/GPTconvo.md
