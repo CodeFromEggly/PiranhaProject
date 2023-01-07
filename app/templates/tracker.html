@@ -168,17 +168,20 @@
                 // Get the image and the current width of the image
                 var img = button.previousElementSibling;
                 var width = img.offsetWidth;
+                var originalWidth = img.offsetWidth;
 
                 // Toggle the width of the image between its original size and 200% of its original size
-                if (width == img.naturalWidth) {
+                if (width == img.originalWidth) {
                 img.style.width = (width * 2) + 'px';
                 } else {
-                img.style.width = img.naturalWidth + 'px';
+                img.style.width = img.originalWidth + 'px';
                 }
             }
 
             function resetImage(button) {
                 // Get the image and set its width and height to their original sizes
+                var originalWidth = img.offsetWidth;
+                var originalHeight = img.offsetHeight;
                 var img = button.previousElementSibling.previousElementSibling;
                 img.style.width = img.naturalWidth + 'px';
                 img.style.height = img.naturalHeight + 'px';
