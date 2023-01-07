@@ -278,10 +278,6 @@
         const textInputTemplate = document.querySelector('#add-wallet-template').content;
         const selectInputTemplate = document.querySelector('#remove-wallet-template').content;
 
-        addWalletCheckbox.checked = true;
-        walletInput.innerHTML = '';
-        walletInput.appendChild(textInputTemplate.cloneNode(true));
-
         addWalletCheckbox.addEventListener('change', () => {
             if (addWalletCheckbox.checked) {
                 removeWalletCheckbox.checked = false;
@@ -289,7 +285,6 @@
                 walletInput.appendChild(textInputTemplate.cloneNode(true));
             } else {
                 walletInput.innerHTML = '';
-                walletInput.appendChild(selectInputTemplate.cloneNode(true));
             }
         });
           
@@ -300,7 +295,6 @@
                 walletInput.appendChild(selectInputTemplate.cloneNode(true));
             } else {
                 walletInput.innerHTML = '';
-                walletInput.appendChild(textInputTemplate.cloneNode(true));
             }
         });
     }
