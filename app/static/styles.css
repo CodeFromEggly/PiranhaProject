@@ -495,8 +495,18 @@
         color: var(--brand-dark) !important;
     }
 
-    #footer .button-group img {
+    #footer .button-group a {
         margin: 5px;
+    }
+
+    #footer .button-group i {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+    }
+
+    #footer .button-group i:hover {
+        color: var(--bright)!important;
     }
 
 /* MOBILE DISPLAY STYLING */
