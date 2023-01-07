@@ -36,6 +36,7 @@
             <template id="remove-wallet-template">
                 <select class="form-control" id="walletName" name="walletName" required>
                     <!-- TODO: add entry for each wallet from wallets -->
+                        <option value="NULL">Select a wallet to remove</option>
                     {% for wallet in wallets %}
                         <option value="">{{ wallet.address }}</option>
                     {% endfor %}
