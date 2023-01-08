@@ -272,6 +272,7 @@
     // TRACKER SCRIPTS:
 
     if(activePage === 'tracker'){
+        // Add/Remove Wallet Checkboxes
         const addWalletCheckbox = document.querySelector('#add-wallet');
         const removeWalletCheckbox = document.querySelector('#remove-wallet');
         const walletInput = document.querySelector('#wallet');
@@ -297,4 +298,28 @@
                 walletInput.innerHTML = '';
             }
         });
+
+        // TODO: IMAGE ZOOM, not currently functional
+        function zoomImage(button) {
+            // Get the image and the current width of the image
+            var img = button.previousElementSibling;
+            var width = img.offsetWidth;
+            var originalWidth = img.offsetWidth;
+
+            // Toggle the width of the image between its original size and 200% of its original size
+            if (width == img.originalWidth) {
+            img.style.width = (width * 2) + 'px';
+            } else {
+            img.style.width = img.originalWidth + 'px';
+            }
+        }
+
+        function resetImage(button) {
+            // Get the image and set its width and height to their original sizes
+            var originalWidth = img.offsetWidth;
+            var originalHeight = img.offsetHeight;
+            var img = button.previousElementSibling.previousElementSibling;
+            img.style.width = img.naturalWidth + 'px';
+            img.style.height = img.naturalHeight + 'px';
+        }
     }

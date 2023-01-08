@@ -303,6 +303,19 @@
         color: var(--dark) !important;
     }
 
+/* TABLES */
+    #table-div {
+        overflow-x: auto; /* Add horizontal scrollbar only when needed */
+        overflow-y: hidden; /* Disable vertical scrollbar */
+        width: 100%; /* Set width of div */
+    }
+  
+    /* Limit the height of the image to the height of the table cell */
+    td img {
+        height: 50px;
+        width: 50px;
+    }
+    
 /* SIDEBAR COLUMNS */
 
     #left-column {

@@ -46,6 +46,34 @@
                         <button id="remove-button" class="btn">Remove Wallet</button>
                     </template>
                 </form>
+                <!-- TODO: WALLET TABLE, WILL REQUIRE A JINJA LOOP -->
+                <div id="table-div" style="width: 100%">
+                    <table class="table" style="text-align: center; font-size: large;">
+                        <thead>
+                            <tr height="10px">
+                                <th scope="col">Track</th>
+                                <th scope="col">Wallet Nickname</th>
+                                <th scope="col">Wallet Address</th>
+                                <th scope="col">Links</th>
+                                <th scope="col">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="col"><input class="form-check-input" type="checkbox" id="track-checkbox" name="track-checkbox"></th>
+                                <th scope="col">prie5t.eth</th>
+                                <th scope="col">0xDa06d7bF334bc5cCec9CB76de194565937378140</th>
+                                <th scope="col">
+                                    <div class="button-group">
+                                        <a href="https://opensea.io/PRIE5T" target="_blank"><img style="background-color: var(--brand);" class="pSvg" src="/static/icon/Opensea-Logo-Transparent.svg" alt="Opensea"></a>
+                                        <a href="https://etherscan.io/address/0xda06d7bf334bc5ccec9cb76de194565937378140" target="_blank"><img class="pSvg" src="/static/icon/etherscan-logo-circle.svg"></a>
+                                    </div>
+                                </th>
+                                <th scope="col"><i class="bi bi-trash"></i></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="col">
                 <!-- Form for adding a new holding -->
@@ -69,61 +97,54 @@
         </div>
   
         <!-- Holdings Table -->
-        <style>
-        /* Limit the height of the image to the height of the table cell */
-        td img {
-            height: 50px;
-            width: 50px;
-        }
-        </style>
-
-        <table class="table" style="text-align: center; font-size: large;">
-            <thead>
-                <tr height="10px">
-                    <th scope="col">Owner</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Collection</th>
-                    <th scope="col">Token ID</th>
-                    <th scope="col">Purchase Price</th>
-                    <th scope="col">Current Price</th>
-                    <th scope="col">PNL</th>
-                    <th scope="col">Links</th>
-                    <th scope="col">Bought Time</th>
-                    <th scope="col">Hold Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for holding in holdings %}
-                    <tr>
-                        <td>{{ holding.owner }}</td>
-                        <td>
-                            <img src="{{ holding.image }}" alt="{{ holding.name }}" class="zoomable">
-                            <!-- Add a button to toggle the size of the image -->
-                            <button class="btn btn-secondary btn-sm" onclick="zoomImage(this)">+/-</button>
-                            <!-- Add a button to return the size of the image to its original size -->
-                            <button class="btn btn-secondary btn-sm" onclick="resetImage(this)">~</button>
-                        </td>
-                        <td>{{ holding.name }}</td>
-                        <td>{{ holding.collection }}</td>
-                        <td>{{ holding.token_id }}</td>
-                        <td>{{ holding.purchase_price }}</td>
-                        <td>{{ holding.current_price }}</td>
-                        <td>{{ holding.pnl }}</td>
-                        <td>
-                            <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (holding['address'], holding['token'])}}" target="_blank"><img class="pSvg" src="/static/icon/Opensea-Logo-Transparent.svg" alt="Opensea" style="background-color: var(--brand);"></a>
-                            <img class="pSvg" src="/static/icon/blur-logo.png">
-                            <img class="pSvg" src="/static/icon/looksrare-logo.svg">
-                            <img class="pSvg" src="/static/icon/Sudoswap-Logo.svg">                   
-                        </td>
-                        <td>{{ holding.bought_time }}</td>
-                        <td>{{ holding.sold_time }}</td>
-                        <td>{{ holding.hold_time }}</td>
+        <div id="table-div">
+            <table class="table" style="text-align: center; font-size: large;">
+                <thead>
+                    <tr height="10px">
+                        <th scope="col">Owner</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Collection</th>
+                        <th scope="col">Token ID</th>
+                        <th scope="col">Purchase Price</th>
+                        <th scope="col">Current Price</th>
+                        <th scope="col">PNL</th>
+                        <th scope="col">Links</th>
+                        <th scope="col">Bought Time</th>
+                        <th scope="col">Hold Time</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
+                </thead>
+                <tbody>
+                    {% for holding in holdings %}
+                        <tr>
+                            <td>{{ holding.owner }}</td>
+                            <td>
+                                <img src="{{ holding.image }}" alt="{{ holding.name }}" class="zoomable">
+                                <!-- Add a button to toggle the size of the image -->
+                                <button class="btn btn-secondary btn-sm" onclick="zoomImage(this)">+/-</button>
+                                <!-- Add a button to return the size of the image to its original size -->
+                                <button class="btn btn-secondary btn-sm" onclick="resetImage(this)">~</button>
+                            </td>
+                            <td>{{ holding.name }}</td>
+                            <td>{{ holding.collection }}</td>
+                            <td>{{ holding.token_id }}</td>
+                            <td>{{ holding.purchase_price }}</td>
+                            <td>{{ holding.current_price }}</td>
+                            <td>{{ holding.pnl }}</td>
+                            <td>
+                                <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (holding['address'], holding['token'])}}" target="_blank"><img class="pSvg" src="/static/icon/Opensea-Logo-Transparent.svg" alt="Opensea" style="background-color: var(--brand);"></a>
+                                <img class="pSvg" src="/static/icon/blur-logo.png">
+                                <img class="pSvg" src="/static/icon/looksrare-logo.svg">
+                                <img class="pSvg" src="/static/icon/Sudoswap-Logo.svg">                   
+                            </td>
+                            <td>{{ holding.bought_time }}</td>
+                            <td>{{ holding.sold_time }}</td>
+                            <td>{{ holding.hold_time }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
         
   
         <!-- Right Sidebar -->
