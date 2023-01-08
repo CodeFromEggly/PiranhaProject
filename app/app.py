@@ -87,8 +87,7 @@ def conditions():
     
     # Load conditions .html
     else:
-        # Current conditions:
-    
+        # Current conditions:  
 
         with open('search_conditions.json', 'r') as f:
             conditions = json.load(f)
@@ -165,7 +164,45 @@ def tracker():
     holdings = [dict(row) for row in holdings]
     #for row in all: print(row)
 
+    conn.close()
     return render_template("tracker.html", holdings=holdings)
+
+
+@app.route("/add-wallet", methods=["GET","POST"])
+def addWallet():
+
+    # Form has been submitted containing wallet info
+    nickname = request.form.get("walletName")
+    address = request.form.get("wallet")
+
+    # Was there data in the form?
+    if not nickname:
+        print("No nickname")
+        return redirect("/tracker?message=Add+wallet+nickname")
+
+    if not address:
+        print("no address")
+        return redirect("/tracker?message=Add+wallet+address")
+    
+    # SQLite3
+    conn = sqlite3.connect('piranha.db')
+    conn.row_factory = sqlite3.Row
+    db = conn.cursor()
+
+    # Check if wallet or nickname exists already
+    rows = db.execute("SELECT * FROM trackWallets WHERE (nickname = ?) OR (address = ?)", (nickname, address)).fetchall()
+    rows = [dict(row) for row in rows]
+    if len(rows) != 1:
+        # Data already exists
+        return redirect("/tracker?message=Wallet+already+exists")
+
+
+    # Add wallet to database
+    db.execute("INSERT INTO trackWallets (nickname, address) VALUES (?, ?)", (nickname, address))
+    conn.commit()
+    conn.close()
+
+    return redirect("/tracker?message=New+wallet+success")
 
 if __name__ == "__main__":
     app.run()
