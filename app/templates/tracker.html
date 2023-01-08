@@ -10,59 +10,63 @@
   
     <div class="container mt-5" style="width: 69%">
         <h1 class="text-center mb-4">Tracker: WIP</h1>
-        
-        <h4>Track a wallet:</h4>
-        <!-- Checkboxes -->
-        <form class="mb-4" action="/add-wallet" method="post">
-            <div style="display: flex; justify-content: space-evenly;">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="add-wallet" name="add-wallet">
-                    <label class="form-check-label" for="add-wallet">Add Wallet</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="remove-wallet" name="remove-wallet">
-                    <label class="form-check-label" for="remove wallet">Remove Wallet</label>
-                </div>
-            </div>
-            <!-- Templates go here -->
-            <span id="wallet"></span>
+        <div class="row">
+            <div class="col">
+                <h4>Track a wallet:</h4>
+                <!-- Checkboxes -->
+                <form class="mb-4" action="/add-wallet" method="post">
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="add-wallet" name="add-wallet">
+                            <label class="form-check-label" for="add-wallet">Add Wallet</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="remove-wallet" name="remove-wallet">
+                            <label class="form-check-label" for="remove wallet">Remove Wallet</label>
+                        </div>
+                    </div>
+                    <!-- Templates go here -->
+                    <span id="wallet"></span>
 
-            <!-- Templates -->
-            <template id="add-wallet-template">
-                <input type="text" class="form-control" id="walletName" name="walletName" placeholder="Wallet Nickname" required>
-                <input type="text" class="form-control" id="wallet" name="wallet" placeholder="Wallet Address/ENS" required>
-                <button id="add-button" class="btn">Add Wallet</button>
-            </template>
-              
-            <template id="remove-wallet-template">
-                <select class="form-control" id="walletName" name="walletName" required>
-                    <!-- TODO: add entry for each wallet from wallets -->
-                    <option>Select a wallet to remove</option>
-                    {% for wallet in wallets %}
-                        <option value="">{{ wallet.address }}</option>
-                    {% endfor %}
-                </select>
-                <button id="remove-button" class="btn">Remove Wallet</button>
-            </template>
-
-        </form>
-        <!-- Form for adding a new holding -->
-        <form class="mb-4" action="/add-holding" method="post">
-            <div class="form-group">
-                <!-- TODO: make this a select dropdown -->
-                <label for="owner">Owner</label>
-                <input type="text" class="form-control" id="owner" name="owner" required>
+                    <!-- Templates -->
+                    <template id="add-wallet-template">
+                        <input type="text" class="form-control" id="walletName" name="walletName" placeholder="Wallet Nickname" required>
+                        <input type="text" class="form-control" id="wallet" name="wallet" placeholder="Wallet Address/ENS" required>
+                        <button id="add-button" class="btn">Add Wallet</button>
+                    </template>
+                    
+                    <template id="remove-wallet-template">
+                        <select class="form-control" id="walletName" name="walletName" required>
+                            <!-- TODO: add entry for each wallet from wallets -->
+                            <option>Select a wallet to remove</option>
+                            {% for wallet in wallets %}
+                                <option value="">{{ wallet.address }}</option>
+                            {% endfor %}
+                        </select>
+                        <button id="remove-button" class="btn">Remove Wallet</button>
+                    </template>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="token-id">Collection Address</label>
-                <input type="text" class="form-control" id="token-id" name="token-id" required>
+            <div class="col">
+                <!-- Form for adding a new holding -->
+                <form class="mb-4" action="/add-holding" method="post">
+                    <div class="form-group">
+                        <!-- TODO: make this a select dropdown -->
+                        <label for="owner">Owner</label>
+                        <input type="text" class="form-control" id="owner" name="owner" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="token-id">Collection Address</label>
+                        <input type="text" class="form-control" id="token-id" name="token-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="token-id">Token ID</label>
+                        <input type="text" class="form-control" id="token-id" name="token-id" required>
+                    </div>
+                    <button type="submit" class="btn" style="margin-top:10px;">Add Holding</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="token-id">Token ID</label>
-                <input type="text" class="form-control" id="token-id" name="token-id" required>
-            </div>
-            <button type="submit" class="btn" style="margin-top:10px;">Add Holding</button>
-        </form>
+        </div>
   
         <!-- Holdings Table -->
         <style>
@@ -120,30 +124,7 @@
             </tbody>
         </table>
 
-        <script>
-            function zoomImage(button) {
-                // Get the image and the current width of the image
-                var img = button.previousElementSibling;
-                var width = img.offsetWidth;
-                var originalWidth = img.offsetWidth;
-
-                // Toggle the width of the image between its original size and 200% of its original size
-                if (width == img.originalWidth) {
-                img.style.width = (width * 2) + 'px';
-                } else {
-                img.style.width = img.originalWidth + 'px';
-                }
-            }
-
-            function resetImage(button) {
-                // Get the image and set its width and height to their original sizes
-                var originalWidth = img.offsetWidth;
-                var originalHeight = img.offsetHeight;
-                var img = button.previousElementSibling.previousElementSibling;
-                img.style.width = img.naturalWidth + 'px';
-                img.style.height = img.naturalHeight + 'px';
-            }
-        </script>
+        
   
         <!-- Right Sidebar -->
         <div id="right-column" class="pColumn">

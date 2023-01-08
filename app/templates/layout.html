@@ -54,13 +54,21 @@
                 <h4>Work in progress</h4>
             </div>
         </div>
+        <div class="row mb-1">
+            <a>
+                <button class="btn">
+                    <img class="pSvg" src="/static/icon/metamask-fox.svg" style="pointer-events: none;">
+                    METAMASK
+                </button>
+            </a>
+        </div>
         <div class="row">
-            <div class="col">
-                <button id="connect-init">METAMASK</button>
-            </div>
-            <div class="col">
-                <button id="connect-init">WALLET CONNECT</button>
-            </div>
+            <a>
+                <button class="btn">
+                    <img class="pSvg" src="/static/icon/wallet-connect-blue.svg" style="pointer-events: none;">
+                    WALLET CONNECT 
+                </button>
+            </a>
         </div>
         <button id="connect-exit">X</button>
     </div>
@@ -69,36 +77,41 @@
     {% block main %}{% endblock %}
 
     <div id="footer">
+        <!-- SECTION 1 -->
         <div class="row">
+            <!-- MAILING LIST/CONTACT-->
             <div class="col">
-                <h6 id="footer-title">Mailing List</h6>
+                <div class="row">
+                    <h6 id="footer-title">Mailing List</h6>
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="Your email address">
+                    <button class="btn">Subscribe</button>
+                </div>
             </div>
-            <div class="col">
-                <h6 id="footer-title">Marketplaces and Socials</h6>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <input type="text" placeholder="Your email address">
-                <button class="btn">Subscribe</button>
-            </div>
-            <div id="footer-links" class="col" style="display: flex; justify-content: flex-start;">
-                <div class="button-group">
-                    <a href="https://opensea.io/" target="_blank"><img style="background-color: var(--brand);" class="pSvg" src="/static/icon/Opensea-Logo-Transparent.svg" alt="Opensea" href="https://opensea.io"></a>
+            <!-- EXTERNAL LINKS -->
+            <div class="container col">
+                <div class="row">
+                    <h6 id="footer-title">Links</h6>
+                </div>
+
+                <div id="footer-links" class="button-group" style="display: flex; justify-content: flex-start;">
+                    <a href="https://opensea.io/" target="_blank"><img style="background-color: var(--brand);" class="pSvg" src="/static/icon/Opensea-Logo-Transparent.svg" alt="Opensea"></a>
                     <a href="https://blur.io/" target="_blank"><img class="pSvg" src="/static/icon/blur-logo.png"></a>
                     <a href="https://looksrare.org/" target="_blank"><img class="pSvg" src="/static/icon/looksrare-logo.svg"></a>
                     <a href="https://sudoswap.xyz/" target="_blank"><img class="pSvg" src="/static/icon/Sudoswap-Logo.svg"></a>
+                    <a href="https://etherscan.io/" target="_blank"><img class="pSvg" src="/static/icon/etherscan-logo-circle.svg"></a>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col" id="footer-links" style="display: flex; justify-content: flex-start;">
-                <div class="button-group">
+
+                <div id="footer-links" class="button-group" style="display: flex; justify-content: flex-start;">
                     <a href="https://github.com/CodeFromEggly/PiranhaProject" target="_blank"><i class="bi bi-github"></i></a>
                 </div>
             </div>
         </div>
+
+        <hr>
+        <!-- SECTION 2 -->
+        <h6>Site Map</h6>
 
     </div>
 
