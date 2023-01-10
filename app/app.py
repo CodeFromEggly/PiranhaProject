@@ -204,7 +204,7 @@ def addWallet():
 
     return redirect("/tracker?message=New+wallet+success")
 
-@app.route("add-holding", methods=["GET", "POST"])
+@app.route("/add-holding", methods=["GET", "POST"])
 def addHolding():
     owner = request.form.get("owner")
     collAddress = request.form.get("collection-address")

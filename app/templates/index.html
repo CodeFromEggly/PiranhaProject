@@ -116,8 +116,8 @@
                                     <div class="button-group mt-auto mb-2">
                                         <a href="{{'https://opensea.io/assets/ethereum/%s/%s/' % (card['address'], card['token'])}}" target="_blank"><img style="background-color: var(--brand);" class="pSvg" src="/static/icon/Opensea-Logo-Transparent.svg" alt="Opensea" href="https://opensea.io"></a>
                                         <img class="pSvg" src="/static/icon/blur-logo.png">
-                                        <img class="pSvg" src="/static/icon/looksrare-logo.svg">
-                                        <img class="pSvg" src="/static/icon/Sudoswap-Logo.svg">
+                                        <a href="{{'https://looksrare.org/collections/%s/%s' % (card['address'], card['token'])}}"><img class="pSvg" src="/static/icon/looksrare-logo.svg"></a>
+                                        <a href = "{{'https://sudoswap.xyz/#/item/%s/%s' % (card['address'], card['token'])}}" target="_blank"><img class="pSvg" src="/static/icon/Sudoswap-Logo.svg"></a>
                                     </div>
                                     <h6 class="card-title" style="font-weight:bold">{{card['name']}}</h6>
                                     <div class="card-text-container">Price: {{card['price']}}Ξ <br>Collection: {{card['slug']}} <br>Best WETH: {{card['bestWETH']}}Ξ
