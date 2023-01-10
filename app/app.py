@@ -204,5 +204,32 @@ def addWallet():
 
     return redirect("/tracker?message=New+wallet+success")
 
+@app.route("add-holding", methods=["GET", "POST"])
+def addHolding():
+    owner = request.form.get("owner")
+    collAddress = request.form.get("collection-address")
+    tokenID= request.form.get("token-id")
+
+    # Form won't submit if the data is blank.
+    # For now we can assume that nobody will act badly
+
+    # Check for duplicate entries in database:
+    # SQLite3
+    conn = sqlite3.connect('piranha.db')
+    conn.row_factory = sqlite3.Row
+    db = conn.cursor()
+    rows = db.execute("SELECT * FROM holdings WHERE (owner = ?) OR (collAddress = ?) OR (tokenID = ?)", (owner, collAddress, tokenID)).fetchall()
+    rows = [dict(row) for row in rows]
+    if len(rows) != 1:
+        # Data already exists
+        return redirect("/tracker?message=holder+already+exists")
+
+
+    # Add wallet to database
+    db.execute("INSERT INTO holders (owner, collAddress, tokenID) VALUES (?, ?, ?)", (owner, collAddress, tokenID))
+    conn.commit()
+    conn.close()
+
+
 if __name__ == "__main__":
     app.run()
