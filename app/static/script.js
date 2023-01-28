@@ -269,7 +269,7 @@
         });
     }
 
-    // TRACKER SCRIPTS:
+// TRACKER SCRIPTS:
 
     if(activePage === 'tracker'){
         // Add/Remove Wallet Checkboxes
