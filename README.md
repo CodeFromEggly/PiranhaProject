@@ -1,4 +1,9 @@
 # Piranha
+
+## Under development OpenSea integration, buy and sell protection, price history analyis
+
+### Clientside interface summary:
+
 #### Video Demo:  https://youtu.be/54hG0uDrskk
 #### Description:
 
