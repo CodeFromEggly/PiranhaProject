@@ -16,24 +16,24 @@
                 <form class="mb-4" action="/add-wallet" method="post">
                     <div style="display: flex; justify-content: space-evenly;">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="add-wallet" name="add-wallet">
+                            <input class="form-check-input" type="radio" id="add-wallet" name="wallet-action" value="add" checked>
                             <label class="form-check-label" for="add-wallet">Add Wallet</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="remove-wallet" name="remove-wallet">
+                            <input class="form-check-input" type="radio" id="remove-wallet" name="wallet-action" value="remove">
                             <label class="form-check-label" for="remove wallet">Remove Wallet</label>
                         </div>
                     </div>
                     <!-- Templates go here -->
                     <span id="wallet"></span>
-
+                
                     <!-- Templates -->
                     <template id="add-wallet-template">
                         <input type="text" class="form-control" id="walletName" name="walletName" placeholder="Wallet Nickname" required>
                         <input type="text" class="form-control" id="wallet" name="wallet" placeholder="Wallet Address/ENS" required>
                         <button id="add-button" class="btn">Add Wallet</button>
                     </template>
-                    
+                
                     <template id="remove-wallet-template">
                         <select class="form-control" id="walletName" name="walletName" required>
                             <!-- TODO: add entry for each wallet from wallets -->
@@ -45,6 +45,7 @@
                         <button id="remove-button" class="btn">Remove Wallet</button>
                     </template>
                 </form>
+                
                 <!-- TODO: WALLET TABLE, WILL REQUIRE A JINJA LOOP -->
                 <div id="table-div" style="width: 100%">
                     <table class="table" style="text-align: center; font-size: large;">

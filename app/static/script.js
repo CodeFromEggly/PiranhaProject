@@ -279,9 +279,12 @@
         const textInputTemplate = document.querySelector('#add-wallet-template').content;
         const selectInputTemplate = document.querySelector('#remove-wallet-template').content;
 
+        // Show the "Add Wallet" template by default
+        walletInput.appendChild(textInputTemplate.cloneNode(true));
+
+        // Add/Remove Wallet template switching
         addWalletCheckbox.addEventListener('change', () => {
             if (addWalletCheckbox.checked) {
-                removeWalletCheckbox.checked = false;
                 walletInput.innerHTML = '';
                 walletInput.appendChild(textInputTemplate.cloneNode(true));
             } else {
@@ -291,7 +294,6 @@
           
         removeWalletCheckbox.addEventListener('change', () => {
             if (removeWalletCheckbox.checked) {
-                addWalletCheckbox.checked = false;
                 walletInput.innerHTML = '';
                 walletInput.appendChild(selectInputTemplate.cloneNode(true));
             } else {
