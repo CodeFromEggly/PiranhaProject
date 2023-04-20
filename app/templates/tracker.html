@@ -213,28 +213,32 @@
     </div>
 
     
-
+    <!-- Wallet/Contract address search bar-->
     <div class="container input-group mb-3">
         <input type="text" class="form-control search-address" placeholder="Search address" aria-label="Search address" aria-describedby="search-btn">
         <button class="btn btn-primary" type="button" id="search-btn">Search</button>
     </div>
 
+    <!-- Navigation tabs for transaction types -->
     <div class="container">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#internal">Internal Transactions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#erc20">ERC20 Transactions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#erc721">ERC721 Transactions</a>
-                </li>
-            </ul>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#internal">Internal Transactions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#erc20">ERC20 Transactions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#erc721">ERC721 Transactions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#erc1155">ERC1155 Transactions</a>
+            </li>
+        </ul>
         
-            <div class="tab-content">
+        <div class="tab-content">
 
-            <!-- Internal Transactions -->
+            <!-- Internal Transactions Tab-->
             <div class="tab-pane fade show active" id="internal">
                 <div class="container">
                     <h2>Transaction Table</h2>
@@ -257,7 +261,7 @@
                   </div>     
             </div>
 
-            <!-- ERC20 Transactions -->
+            <!-- ERC20 Transactions Tab-->
             <div class="tab-pane fade" id="erc20">
                 <div class="container">
                     <h2>Transaction Table</h2>
@@ -281,7 +285,7 @@
                   </div>                  
             </div>
 
-            <!-- ERC721 Transactions -->
+            <!-- ERC721 Transactions Tab-->
             <div class="tab-pane fade" id="erc721">
                 <div class="container">
                     <h2>Transaction Table</h2>
@@ -306,6 +310,31 @@
                   </div>     
             </div>
 
+            <!-- TODO: ERC1155 Transactions Tab-->
+            <div class="tab-pane fade" id="erc1155">
+                <div class="container">
+                    <h2>Transaction Table</h2>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Timestamp</th>
+                          <th>Hash</th>
+                          <th>From</th>
+                          <th>Contract Address</th>
+                          <th>To</th>
+                          <th>Token ID</th>
+                          <th>Token Name</th>
+                          <th>NFT</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="erc1155-table-body">
+                        <!-- Populated by JS & api call -->
+                      </tbody>
+                    </table>
+                  </div>     
+            </div>
+
         </div>
     </div>
       
@@ -322,7 +351,7 @@
 
         searchButton.addEventListener('click', function() {
         const address = searchInput.value.trim().toLowerCase();
-        if (address.length === 40 || address.length === 42) {
+        if (address.length === 40 || address.length === 64) {
             trackedWallet = address;
             updateTransactionTables();
         } else {
@@ -330,16 +359,17 @@
         }
         });
 
+        /* Unsure if necessary, intended for 
+        
         if (trackedWallet !== null){
             updateTransactionTables();
-        }
+        }*/
 
         function updateTransactionTables() {
             updateInternalData();
             updateERC721Data();
             updateERC20Data();
         }
-
 
         function updateInternalData(){
             $.getJSON('https://api.etherscan.io/api', {
@@ -410,7 +440,6 @@
             });
         }
       
-
         function populateInternalTable() {
             const internalTableBody = document.getElementById('internal-table-body');
             internalData.forEach(transaction => {
@@ -456,8 +485,6 @@
             });
         }
 
-
-        // Populate ERC20 table
         function populateERC20Table() {
             const erc20TableBody = document.getElementById('erc20-table-body');
             erc20Data.forEach(transaction => {
@@ -544,8 +571,9 @@
                         <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.to}"></i>
                     </div>
                 </td>
-                <td><a href="https://etherscan.io/token/${transaction.contractAddress}?a=${transaction.tokenID}" target="_blank">${transaction.tokenID}</a></td>
+                <td><a href="https://etherscan.io/token/${transaction.contractAddress}?a=${transaction.tokenID}" target="_blank">${transaction.tokenID.slice(0, 6)}</a></td>
                 <td><a href="https://etherscan.io/token/${transaction.contractAddress}" target="_blank">${transaction.tokenName}</a></td>
+                <td><!--TODO:<img src="https://opensea.io/assets/ethereum/${transaction.contractAddress}?a=${transaction.tokenID}"></img>--></td>
                 <td>
                     <i class="bi bi-three-dots-vertical transaction-dropdown dropdown-toggle"></i>
                     <div class="dropdown-menu">
