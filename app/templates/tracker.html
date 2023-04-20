@@ -351,7 +351,7 @@
 
         searchButton.addEventListener('click', function() {
         const address = searchInput.value.trim().toLowerCase();
-        if (address.length === 40 || address.length === 64) {
+        if (address.length === 40 || address.length === 42 || address.length === 64) {
             trackedWallet = address;
             updateTransactionTables();
         } else {
