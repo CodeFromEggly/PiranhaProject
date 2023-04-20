@@ -1,0 +1,11 @@
+CREATE TABLE transactions (
+    id INTEGER PRIMARY KEY,
+    tx_hash TEXT,
+    block_number INTEGER,
+    timestamp INTEGER,
+    from_address TEXT,
+    to_address TEXT,
+    value REAL,
+    gas_price REAL,
+    gas_used INTEGER
+);
