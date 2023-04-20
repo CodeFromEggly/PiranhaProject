@@ -97,7 +97,7 @@
         </div>
   
         <!-- Holdings Table -->
-        <div id="table-div">
+        <div id="table-div" style="display: none;">
             <table class="table" style="text-align: center; font-size: large;">
                 <thead>
                     <tr height="10px">
@@ -211,6 +211,367 @@
             </div>
         </div>
     </div>
+
+    
+
+    <div class="container input-group mb-3">
+        <input type="text" class="form-control search-address" placeholder="Search address" aria-label="Search address" aria-describedby="search-btn">
+        <button class="btn btn-primary" type="button" id="search-btn">Search</button>
+    </div>
+
+    <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#internal">Internal Transactions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#erc20">ERC20 Transactions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#erc721">ERC721 Transactions</a>
+                </li>
+            </ul>
+        
+            <div class="tab-content">
+
+            <!-- Internal Transactions -->
+            <div class="tab-pane fade show active" id="internal">
+                <div class="container">
+                    <h2>Transaction Table</h2>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Timestamp</th>
+                          <th>Hash</th>
+                          <th>From</th>
+                          <th>Contract Address</th>
+                          <th>Value</th>
+                          <th>Token Name</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="internal-table-body">
+                        <!-- Populated by JS & api call -->
+                      </tbody>
+                    </table>
+                  </div>     
+            </div>
+
+            <!-- ERC20 Transactions -->
+            <div class="tab-pane fade" id="erc20">
+                <div class="container">
+                    <h2>Transaction Table</h2>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Timestamp</th>
+                          <th>Hash</th>
+                          <th>From</th>
+                          <th>Contract Address</th>
+                          <th>To</th>
+                          <th>Value</th>
+                          <th>Token Name</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="erc20-table-body">
+                        <!-- Populated by JS & api call -->
+                      </tbody>
+                    </table>
+                  </div>                  
+            </div>
+
+            <!-- ERC721 Transactions -->
+            <div class="tab-pane fade" id="erc721">
+                <div class="container">
+                    <h2>Transaction Table</h2>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Timestamp</th>
+                          <th>Hash</th>
+                          <th>From</th>
+                          <th>Contract Address</th>
+                          <th>To</th>
+                          <th>Token ID</th>
+                          <th>Token Name</th>
+                          <th>NFT</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="erc721-table-body">
+                        <!-- Populated by JS & api call -->
+                      </tbody>
+                    </table>
+                  </div>     
+            </div>
+
+        </div>
+    </div>
+      
+    <script>
+
+        // for the API call, to be updated by favourited wallets or search bar
+        var trackedWallet = null;
+        var internalData = [];
+        var erc20Data = [];
+        var erc721Data = [];
+
+        const searchButton = document.getElementById('search-btn');
+        const searchInput = document.querySelector('.search-address');
+
+        searchButton.addEventListener('click', function() {
+        const address = searchInput.value.trim().toLowerCase();
+        if (address.length === 40 || address.length === 42) {
+            trackedWallet = address;
+            updateTransactionTables();
+        } else {
+            console.log('Invalid address format');
+        }
+        });
+
+        if (trackedWallet !== null){
+            updateTransactionTables();
+        }
+
+        function updateTransactionTables() {
+            updateInternalData();
+            updateERC721Data();
+            updateERC20Data();
+        }
+
+
+        function updateInternalData(){
+            $.getJSON('https://api.etherscan.io/api', {
+                module: 'account',
+                action: 'txlistinternal', 
+                address: trackedWallet,
+                page: 1,           // Set this by a dropdown/standard page mover
+                offset: '100',
+                startblock: '0',
+                endblock: blockNo,
+                sort: 'desc',
+                apikey: etherscanApi
+            })
+            .done(function(response) {
+                if (response.result) {
+                    internalData = response.result;
+                    populateInternalTable();                
+                }
+            })
+            .fail(function() {
+                console.log('Failed to fetch Internal transactions');
+            });
+        }
+
+        function updateERC20Data(){
+            $.getJSON('https://api.etherscan.io/api', {
+                module: 'account',
+                action: 'tokentx', 
+                address: trackedWallet,
+                page: 1,           // Set this by a dropdown/standard page mover
+                offset: '100',
+                startblock: '0',
+                endblock: blockNo,
+                sort: 'desc',
+                apikey: etherscanApi
+            })
+            .done(function(response) {
+                if (response.result) {
+                    erc20Data = response.result;
+                    populateERC20Table();                
+                }
+            })
+            .fail(function() {
+                console.log('Failed to fetch ERC20 transactions');
+            });
+        }
+            
+        function updateERC721Data(){
+            $.getJSON('https://api.etherscan.io/api', {
+                module: 'account',
+                action: 'tokennfttx', 
+                address: trackedWallet,
+                page: 1,           // Set this by a dropdown/standard page mover
+                offset: '100',
+                startblock: '0',
+                endblock: blockNo,
+                sort: 'desc',
+                apikey: etherscanApi
+            })
+            .done(function(response) {
+                if (response.result) {
+                    erc721Data = response.result;
+                    populateERC721Table();                
+                }
+            })
+            .fail(function() {
+                console.log('Failed to fetch ERC721 transactions');
+            });
+        }
+      
+
+        function populateInternalTable() {
+            const internalTableBody = document.getElementById('internal-table-body');
+            internalData.forEach(transaction => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${new Date(parseInt(transaction.timeStamp) * 1000).toLocaleString()}</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="mr-2"><a href="https://etherscan.io/tx/${transaction.hash}" target="_blank">${transaction.hash.slice(0, 10) + "..."}</a></span>
+                            <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.hash}"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="mr-2"><a href="https://etherscan.io/address/${transaction.from}" target="_blank">${transaction.from.slice(0, 10) + "..."}</a></span>
+                            <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.from}"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="mr-2"><a href="https://etherscan.io/address/${transaction.to}" target="_blank">${transaction.to.slice(0, 10) + "..."}</a></span>
+                            <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.to}"></i>
+                        </div>
+                    </td>
+                    <td>${transaction.value/1000000000}</td>
+                    <td>
+                        <i class="bi bi-three-dots-vertical transaction-dropdown dropdown-toggle"></i>
+                        <div class="dropdown-menu">
+                            <p><strong>Timestamp:</strong> ${transaction.timestamp}</p>
+                            <p><strong>Hash:</strong> ${transaction.hash}</p>
+                            <p><strong>From:</strong> ${transaction.from}</p>
+                            <p><strong>To:</strong> ${transaction.to}</p>
+                            <p><strong>Value:</strong> ${transaction.value}</p>
+                        </div>
+                    </td>`;
+                const copyButtons = internalTableBody.querySelectorAll('i[data-clipboard-text]');
+                copyButtons.forEach(copyButton => {
+                    copyButton.addEventListener('click', (event) => {
+                        navigator.clipboard.writeText(copyButton.getAttribute('data-clipboard-text'));
+                    });
+                });
+                internalTableBody.appendChild(tr);
+            });
+        }
+
+
+        // Populate ERC20 table
+        function populateERC20Table() {
+            const erc20TableBody = document.getElementById('erc20-table-body');
+            erc20Data.forEach(transaction => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${new Date(parseInt(transaction.timeStamp) * 1000).toLocaleString()}</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="mr-2"><a href="https://etherscan.io/tx/${transaction.hash}" target="_blank">${transaction.hash.slice(0, 10) + "..."}</a></span>
+                            <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.hash}"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="mr-2"><a href="https://etherscan.io/address/${transaction.from}" target="_blank">${transaction.from.slice(0, 10) + "..."}</a></span>
+                            <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.from}"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="mr-2"><a href="https://etherscan.io/address/${transaction.contractAddress}" target="_blank">${transaction.contractAddress.slice(0, 10) + "..."}</a></span>
+                            <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.contractAddress}"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="mr-2"><a href="https://etherscan.io/address/${transaction.to}" target="_blank">${transaction.to.slice(0, 10) + "..."}</a></span>
+                            <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.to}"></i>
+                        </div>
+                    </td>
+                    <td>${transaction.value/1000000000000000000}</td>
+                    <td><a href="https://etherscan.io/token/${transaction.contractAddress}" target="_blank">${transaction.tokenName}</a></td>
+                    <td>
+                    <i class="bi bi-three-dots-vertical transaction-dropdown dropdown-toggle"></i>
+                    <div class="dropdown-menu">
+                        <p><strong>Timestamp:</strong> ${transaction.timestamp}</p>
+                        <p><strong>Hash:</strong> ${transaction.hash}</p>
+                        <p><strong>From:</strong> ${transaction.from}</p>
+                        <p><strong>Contract Address:</strong> ${transaction.contractAddress}</p>
+                        <p><strong>To:</strong> ${transaction.to}</p>
+                        <p><strong>Value:</strong> ${transaction.value}</p>
+                        <p><strong>Token Name:</strong> ${transaction.tokenName}</p>
+                        <p><strong>Token Symbol:</strong> ${transaction.tokenSymbol}</p>
+                        <p><strong>Token Decimal:</strong> ${transaction.tokenDecimal}</p>
+                    </div>
+                    </td>`;
+                    const copyButtons = erc20TableBody.querySelectorAll('i[data-clipboard-text]');
+                    copyButtons.forEach(copyButton => {
+                        copyButton.addEventListener('click', (event) => {
+                            navigator.clipboard.writeText(copyButton.getAttribute('data-clipboard-text'));
+                    });
+                });
+            erc20TableBody.appendChild(tr);
+            });
+        }
+
+        function populateERC721Table() {
+            const erc721TableBody = document.getElementById('erc721-table-body');
+            erc721Data.forEach(transaction => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                <td>${new Date(parseInt(transaction.timeStamp) * 1000).toLocaleString()}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span class="mr-2"><a href="https://etherscan.io/tx/${transaction.hash}" target="_blank">${transaction.hash.slice(0, 10) + "..."}</a></span>
+                        <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.hash}"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span class="mr-2"><a href="https://etherscan.io/address/${transaction.from}" target="_blank">${transaction.from.slice(0, 10) + "..."}</a></span>
+                        <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.from}"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span class="mr-2"><a href="https://etherscan.io/address/${transaction.contractAddress}" target="_blank">${transaction.contractAddress.slice(0, 10) + "..."}</a></span>
+                        <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.contractAddress}"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span class="mr-2"><a href="https://etherscan.io/address/${transaction.to}" target="_blank">${transaction.to.slice(0, 10) + "..."}</a></span>
+                        <i class="bi bi-clipboard" style="font-size:10px" data-clipboard-text="${transaction.to}"></i>
+                    </div>
+                </td>
+                <td><a href="https://etherscan.io/token/${transaction.contractAddress}?a=${transaction.tokenID}" target="_blank">${transaction.tokenID}</a></td>
+                <td><a href="https://etherscan.io/token/${transaction.contractAddress}" target="_blank">${transaction.tokenName}</a></td>
+                <td>
+                    <i class="bi bi-three-dots-vertical transaction-dropdown dropdown-toggle"></i>
+                    <div class="dropdown-menu">
+                    <p><strong>Timestamp:</strong> ${transaction.timestamp}</p>
+                    <p><strong>Hash:</strong> ${transaction.hash}</p>
+                    <p><strong>From:</strong> ${transaction.from}</p>
+                    <p><strong>Contract Address:</strong> ${transaction.contractAddress}</p>
+                    <p><strong>To:</strong> ${transaction.to}</p>
+                    <p><strong>Token ID:</strong> ${transaction.tokenID}</p>
+                    <p><strong>Token Name:</strong> ${transaction.tokenName}</p>
+                    <p><strong>Token Symbol:</strong> ${transaction.tokenSymbol}</p>
+                    <p><strong>Token Decimal:</strong> ${transaction.tokenDecimal}</p>
+                    </div>
+                </td>`;
+                const copyButtons = erc721TableBody.querySelectorAll('i[data-clipboard-text]');
+                    copyButtons.forEach(copyButton => {
+                        copyButton.addEventListener('click', (event) => {
+                            navigator.clipboard.writeText(copyButton.getAttribute('data-clipboard-text'));
+                    });
+                });
+            erc721TableBody.appendChild(tr);
+            });
+        }       
+        
+    </script>
+      
 </body>
   
 {% endblock %}

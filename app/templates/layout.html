@@ -128,14 +128,21 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body" style="text-align: center;">
-                        <p class="card-text"><i class="bi bi-fuel-pump" style="font-size: 18px;"></i><span id="gas-price"></span>     <i class="bi bi-fire" style="font-size: 18px;"></i><span id="fast-gas-price"></span></p>
+                        <p class="card-text"><i class="bi bi-fuel-pump" style="font-size: 18px;"></i><span id="gas-price"></span>     <i class="bi bi-speedometer2" style="font-size: 18px;"></i><span id="fast-gas-price"></span></p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
                         <div class="card-body" style="text-align: center;">
-                        <p class="card-text"><img class="pSvg" src="/static/icon/eth-icon.svg" style="pointer-events: none; font-size: 12px;"><span id="eth-price-usd"></span></p>
+                        <p class="card-text"><img class="pSvg" src="/static/icon/eth-icon.svg" style="font-size: 12px;"><span id="eth-price-usd"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                        <p class="card-text"><i class="bi bi-box" style="font-size: 18px"></i><span id="block-no"></span></p>
                         </div>
                     </div>
                 </div>
@@ -148,16 +155,19 @@
         const etherscanApi = "{{ etherscan_api }}";
         var gasPrice = null;
         var ethPriceUSD = null;
+        var blockNo = null;
 
         $(document).ready(function() {
             // initial API calls
-                updateGasPrice();
-                updateEthPriceUsd();
+            updateGasPrice();
+            updateEthPriceUsd();
+            updateBlockNo();
 
 
             // set interval to call API every 3-5 seconds
             setInterval(updateGasPrice, 7500);
             setInterval(updateEthPriceUsd, 7500);
+            setInterval(updateBlockNo, 7500);
         });
         
        
@@ -180,7 +190,6 @@
             });
         }
 
-
         function updateEthPriceUsd() {
             $.getJSON('https://api.etherscan.io/api', {
                 module: 'stats',
@@ -201,6 +210,31 @@
             })
             .fail(function() {
                 console.log('Failed to fetch eth price');
+            });
+        }
+
+        function updateBlockNo() {
+            nowUnix = Math.floor(Date.now() / 1000);
+
+            $.getJSON('https://api.etherscan.io/api', {
+                module: 'block',
+                action: 'getblocknobytime',
+                timestamp: nowUnix,
+                closest: 'before',
+                apikey: etherscanApi
+            })
+            .done(function(response) {
+                if (response.result && response.result) {
+                    blockNo = response.result && response.result;
+                    if (blockNo) {
+                        $('#block-no').text(blockNo);
+                    }
+                } else {
+                    console.log('Failed to fetch block number:', response.message);
+                }
+            })
+            .fail(function() {
+                console.log('Failed to fetch block number');
             });
         }
       </script>
