@@ -121,4 +121,87 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="/static/script.js"></script>
     
+
+    <div class="fixed-bottom">
+        <div class="container mx-auto" style="font-size: large; font-weight: bold; pointer-events: none; height: 10%; width: 80%;">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                        <p class="card-text"><i class="bi bi-fuel-pump" style="font-size: 18px;"></i><span id="gas-price"></span>     <i class="bi bi-fire" style="font-size: 18px;"></i><span id="fast-gas-price"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                        <p class="card-text"><img class="pSvg" src="/static/icon/eth-icon.svg" style="pointer-events: none; font-size: 12px;"><span id="eth-price-usd"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const etherscanApi = "{{ etherscan_api }}";
+        var gasPrice = null;
+        var ethPriceUSD = null;
+
+        $(document).ready(function() {
+            // initial API calls
+                updateGasPrice();
+                updateEthPriceUsd();
+
+
+            // set interval to call API every 3-5 seconds
+            setInterval(updateGasPrice, 7500);
+            setInterval(updateEthPriceUsd, 7500);
+        });
+        
+       
+
+        function updateGasPrice() {
+            $.getJSON('https://api.etherscan.io/api', {
+                module: 'gastracker',
+                action: 'gasoracle',
+                apikey: etherscanApi
+            })
+            .done(function(response) {
+                if (response.result && response.result.SafeGasPrice) {
+                    gasPrice = response.result.SafeGasPrice;
+                    $('#gas-price').text(gasPrice+' gwei');
+                    $('#fast-gas-price').text(response.result.FastGasPrice+' gwei')
+                }
+            })
+            .fail(function() {
+                console.log('Failed to fetch gas price');
+            });
+        }
+
+
+        function updateEthPriceUsd() {
+            $.getJSON('https://api.etherscan.io/api', {
+                module: 'stats',
+                action: 'ethprice',
+                apikey: etherscanApi
+            })
+            .done(function(response) {
+                if (response.result && response.result.ethusd) {
+                    ethPriceUSD = response.result && response.result.ethusd;
+                    var ethPriceNumber = parseFloat(ethPriceUSD);
+                    var ethPriceFormatted = "$" + ethPriceNumber.toFixed(2);
+                    if (ethPriceUSD) {
+                        $('#eth-price-usd').text(ethPriceFormatted);
+                    }
+                } else {
+                    console.log('Failed to fetch eth price:', response.message);
+                }
+            })
+            .fail(function() {
+                console.log('Failed to fetch eth price');
+            });
+        }
+      </script>
 </body>

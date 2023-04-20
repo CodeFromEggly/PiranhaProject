@@ -7,6 +7,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
+from tokens import etherscan
 
 app = Flask(__name__)
 
@@ -35,6 +36,7 @@ def index():
     conn = sqlite3.connect('piranha.db')
     conn.row_factory = sqlite3.Row
     db = conn.cursor()
+    etherscan_api = etherscan
 
 
     # Provide all the data for last 12 entries
@@ -59,11 +61,12 @@ def index():
 
 
     # renders template index.html
-    return render_template("index.html", all=all, graphData=graphData)
+    return render_template("index.html", all=all, graphData=graphData, etherscan_api=etherscan_api)
 
 
 @app.route("/conditions", methods=["GET", "POST"])
 def conditions():
+    etherscan_api = etherscan
     # New conditions entered. Change .json and redirect to index
     if request.method == "POST":
 
@@ -92,7 +95,7 @@ def conditions():
         with open('search_conditions.json', 'r') as f:
             conditions = json.load(f)
 
-        return render_template("conditions.html", conditions=conditions)
+        return render_template("conditions.html", conditions=conditions, etherscan_api=etherscan_api)
 
 
 @app.route("/ping", methods=["GET", "POST"])
@@ -107,6 +110,7 @@ def ping():
 
 @app.route("/poop")
 def poop():
+    etherscan_api = etherscan
     # Graphs at the moment
     #SQLite3 query to detect listings.
     conn = sqlite3.connect('piranha.db')
@@ -131,10 +135,12 @@ def poop():
 
     for row in graphData: print(row)
 
-    return render_template("poop.html", graphData=graphData)
+    return render_template("poop.html", graphData=graphData, etherscan_api=etherscan_api)
 
 @app.route("/activity")
 def activity():
+
+    etherscan_api = etherscan
 
     #SQLite3 query to detect listings.
     conn = sqlite3.connect('piranha.db')
@@ -147,11 +153,12 @@ def activity():
     all = [dict(row) for row in all]
     #for row in all: print(row)
 
-    return render_template("activity.html", all=all)
+    return render_template("activity.html", all=all, etherscan_api=etherscan_api)
 
 
 @app.route("/tracker")
 def tracker():
+    etherscan_api = etherscan
 
     #SQLite3 query to detect listings.
     conn = sqlite3.connect('piranha.db')
@@ -165,7 +172,7 @@ def tracker():
     #for row in all: print(row)
 
     conn.close()
-    return render_template("tracker.html", holdings=holdings)
+    return render_template("tracker.html", holdings=holdings, etherscan_api=etherscan_api)
 
 
 @app.route("/add-wallet", methods=["GET","POST"])
