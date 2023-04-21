@@ -10,7 +10,8 @@
     <div class="container mt-5" style="width: 65%">
         <h1 class="text-center mb-4">Tracker: WIP</h1>
         <div class="row">
-            <div class="col">
+            <!-- [HIDDEN] Wallet tracking input -->
+            <div class="col" style="display: none;">
                 <h4>Track a wallet:</h4>
                 <!-- Checkboxes -->
                 <form class="mb-4" action="/add-wallet" method="post">
@@ -45,7 +46,8 @@
                         <button id="remove-button" class="btn">Remove Wallet</button>
                     </template>
                 </form>
-                
+            </div>
+            <div>
                 <!-- TODO: WALLET TABLE, WILL REQUIRE A JINJA LOOP -->
                 <div id="table-div" style="width: 100%">
                     <table class="table" style="text-align: center; font-size: large;">
@@ -74,29 +76,10 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="col">
-                <!-- Form for adding a new holding -->
-                <form class="mb-4" action="/add-holding" method="post">
-                    <div class="form-group">
-                        <!-- TODO: make this a select dropdown -->
-                        <label for="owner">Owner</label>
-                        <input type="text" class="form-control" id="owner" name="owner" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="collection-address">Collection Address</label>
-                        <input type="text" class="form-control" id="collection-address" name="collection-address" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="token-id">Token ID</label>
-                        <input type="text" class="form-control" id="token-id" name="token-id" required>
-                    </div>
-                    <button type="submit" class="btn" style="margin-top:10px;">Add Holding</button>
-                </form>
-            </div>
+            </div>  
         </div>
   
-        <!-- Holdings Table -->
+        <!-- [HIDDEN] Holdings Table -->
         <div id="table-div" style="display: none;">
             <table class="table" style="text-align: center; font-size: large;">
                 <thead>
@@ -145,10 +128,10 @@
                 </tbody>
             </table>
         </div>
-        
+    </div>
   
-        <!-- Right Sidebar -->
-        <div id="right-column" class="pColumn">
+        <!-- [HIDDEN] Right Sidebar -->
+        <div id="right-column" class="pColumn" style="display: none;">
             <h5 class="text-center mb-4">Filters</h5
 >
             <!-- Add a button for each distinct collection in the holdings table -->
@@ -158,7 +141,7 @@
                <br>
             {% endfor %}
 
-            <!-- Filter Controls -->
+            
             <div class="mb-4">
                 <!-- Dropdown menus for filtering by owner, collection, and token ID -->
                 <form class="form-inline mb-4">
@@ -241,7 +224,7 @@
             <!-- Internal Transactions Tab-->
             <div class="tab-pane fade show active" id="internal">
                 <div class="container">
-                    <h2>Transaction Table</h2>
+                    <h5 class="search-table-title">Search for an address...</h5>
                     <table class="table">
                       <thead>
                         <tr>
@@ -264,7 +247,7 @@
             <!-- ERC20 Transactions Tab-->
             <div class="tab-pane fade" id="erc20">
                 <div class="container">
-                    <h2>Transaction Table</h2>
+                    <h5 class="search-table-title">Search for an address...</h5>
                     <table class="table">
                       <thead>
                         <tr>
@@ -288,7 +271,7 @@
             <!-- ERC721 Transactions Tab-->
             <div class="tab-pane fade" id="erc721">
                 <div class="container">
-                    <h2>Transaction Table</h2>
+                    <h5 class="search-table-title">Search for an address...</h5>
                     <table class="table">
                       <thead>
                         <tr>
@@ -313,7 +296,7 @@
             <!-- TODO: ERC1155 Transactions Tab-->
             <div class="tab-pane fade" id="erc1155">
                 <div class="container">
-                    <h2>Transaction Table</h2>
+                    <h5 class="search-table-title">Search for an address...</h5>
                     <table class="table">
                       <thead>
                         <tr>
@@ -354,21 +337,31 @@
         if (address.length === 40 || address.length === 42 || address.length === 64) {
             trackedWallet = address;
             updateTransactionTables();
+            updateTableTitles(address);
         } else {
             console.log('Invalid address format');
         }
         });
 
-        /* Unsure if necessary, intended for 
+        /* Unsure if necessary, intended for calling function outside of search
         
         if (trackedWallet !== null){
             updateTransactionTables();
         }*/
 
+        // Call API and update tables
         function updateTransactionTables() {
             updateInternalData();
             updateERC721Data();
             updateERC20Data();
+        }
+
+        // Update titles to search query
+        function updateTableTitles(address) {
+            const titles = document.querySelectorAll('.search-table-title');
+            titles.forEach(title => {
+                title.innerHTML = (address);
+            });
         }
 
         function updateInternalData(){
@@ -600,6 +593,32 @@
         
     </script>
       
+    <!-- DISCARDED CODE
+    
+        <div class="col">
+                Form for adding a new holding 
+                <form class="mb-4" action="/add-holding" method="post">
+                    <div class="form-group">
+                        TODO: make this a select dropdown
+                        <label for="owner">Owner</label>
+                        <input type="text" class="form-control" id="owner" name="owner" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="collection-address">Collection Address</label>
+                        <input type="text" class="form-control" id="collection-address" name="collection-address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="token-id">Token ID</label>
+                        <input type="text" class="form-control" id="token-id" name="token-id" required>
+                    </div>
+                    <button type="submit" class="btn" style="margin-top:10px;">Add Holding</button>
+                </form>
+        </div>
+
+
+
+        -->
+
 </body>
   
 {% endblock %}
