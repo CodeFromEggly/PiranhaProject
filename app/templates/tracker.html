@@ -48,7 +48,7 @@
                 </form>
             </div>
             <div>
-                <!-- TODO: WALLET TABLE, WILL REQUIRE A JINJA LOOP -->
+                <!-- TODO: WALLET TABLE, WILL REQUIRE A LOOP -->
                 <div id="table-div" style="width: 100%">
                     <table class="table" style="text-align: center; font-size: large;">
                         <thead>
@@ -193,7 +193,6 @@
                 </form>
             </div>
         </div>
-    </div>
 
     
     <!-- Wallet/Contract address search bar-->
@@ -275,14 +274,14 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>Timestamp</th>
-                          <th>Hash</th>
-                          <th>From</th>
-                          <th>Contract Address</th>
-                          <th>To</th>
-                          <th>Token ID</th>
-                          <th>Token Name</th>
-                          <th>NFT</th>
+                            <th><h6>Timestamp           <i id="721_timestamp_desc"          class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>Hash                <i id="721_hash_desc"               class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>From                <i id="721_from_desc"               class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>Contract Address    <i id="721_contractAddress_desc"    class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>To                  <i id="721_to_desc"                 class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>Token ID            <i id="721_tokenid_desc"            class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>Token Name          <i id="721_tokenname_desc"          class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>NFT</th>
                           <th></th>
                         </tr>
                       </thead>
@@ -300,15 +299,16 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>Timestamp</th>
-                          <th>Hash</th>
-                          <th>From</th>
-                          <th>Contract Address</th>
-                          <th>To</th>
-                          <th>Token ID</th>
-                          <th>Token Name</th>
-                          <th>NFT</th>
-                          <th></th>
+                            <!-- TODO: WIP, JS required for sorting function -->
+                            <th><h6>Timestamp           <i id="timestamp_desc"          class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>Hash                <i id="hash_desc"               class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>From                <i id="from_desc"               class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>Contract Address    <i id="contractAddress_desc"    class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>To                  <i id="to_desc"                 class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>Token ID            <i id="tokenid_desc"            class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>Token Name          <i id="tokenname_desc"          class="bi bi-sort-down" style="font-size: 14px;"></i></h6></th>
+                            <th><h6>NFT</th>
+                            <th></th>
                         </tr>
                       </thead>
                       <tbody id="erc1155-table-body">
