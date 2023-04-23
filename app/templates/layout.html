@@ -168,9 +168,7 @@
             setInterval(updateGasPrice, 7500);
             setInterval(updateEthPriceUsd, 7500);
             setInterval(updateBlockNo, 7500);
-        });
-        
-       
+        });   
 
         function updateGasPrice() {
             $.getJSON('https://api.etherscan.io/api', {
