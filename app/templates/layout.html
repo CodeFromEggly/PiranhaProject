@@ -128,7 +128,9 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body" style="text-align: center;">
-                        <p class="card-text"><i class="bi bi-fuel-pump" style="font-size: 18px;"></i><span id="gas-price"></span>     <i class="bi bi-speedometer2" style="font-size: 18px;"></i><span id="fast-gas-price"></span></p>
+                        <p class="card-text">
+                            <i class="bi bi-fuel-pump" style="font-size: 18px;"></i><span id="safe-gas-price">0</span>     
+                            <i class="bi bi-speedometer2" style="font-size: 18px;"></i><span id="fast-gas-price">0</span></p>
                         </div>
                     </div>
                 </div>
@@ -142,9 +144,9 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body" style="text-align: center;">
-                        <p class="card-text"><i class="bi bi-box" style="font-size: 18px"></i><span id="block-no"></span></p>
+                            <p class="card-text"><i class="bi bi-box" style="font-size: 18px"></i><span id="block-no"><span class="counter"></span></span></p>
                         </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>
@@ -165,9 +167,9 @@
 
 
             // set interval to call API every 3-5 seconds
-            setInterval(updateGasPrice, 7500);
-            setInterval(updateEthPriceUsd, 7500);
-            setInterval(updateBlockNo, 7500);
+            setInterval(updateGasPrice, 20000);
+            setInterval(updateEthPriceUsd, 20000);
+            setInterval(updateBlockNo, 20000);
         });   
 
         function updateGasPrice() {
@@ -178,9 +180,12 @@
             })
             .done(function(response) {
                 if (response.result && response.result.SafeGasPrice) {
-                    gasPrice = response.result.SafeGasPrice;
-                    $('#gas-price').text(gasPrice+' gwei');
-                    $('#fast-gas-price').text(response.result.FastGasPrice+' gwei')
+                    var safeGasPrice = response.result.SafeGasPrice;
+                    var fastGasPrice = response.result.FastGasPrice;
+                    var oldSafeGasPrice = parseInt($('#safe-gas-price').text().replace(' gwei', ''));
+                    var oldFastGasPrice = parseInt($('#fast-gas-price').text().replace(' gwei', ''));
+                    animateValue('safe-gas-price', oldSafeGasPrice, safeGasPrice, 1000, false, '', 0, ' gwei');
+                    animateValue('fast-gas-price', oldFastGasPrice, fastGasPrice, 1000, false, '', 0, ' gwei');
                 }
             })
             .fail(function() {
@@ -198,9 +203,10 @@
                 if (response.result && response.result.ethusd) {
                     ethPriceUSD = response.result && response.result.ethusd;
                     var ethPriceNumber = parseFloat(ethPriceUSD);
-                    var ethPriceFormatted = "$" + ethPriceNumber.toFixed(2);
+                    var ethPriceFormatted = "$" + ethPriceNumber.toLocaleString();
                     if (ethPriceUSD) {
-                        $('#eth-price-usd').text(ethPriceFormatted);
+                        var oldEthPrice = parseFloat($('#eth-price-usd').text().replace(',', '').replace('$', '')) || 0;
+                        animateValue('eth-price-usd', oldEthPrice, ethPriceUSD, 1000, true, '$', 2);
                     }
                 } else {
                     console.log('Failed to fetch eth price:', response.message);
@@ -212,28 +218,72 @@
         }
 
         function updateBlockNo() {
-            nowUnix = Math.floor(Date.now() / 1000);
+        nowUnix = Math.floor(Date.now() / 1000);
 
-            $.getJSON('https://api.etherscan.io/api', {
-                module: 'block',
-                action: 'getblocknobytime',
-                timestamp: nowUnix,
-                closest: 'before',
-                apikey: etherscanApi
-            })
-            .done(function(response) {
-                if (response.result && response.result) {
-                    blockNo = response.result && response.result;
-                    if (blockNo) {
-                        $('#block-no').text(blockNo);
-                    }
-                } else {
-                    console.log('Failed to fetch block number:', response.message);
+        $.getJSON('https://api.etherscan.io/api', {
+            module: 'block',
+            action: 'getblocknobytime',
+            timestamp: nowUnix,
+            closest: 'before',
+            apikey: etherscanApi
+        })
+        .done(function(response) {
+            if (response.result && response.result) {
+                var newBlockNo = response.result && response.result;
+                if (newBlockNo) {
+                    var oldBlockNo = parseInt($('#block-no').text()) || 0;
+                    animateValue('block-no', oldBlockNo, newBlockNo, 1000);
                 }
-            })
-            .fail(function() {
-                console.log('Failed to fetch block number');
-            });
+            } else {
+                console.log('Failed to fetch block number:', response.message);
+            }
+        })
+        .fail(function() {
+            console.log('Failed to fetch block number');
+        });
         }
-      </script>
+
+        function animateValue(id, start, end, duration, formatNumber = false, prefix = '', decimalPlaces = 0, suffix = '') {
+            var obj = document.getElementById(id);
+            var range = end - start;
+            var durationPerNum = range < 1 ? 1000 : duration / 50;
+            // calculate increment based on the range of numbers
+            var increment = range < 1 ? 0.01 : Math.ceil(range / durationPerNum);
+            increment = increment > 1 ? increment : 1;
+            if (decimalPlaces > 0) {
+                increment = increment + 0.11;
+            }
+            var current = start;
+            var timer = setInterval(function() {
+                current += increment;
+                var currentStr = formatNumber ? current.toFixed(decimalPlaces) : current.toString();
+                if (decimalPlaces > 0) {
+                    var numParts = currentStr.split(".");
+                    if (numParts.length == 1) {
+                        currentStr += ".";
+                        for (var i = 0; i < decimalPlaces; i++) {
+                            currentStr += "0";
+                        }
+                    } else if (numParts.length == 2) {
+                        var decPart = numParts[1];
+                        for (var i = decPart.length; i < decimalPlaces; i++) {
+                            decPart += "0";
+                        }
+                        currentStr = numParts[0] + "." + decPart;
+                    }
+                }
+                var endStr = formatNumber ? end.toLocaleString() : end.toString();
+                // add leading zeroes to current number
+                while (currentStr.length < endStr.length) {
+                    currentStr = '0' + currentStr;
+                }
+                obj.innerHTML = prefix + currentStr + suffix;
+                if (current >= end) {
+                    obj.innerHTML = prefix + endStr + suffix;
+                    clearInterval(timer);
+                }
+            }, 50);
+        }
+
+    </script>
 </body>
