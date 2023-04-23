@@ -184,8 +184,8 @@
                     var fastGasPrice = response.result.FastGasPrice;
                     var oldSafeGasPrice = parseInt($('#safe-gas-price').text().replace(' gwei', ''));
                     var oldFastGasPrice = parseInt($('#fast-gas-price').text().replace(' gwei', ''));
-                    animateValue('safe-gas-price', oldSafeGasPrice, safeGasPrice, 1000, false, '', 0, ' gwei');
-                    animateValue('fast-gas-price', oldFastGasPrice, fastGasPrice, 1000, false, '', 0, ' gwei');
+                    animateValue('safe-gas-price', oldSafeGasPrice, safeGasPrice, 1000, false, ' ', 0, ' gwei');
+                    animateValue('fast-gas-price', oldFastGasPrice, fastGasPrice, 1000, false, ' ', 0, ' gwei');
                 }
             })
             .fail(function() {
@@ -232,7 +232,7 @@
                 var newBlockNo = response.result && response.result;
                 if (newBlockNo) {
                     var oldBlockNo = parseInt($('#block-no').text()) || 0;
-                    animateValue('block-no', oldBlockNo, newBlockNo, 1000);
+                    animateValue('block-no', oldBlockNo, newBlockNo, 1000, false, ' ');
                 }
             } else {
                 console.log('Failed to fetch block number:', response.message);
