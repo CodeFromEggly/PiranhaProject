@@ -146,7 +146,7 @@ def poop():
 
 @app.route("/activity")
 def activity():
-
+    print('no db found')
     etherscan_api = etherscan
 
     #SQLite3 query to detect listings.
@@ -160,21 +160,7 @@ def activity():
     all = [dict(row) for row in all]
     #for row in all: print(row)
 
-
-    # Connect to piranha_db_1
-    connection = pymysql.connect(host=db_host, user=db_user, password=db_password, database=db_name)
-    cursor = connection.cursor(pymysql.cursors.DictCursor)
-    # SQL query to fetch the links
-    sql_query = "SELECT * FROM useful_links' ORDER BY link_name ASC"
-    cursor.execute(sql_query)
-    # Fetch all the links from the query result
-    links = cursor.fetchall()
-    # Close the database connection
-    cursor.close()
-    connection.close()
-
-
-    return render_template("activity.html", all=all, etherscan_api=etherscan_api, links=links)
+    return render_template("activity.html", all=all, etherscan_api=etherscan_api)
 
 
 @app.route("/tracker")
@@ -185,15 +171,28 @@ def tracker():
     conn = sqlite3.connect('piranha.db')
     conn.row_factory = sqlite3.Row
     db = conn.cursor()
-
-
     # Provide all the data for last 10 entries
     holdings = db.execute("SELECT * FROM keyData INNER JOIN moreData ON keyData.id = moreData.keyid LEFT JOIN collections ON keyData.collection = collections.name ORDER BY keyData.timestamp DESC").fetchall()
     holdings = [dict(row) for row in holdings]
     #for row in all: print(row)
-
     conn.close()
-    return render_template("tracker.html", holdings=holdings, etherscan_api=etherscan_api)
+
+    # MySQL Connect to piranha_db_1
+    connection = pymysql.connect(host=db_host, user=db_user, password=db_password, database=db_name)
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    # SQL query to fetch the links
+    sql_query = "SELECT * FROM useful_links ORDER BY link_name ASC"
+    cursor.execute(sql_query)
+    # Fetch all the links from the query result
+    links = cursor.fetchall()
+    # Close the database connection
+    cursor.close()
+    connection.close()
+    # Print the links to check if they are fetched correctly
+    print(links)
+
+
+    return render_template("tracker.html", holdings=holdings, etherscan_api=etherscan_api, links=links)
 
 
 @app.route("/add-wallet", methods=["GET","POST"])

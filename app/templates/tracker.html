@@ -327,17 +327,144 @@
         </div>
 
         <hr>
-        <h3>Analytics Links</h3>
-        <div id="links-container">
-            {% for link in links %}
-                <a href="{{ link.link_address }}" target="_blank">
-                    <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon">
-                    <p>{{ link.link_name }}</p>
-                </a>
-                <script>console.log('{{ link.link_name }}')</script>
-            {% endfor %}
+        <div id="useful-links">
+            <h3>Useful Links</h3>
+            <h5 style="text-align: center">Analytics</h5>
+            <div class="container" id="links-container-analytics">
+                <div class="row">
+                    {% for link in links %}
+                        {% if link.link_category == 'Analytics' %}
+                        <div class="col-md-4">
+                            <a href="{{ link.link_address }}" target="_blank">
+                                <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                                {{ link.link_name }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <h5 style="text-align: center">Rarity</h5>
+            <div class="container" id="links-container-rarity">
+                <div class="row">
+                    {% for link in links %}
+                        {% if link.link_category == 'Rarity' %}
+                        <div class="col-md-4">
+                            <a href="{{ link.link_address }}" target="_blank">
+                                <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                                {{ link.link_name }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <h5 style="text-align: center">Project Calendars</h5>
+            <div class="container" id="links-container-calendar">
+                <div class="row">
+                    {% for link in links %}
+                        {% if link.link_category == 'Calendar' %}
+                        <div class="col-md-4">
+                            <a href="{{ link.link_address }}" target="_blank">
+                                <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                                {{ link.link_name }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <h5 style="text-align: center">Aggregators</h5>
+            <div class="container" id="links-container-aggregator">
+                <div class="row">
+                    {% for link in links %}
+                        {% if link.link_category == 'Aggregator' %}
+                        <div class="col-md-4">
+                            <a href="{{ link.link_address }}" target="_blank">
+                                <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                                {{ link.link_name }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <h5 style="text-align: center">Portfolio Managers</h5>
+            <div class="container" id="links-container-portfolio">
+                <div class="row">
+                    {% for link in links %}
+                        {% if link.link_category == 'Portfolio' %}
+                        <div class="col-md-4">
+                            <a href="{{ link.link_address }}" target="_blank">
+                                <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                                {{ link.link_name }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <h5 style="text-align: center">Gas Trackers</h5>
+            <div class="container" id="links-container-gas">
+                <div class="row">
+                    {% for link in links %}
+                        {% if link.link_category == 'Gas' %}
+                        <div class="col-md-4">
+                            <a href="{{ link.link_address }}" target="_blank">
+                                <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                                {{ link.link_name }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <h5 style="text-align: center">Opensea Volume</h5>
+            <div class="container" id="links-container-os-volume">
+                <div class="row">
+                    {% for link in links %}
+                        {% if link.link_category == 'OSVolume' %}
+                        <div class="col-md-4">
+                            <a href="{{ link.link_address }}" target="_blank">
+                                <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                                {{ link.link_name }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <h5 style="text-align: center">Opensea Extensions</h5>
+            <div class="container" id="links-container-os-extension">
+                <div class="row">
+                {% for link in links %}
+                    {% if link.link_category == 'OSExtension' %}
+                    <div class="col-md-4">
+                        <a href="{{ link.link_address }}" target="_blank">
+                            <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                            {{ link.link_name }}
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+            <h5 style="text-align: center">Additional Tools</h5>
+            <div class="container" id="links-container-additional">
+                <div class="row">
+                    {% for link in links %}
+                        {% if link.link_category == 'Additional' %}
+                        <div class="col-md-4">
+                            <a href="{{ link.link_address }}" target="_blank">
+                                <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon" style="height: 30px; padding-left: 10px; padding-top: 5px;">
+                                {{ link.link_name }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-
     </div>
 
 
