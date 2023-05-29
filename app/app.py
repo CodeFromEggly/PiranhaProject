@@ -2,6 +2,7 @@ import os
 
 import json
 import sqlite3
+import pymysql
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
@@ -10,6 +11,12 @@ from datetime import datetime
 from tokens import etherscan
 
 app = Flask(__name__)
+
+# Database connection configuration - currently only for Useful Links
+db_host = 'localhost'
+db_user = 'root'
+db_password = 'root123'
+db_name = 'piranha_db_1'
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -153,7 +160,21 @@ def activity():
     all = [dict(row) for row in all]
     #for row in all: print(row)
 
-    return render_template("activity.html", all=all, etherscan_api=etherscan_api)
+
+    # Connect to piranha_db_1
+    connection = pymysql.connect(host=db_host, user=db_user, password=db_password, database=db_name)
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    # SQL query to fetch the links
+    sql_query = "SELECT * FROM useful_links' ORDER BY link_name ASC"
+    cursor.execute(sql_query)
+    # Fetch all the links from the query result
+    links = cursor.fetchall()
+    # Close the database connection
+    cursor.close()
+    connection.close()
+
+
+    return render_template("activity.html", all=all, etherscan_api=etherscan_api, links=links)
 
 
 @app.route("/tracker")

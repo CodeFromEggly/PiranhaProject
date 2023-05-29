@@ -325,7 +325,21 @@
             </div>
 
         </div>
+
+        <hr>
+        <h3>Analytics Links</h3>
+        <div id="links-container">
+            {% for link in links %}
+                <a href="{{ link.link_address }}" target="_blank">
+                    <img src="{{ link.link_icon }}" alt="{{ link.link_name }}" class="icon">
+                    <p>{{ link.link_name }}</p>
+                </a>
+                <script>console.log('{{ link.link_name }}')</script>
+            {% endfor %}
+        </div>
+
     </div>
+
 
     <script>
 
